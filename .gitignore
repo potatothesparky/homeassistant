@@ -1,9 +1,9 @@
 *
 !*.yaml
 !.gitignore
+!.travis.yml
 !sensors
 !influxdb
 secrets.yaml
 known_devices.yaml
-zones.yaml
 zones.yaml
