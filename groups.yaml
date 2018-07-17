@@ -1,0 +1,86 @@
+  default_view:
+    view: yes
+    icon: mdi:home
+    entities:
+      - group.Dryer
+      - switch.washing_machine
+      - group.StudyTemp
+      - group.MasterBedTemp
+      - group.LoungeTemp
+      - group.DiningTemp
+      - group.SpareBedTemp
+      - device_tracker.davids_iphone
+      - device_tracker.raes_iphone
+      - device_tracker.angelsiphone
+      - device_tracker.androida30d7b7b2656f096
+      - camera.locations
+      - group.Bitcoin
+      - camera.bom_rain_radar
+      - group.PIRs
+      - group.Lights
+      - light.dave_bedside
+      - light.rae_bedside
+      - sensor.temperature_158d00022b66c0
+      - sensor.humidity_158d00022b66c0
+      - sensor.pressure_158d00022b66c0
+
+  StudyTemp:
+    name: "Study Temp"
+    entities:
+      - sensor.temperature_158d00016fe9f4
+      - sensor.humidity_158d00016fe9f4
+      
+  SpareBedTemp:
+    name: "Spare Bed Temp"
+    entities:
+      - sensor.temperature_158d0001825996
+      - sensor.Humidity_158d0001825996
+
+  LoungeTemp:
+    name: "Lounge Temp"
+    entities:
+      - sensor.temperature_158d0001ad39a8
+      - sensor.Humidity_158d0001ad39a8
+      
+  DiningTemp:
+    name: "Dining Temp"
+    entities:
+      - sensor.temperature_158d0001b1c7c6
+      - sensor.Humidity_158d0001b1c7c6
+      
+  MasterBedTemp:
+    name: "Master Bed Temp"
+    entities:
+      - sensor.temperature_158d0001dcc73d
+      - sensor.Humidity_158d0001dcc73d
+      
+  Bitcoin:
+    name: "Bitcoin"
+    entities:
+      - sensor.bitcoin
+      - sensor.bitcoin_24h
+      - sensor.bitcoin_7d
+      
+  Dryer:
+    name: "Dryer"
+    entities:
+      - input_select.dryer_status
+      - sensor.dryer_door
+      - sensor.dryer_power
+      - sensor.dryer_energy
+      
+  PIRs:
+    name: "Enable PIRs"
+    entities:
+      - input_boolean.kitchen_pir_enable
+      - input_boolean.family_pir_enable
+      - input_boolean.lounge_pir_enable
+      
+  Lights:
+    name: "Lights"
+    entities:
+      - switch.garage_3
+      - switch.kitchen_4
+      - switch.living_5
+      - switch.living_2_6
+      - switch.master_bed_7

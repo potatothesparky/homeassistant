@@ -1,0 +1,14 @@
+- platform: sabnzbd
+  name: SAB
+  api_key: !secret sab_api_key
+  host: !secret sab_host
+  port: 9090
+  ssl: True
+  monitored_variables:
+    - 'current_status'
+    - 'speed'
+    - 'queue_size'
+    - 'queue_remaining'
+    - 'disk_size'
+    - 'disk_free'
+    - 'queue_count'

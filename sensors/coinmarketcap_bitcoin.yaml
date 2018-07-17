@@ -1,0 +1,3 @@
+- platform: coinmarketcap
+  currency: bitcoin
+  display_currency: AUD

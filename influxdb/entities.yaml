@@ -1,0 +1,63 @@
+# Temperature
+- sensor.temperature_158d0001b1c7c6
+- sensor.humidity_158d0001b1c7c6
+- sensor.temperature_158d0001ad39a8
+- sensor.humidity_158d0001ad39a8
+- sensor.temperature_158d0001dcc73d
+- sensor.humidity_158d0001dcc73d
+- sensor.temperature_158d0001825996
+- sensor.humidity_158d0001825996
+- sensor.temperature_158d00016fe9f4
+- sensor.humidity_158d00016fe9f4
+# Aqara Temperature
+- sensor.temperature_158d00022b66c0
+- sensor.humidity_158d00022b66c0
+- sensor.pressure_158d00022b66c0
+- sensor.temperature_158d00022c7738
+- sensor.humidity_158d00022c7738
+- sensor.pressure_158d00022c7738
+
+# Motion Detectors
+- binary_sensor.motion_sensor_158d0001d67162
+- binary_sensor.motion_sensor_158d0001d6720e
+- binary_sensor.motion_sensor_158d0001d98554
+
+# Dryer
+- binary_sensor.door_window_sensor_158d00019f60eb
+- input_select.dryer_status
+
+# Doors
+- binary_sensor.door_window_sensor_158d00019f623a
+
+# Currency
+- sensor.bitcoin
+
+# Energy
+- sensor.dryer_energy
+- sensor.dryer_power
+- sensor.washing_machine_energy
+- switch.washing_machine
+
+# Solar
+- sensor.solar_power_current
+- sensor.solar_energy_today
+- sensor.solar_energy_this_month
+- sensor.solar_energy_total
+
+# PC Stats
+- sensor.processor_use
+- sensor.memory_use_percent
+- sensor.load_1m
+- sensor.load_5m
+- sensor.speedtest_ping
+- sensor.speedtest_download
+- sensor.speedtest_upload
+
+# Device Trackers
+- device_tracker.androida30d7b7b2656f096
+- device_tracker.david_iphone
+- device_tracker.davids_iphone
+- device_tracker.davidsiphone
+- device_tracker.raes_iphone
+- device_tracker.raesiphone
+- device_tracker.renee_iphone

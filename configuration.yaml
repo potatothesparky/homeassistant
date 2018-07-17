@@ -1,0 +1,189 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret home_lat
+  longitude: !secret home_long
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: !secret elevation
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: !secret timezone
+  # Customization file
+  customize: !include customize.yaml
+
+# Show links to resources in log and frontend
+#introduction:
+logger:
+  logs:
+    xiaomi_gateway: debug
+    switch.xiaomi_aqara: debug
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+http:
+  # Secrets are defined in the file secrets.yaml
+  api_password: !secret http_password
+  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+  base_url: !secret base_url
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+#discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+ios:
+
+device_tracker:
+  - platform: owntracks_http
+
+  - platform: asuswrt
+    host: !secret asus_router_ip
+    protocol: telnet
+    username: !secret asus_router_username
+    password: !secret asus_router_password
+    interval_seconds: 12
+    consider_home: 300
+
+
+sensor: !include_dir_merge_list sensors/
+
+# Text to speech
+tts:
+  - platform: google
+
+input_select:
+  dryer_status:
+    name: Dryer Status
+    options:
+      - Idle
+      - Started
+      - Drying
+      - Cooling
+      - Finished
+    initial: Idle
+  washing_machine_status:
+    name: Washing Machine Status
+    options:
+      - Idle
+      - Washing
+      - Finished
+    initial: Idle
+
+input_boolean:
+  dave_asleep:
+    name: Is Dave asleep?
+  rae_asleep:
+    name: Is Rae asleep?
+  kitchen_pir_enable:
+    name: Enable Kitchen PIR
+    initial: on
+    icon: mdi:run-fast
+  family_pir_enable:
+    name: Enable Family PIR
+    initial: on
+    icon: mdi:run-fast
+  lounge_pir_enable:
+    name: Enable Lounge PIR
+    initial: on
+    icon: mdi:run-fast
+
+notify:
+  - platform: ios
+
+media_player:
+  - platform: samsungtv
+    host: 192.168.1.172
+    port: 8001
+    name: Lounge TV
+    mac: !secret samsung_tv_mac
+    timeout: 10
+
+xiaomi_aqara:
+  discovery_retry: 5
+  gateways:
+    - host: 192.168.1.67
+      mac: !secret xiaomi_gw_mac
+      key: !secret xiaomi_gateway_key
+
+light:
+  - platform: yeelight
+    devices:
+      192.168.1.42:
+        name: Rae Bedside
+        transition: 1000
+#        use_music_mode: True #(defaults to False)
+#        save_on_change: True #(defaults to True)
+      192.168.1.229:
+        name: Dave Bedside
+        transition: 1000
+#        use_music_mode: True #(defaults to False)
+#        save_on_change: True #(defaults to True)
+
+wemo:
+  static:
+    - 192.168.1.121
+    - 192.168.1.173
+
+camera:
+  - platform: generic
+    name: Locations
+    still_image_url: https://maps.googleapis.com/maps/api/staticmap?size=800x800&maptype=hybrid&markers=color:green|label:D|{{ states.device_tracker.davids_iphone.attributes.latitude }},{{ states.device_tracker.davids_iphone.attributes.longitude }}&markers=color:red|label:R|{{ states.device_tracker.raes_iphone.attributes.latitude }},{{ states.device_tracker.raes_iphone.attributes.longitude }}
+    limit_refetch_to_url_change: true
+
+  - platform: generic
+    name: BOM Rain Radar
+    still_image_url: !secret bom_rain_radar
+    limit_refetch_to_url_change: true
+
+remember_the_milk:
+  - name: your_rtm_account
+    api_key: !secret RTM_api_key
+    shared_secret: !secret RTM_shared_secret
+
+google:
+  client_id: !secret google_calendar_ID
+  client_secret: !secret google_calendar_secret
+
+vera:
+  vera_controller_url: http://192.168.1.2:3480/
+
+influxdb:
+  host: 192.168.1.200
+  include:
+    entities: !include influxdb/entities.yaml
+
+# Cloud
+cloud:
+
+zone: !include zones.yaml
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml

@@ -1,0 +1,74 @@
+    sensor.temperature_158d00016fe9f4:
+      friendly_name: Study Temp
+    sensor.humidity_158d00016fe9f4:
+      friendly_name: Study RH
+    sensor.temperature_158d0001825996:
+      friendly_name: Spare Bed Temp
+    sensor.Humidity_158d0001825996:
+      friendly_name: Spare Bed RH
+    sensor.temperature_158d0001ad39a8:
+      friendly_name: Lounge Temp
+    sensor.Humidity_158d0001ad39a8:
+      friendly_name: Lounge RH
+    sensor.temperature_158d0001b1c7c6:
+      friendly_name: Dining Room Temp
+      #google_assistant: 'true'
+      #google_assistant_type: climate
+    sensor.Humidity_158d0001b1c7c6:
+      friendly_name: Dining Room RH
+      #google_assistant: 'true'
+      #google_assistant_type: climate
+    sensor.temperature_158d0001dcc73d:
+      friendly_name: Master Bed Temp
+    sensor.Humidity_158d0001dcc73d:
+      friendly_name: Master Bed RH
+    sensor.temperature_158d00022b66c0:
+      friendly_name: Outdoor Temp
+    sensor.humidity_158d00022b66c0:
+      friendly_name: Outdoor RH
+    sensor.pressure_158d00022b66c0:
+      friendly_name: Outdoor Air Pressure
+    sensor.temperature_158d00022c7738:
+      friendly_name: Laundry Temp
+    sensor.humidity_158d00022c7738:
+      friendly_name: Laundry RH
+    sensor.pressure_158d00022c7738:
+      friendly_name: Launfry Pressure
+
+    binary_sensor.switch_158d00014a0bd0:
+      friendly_name: Front Doorbell Switch
+    binary_sensor.motion_sensor_158d0001d98554:
+      friendly_name: Lounge PIR
+    binary_sensor.motion_sensor_158d0001d67162:
+      friendly_name: Family PIR
+    binary_sensor.motion_sensor_158d0001d6720e:
+      friendly_name: Kitchen PIR
+    binary_sensor.door_window_sensor_158d00019f60eb:
+      friendly_name: Dryer Door
+    binary_sensor.door_window_sensor_158d00019f623a:
+      friendly_name: Front Door
+    binary_sensor.cube_158d000103a1b9:
+      friendly_name: Cube 1
+    binary_sensor.cube_158d0002486698:
+      friendly_name: Bedroom Cube
+
+    device_tracker.davids_iphone:
+      friendly_name: David
+    device_tracker.raes_iphone:
+      friendly_name: Rae
+    device_tracker.angelsiphone:
+      friendly_name: Angel
+    device_tracker.androida30d7b7b2656f096:
+      friendly_name: Angel
+
+    sensor.bitcoin:
+      icon: mdi:currency-btc
+    sensor.bitcoin_24h:
+      icon: mdi:chart-line
+    sensor.bitcoin_7d:
+      icon: mdi:chart-line
+
+    switch.dryer:
+      control: hidden
+    switch.washing_machine:
+      control: hidden
