@@ -175,6 +175,7 @@ google:
 vera:
   vera_controller_url: http://192.168.1.2:3480/
 
+
 influxdb:
   host: 192.168.1.200
   include:
