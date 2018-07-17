@@ -1,0 +1,41 @@
+- name: Gym
+  latitude: !secret gym_lat
+  longitude: !secret gym_long
+  radius: 100
+  icon: mdi:dumbbell
+
+- name: SE Office
+  latitude: !secret se_office_lat
+  longitude: !secret se_office_long
+  radius: 100
+  icon: mdi:briefcase
+
+- name: Barnardos Downer
+  latitude: !secret barnardos_downer_lat
+  longitude: !secret barnardos_downer_long
+  radius: 100
+  icon: mdi:briefcase
+
+- name: Barnardos Bruce
+  latitude: !secret barnardos_bruce_lat
+  longitude: !secret barnardos_bruce_long
+  radius: 100
+  icon: mdi:briefcase
+
+- name: Gungahlin Shops
+  latitude: !secret gungahlin_shops_lat
+  longitude: !secret gungahlin_shops_long
+  radius: 250
+  icon: mdi:cart
+
+- name: Casey Shops
+  latitude: !secret casey_shop_lat
+  longitude: !secret casey_shop_long
+  radius: 150
+  icon: mdi:cart
+
+- name: 3 Molonglo
+  latitude: !secret 3_molonglo_lat
+  longitude: !secret 3_molonglo_long
+  radius: 100
+  icon: mdi:worker

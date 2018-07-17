@@ -6,4 +6,3 @@
 !influxdb
 secrets.yaml
 known_devices.yaml
-zones.yaml
