@@ -1,8 +1,11 @@
 *
 !*.yaml
+!*.sh
 !.gitignore
 !.travis.yml
 !sensors
 !influxdb
+!bin
+!shell_command
 secrets.yaml
 known_devices.yaml
