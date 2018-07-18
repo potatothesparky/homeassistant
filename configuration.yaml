@@ -189,4 +189,12 @@ group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 shell_command: !include_dir_merge_list shell_command
-switch: !include_dir_merge_named switch
+#switch: !include_dir_merge_named switch
+
+switch:
+  - platform: rest
+    resource: http://192.168.1.200:8126/container/grafana
+    name: Grafana
+    body_on: '{"state": "start"}'
+    body_off: '{"state": "stop"}'
+    is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
