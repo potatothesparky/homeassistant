@@ -187,7 +187,7 @@ cloud:
 zone: !include zones.yaml
 group: !include groups.yaml
 automation: !include automations.yaml
-script: !include scripts.yaml
+script: !include_dir_merge_list script
 shell_command: !include_dir_merge_list shell_command
 switch: !include_dir_merge_list switch
 
