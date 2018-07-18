@@ -8,5 +8,6 @@
 !bin
 !shell_command
 !switch
+!script
 secrets.yaml
 known_devices.yaml
