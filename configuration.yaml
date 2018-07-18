@@ -115,9 +115,9 @@ input_boolean:
     initial: on
     icon: mdi:run-fast
 
-  input_text:
-    current_github_build:
-      name: Current Github build  
+input_text:
+  current_github_build:
+    name: Current Github build  
 
 notify:
   - platform: ios
