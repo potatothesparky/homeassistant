@@ -1,3 +1,4 @@
+restart_hass:
   alias: Restart Home Assistant
   sequence:
     - service: shell_command.restart_hass
