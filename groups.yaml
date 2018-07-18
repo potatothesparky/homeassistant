@@ -23,13 +23,14 @@
       - sensor.temperature_158d00022b66c0
       - sensor.humidity_158d00022b66c0
       - sensor.pressure_158d00022b66c0
+      - group.Docker
 
   StudyTemp:
     name: "Study Temp"
     entities:
       - sensor.temperature_158d00016fe9f4
       - sensor.humidity_158d00016fe9f4
-      
+
   SpareBedTemp:
     name: "Spare Bed Temp"
     entities:
@@ -41,26 +42,26 @@
     entities:
       - sensor.temperature_158d0001ad39a8
       - sensor.Humidity_158d0001ad39a8
-      
+
   DiningTemp:
     name: "Dining Temp"
     entities:
       - sensor.temperature_158d0001b1c7c6
       - sensor.Humidity_158d0001b1c7c6
-      
+
   MasterBedTemp:
     name: "Master Bed Temp"
     entities:
       - sensor.temperature_158d0001dcc73d
       - sensor.Humidity_158d0001dcc73d
-      
+
   Bitcoin:
     name: "Bitcoin"
     entities:
       - sensor.bitcoin
       - sensor.bitcoin_24h
       - sensor.bitcoin_7d
-      
+
   Dryer:
     name: "Dryer"
     entities:
@@ -68,14 +69,14 @@
       - sensor.dryer_door
       - sensor.dryer_power
       - sensor.dryer_energy
-      
+
   PIRs:
     name: "Enable PIRs"
     entities:
       - input_boolean.kitchen_pir_enable
       - input_boolean.family_pir_enable
       - input_boolean.lounge_pir_enable
-      
+
   Lights:
     name: "Lights"
     entities:
@@ -84,3 +85,8 @@
       - switch.living_5
       - switch.living_2_6
       - switch.master_bed_7
+
+  Docker:
+    name: "Docker Containers"
+    entities:
+      - switch.grafana
