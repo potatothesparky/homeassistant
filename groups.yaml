@@ -93,6 +93,6 @@
       - switch.grafana
 
   system:
-  name: System
-  entities:
-    - script.restart_hass
+    name: System
+    entities:
+      - script.restart_hass
