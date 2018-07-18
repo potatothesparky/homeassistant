@@ -189,3 +189,4 @@ group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 shell_command: !include_dir_named shell_command/
+switch: !include_dir_named switch/

@@ -7,5 +7,6 @@
 !influxdb
 !bin
 !shell_command
+!switch
 secrets.yaml
 known_devices.yaml
