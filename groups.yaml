@@ -24,6 +24,7 @@
       - sensor.humidity_158d00022b66c0
       - sensor.pressure_158d00022b66c0
       - group.Docker
+      - group.system
 
   StudyTemp:
     name: "Study Temp"
@@ -90,3 +91,8 @@
     name: "Docker Containers"
     entities:
       - switch.grafana
+
+  system:
+  name: System
+  entities:
+    - script.restart_hass
