@@ -96,3 +96,4 @@
     name: System
     entities:
       - script.restart_hass
+      - script.update_config_from_github
