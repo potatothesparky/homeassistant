@@ -1,1 +1,1 @@
-bash /config/bin/update_config_from_github.sh
+update_config_from_github: bash /config/bin/update_config_from_github.sh
