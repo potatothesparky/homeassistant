@@ -102,9 +102,10 @@ input_boolean:
     name: Is Dave asleep?
   rae_asleep:
     name: Is Rae asleep?
-    
+
   guest_mode:
     name: Guest Mode
+    icon: mdi:account-plus
 
     #PIRs
   kitchen_pir_enable:
