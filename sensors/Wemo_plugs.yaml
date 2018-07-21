@@ -3,20 +3,20 @@
     dryer_energy:
       value_template: '{{ states.switch.dryer.attributes.today_energy_kwh }}'
       friendly_name: 'Dryer Energy Today'
-      icon: mdi:flash
+      icon_template: mdi:flash
       unit_of_measurement: 'kWh'
     dryer_power:
       value_template: '{{ states.switch.dryer.attributes.current_power_w | float }}'
       friendly_name: 'Dryer Power'
-      icon: mdi:flash
+      icon_template: mdi:flash
       unit_of_measurement: 'W'
     washing_machine_energy:
       value_template: '{{ states.switch.washing_machine.attributes.today_energy_kwh }}'
       friendly_name: 'Washing Machine Energy Today'
-      icon: mdi:flash
+      icon_template: mdi:flash
       unit_of_measurement: 'kWh'
     washing_machine_power:
       value_template: '{{ states.switch.washing_machine.attributes.current_power_w | float }}'
       friendly_name: 'Washing Machine Power'
-      icon: mdi:flash
+      icon_template: mdi:flash
       unit_of_measurement: 'W'
