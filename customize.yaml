@@ -33,7 +33,7 @@
     sensor.humidity_158d00022c7738:
       friendly_name: Laundry RH
     sensor.pressure_158d00022c7738:
-      friendly_name: Launfry Pressure
+      friendly_name: Laundry Pressure
 
     binary_sensor.switch_158d00014a0bd0:
       friendly_name: Front Doorbell Switch
@@ -45,11 +45,13 @@
       friendly_name: Kitchen PIR
     binary_sensor.door_window_sensor_158d00019f60eb:
       friendly_name: Dryer Door
+      icon: mdi:tumble-dryer
     binary_sensor.door_window_sensor_158d00019f623a:
       friendly_name: Front Door
     binary_sensor.door_window_sensor_158d00020b5331:
       friendly_name: Washing Machine Door
-            
+      icon: mdi:washing-machine
+
     binary_sensor.cube_158d000103a1b9:
       friendly_name: Cube 1
     binary_sensor.cube_158d0002486698:
