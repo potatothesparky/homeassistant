@@ -1,0 +1,22 @@
+dave_asleep:
+  name: Is Dave asleep?
+rae_asleep:
+  name: Is Rae asleep?
+
+guest_mode:
+  name: Guest Mode
+  icon: mdi:account-plus
+
+#PIRs
+kitchen_pir_enable:
+  name: Enable Kitchen PIR
+#  initial: on
+  icon: mdi:run-fast
+family_pir_enable:
+  name: Enable Family PIR
+#  initial: on
+  icon: mdi:run-fast
+lounge_pir_enable:
+  name: Enable Lounge PIR
+#  initial: on
+  icon: mdi:run-fast

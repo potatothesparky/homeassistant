@@ -97,29 +97,6 @@ input_select:
       - Finished
     initial: Idle
 
-input_boolean:
-  dave_asleep:
-    name: Is Dave asleep?
-  rae_asleep:
-    name: Is Rae asleep?
-
-  guest_mode:
-    name: Guest Mode
-    icon: mdi:account-plus
-
-    #PIRs
-  kitchen_pir_enable:
-    name: Enable Kitchen PIR
-#    initial: on
-    icon: mdi:run-fast
-  family_pir_enable:
-    name: Enable Family PIR
-#    initial: on
-    icon: mdi:run-fast
-  lounge_pir_enable:
-    name: Enable Lounge PIR
-#    initial: on
-    icon: mdi:run-fast
 
 input_text:
   current_github_build:
@@ -200,6 +177,7 @@ automation: !include automations.yaml
 script: !include_dir_merge_named script
 shell_command: !include_dir_merge_named shell_command
 switch: !include_dir_merge_list switch
+input_boolean: !include_dir_merge_named input_boolean
 
 #switch:
 #  - platform: rest

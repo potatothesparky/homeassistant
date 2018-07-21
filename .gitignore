@@ -9,5 +9,6 @@
 !shell_command
 !switch
 !script
+!input_boolean
 secrets.yaml
 known_devices.yaml
