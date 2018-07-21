@@ -131,9 +131,9 @@
       - input_boolean.dave_bedside_auto
       - input_boolean.rae_bedside_auto
 
-    automations_pir:
-      name: "Enable PIRs"
-      entities:
-        - input_boolean.kitchen_pir_enable
-        - input_boolean.family_pir_enable
-        - input_boolean.lounge_pir_enable
+  automations_pir:
+    name: "Enable PIRs"
+    entities:
+      - input_boolean.kitchen_pir_enable
+      - input_boolean.family_pir_enable
+      - input_boolean.lounge_pir_enable
