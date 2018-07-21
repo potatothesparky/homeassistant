@@ -1,11 +1,11 @@
 - platform: template
   sensors:
-    dryer_door:
-      friendly_name: "Dryer Door"
+    washing_machine_door:
+      friendly_name: "Washing Machine Door"
       value_template: >-
-        {% if states.binary_sensor.door_window_sensor_158d00019f60eb.state == 'on' %}
+        {% if states.binary_sensor.door_window_sensor_158d00020b5331.state == 'on' %}
           Open
-        {% elif states.binary_sensor.door_window_sensor_158d00019f60eb.state == 'off' %}
+        {% elif states.binary_sensor.door_window_sensor_158d00020b5331.state == 'off' %}
           Closed
         {% else %}
           n/a
