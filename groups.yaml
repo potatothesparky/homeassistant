@@ -23,6 +23,12 @@
       - sensor.temperature_158d00022b66c0
       - sensor.humidity_158d00022b66c0
       - sensor.pressure_158d00022b66c0
+
+
+  System_page:
+    view: yes
+    icon: mdi:settings
+    entities:
       - group.Docker
       - group.system
 
