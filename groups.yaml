@@ -37,6 +37,7 @@
     view: yes
     icon: mdi:home-automation
     entities:
+      - input_boolean.guest_mode
       - group.PIRs
 
 
