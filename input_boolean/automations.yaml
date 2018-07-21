@@ -20,3 +20,11 @@ lounge_pir_enable:
   name: Enable Lounge PIR
 #  initial: on
   icon: mdi:run-fast
+
+#Bedside lamps
+dave_bedside_auto:
+  name: Automatic Evening Dave Bedside
+  icon: mdi:lamp
+rae_bedside_auto:
+  name: Automatic Evening Rae Bedside
+  icon: mdi:lamp
