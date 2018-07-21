@@ -47,6 +47,9 @@
       friendly_name: Dryer Door
     binary_sensor.door_window_sensor_158d00019f623a:
       friendly_name: Front Door
+    binary_sensor.door_window_sensor_158d00020b5331:
+      friendly_name: Washing Machine Door
+            
     binary_sensor.cube_158d000103a1b9:
       friendly_name: Cube 1
     binary_sensor.cube_158d0002486698:
