@@ -1,4 +1,5 @@
   default_view:
+    name: Home
     view: yes
     icon: mdi:home
     entities:
@@ -16,7 +17,6 @@
       - camera.locations
       - group.Bitcoin
       - camera.bom_rain_radar
-      - group.PIRs
       - group.Lights
       - light.dave_bedside
       - light.rae_bedside
@@ -24,13 +24,21 @@
       - sensor.humidity_158d00022b66c0
       - sensor.pressure_158d00022b66c0
 
-
   System_page:
+    name: System
     view: yes
     icon: mdi:settings
     entities:
       - group.Docker
       - group.system
+
+  Automations:
+    name: Automations
+    view: yes
+    icon: mdi:home-automation
+    entites:
+      - group.PIRs
+
 
   StudyTemp:
     name: "Study Temp"
