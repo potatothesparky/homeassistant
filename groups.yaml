@@ -43,9 +43,9 @@
     view: yes
     icon: mdi:home-automation
     entities:
-      - group.guest_mode
-      - group.PIRs
-
+      - group.automations_guest_mode
+      - group.automations_pir
+      - group.automations_lighting
 
   StudyTemp:
     name: "Study Temp"
@@ -100,13 +100,6 @@
       - sensor.washing_machine_power
       - sensor.washing_machine_energy
 
-  PIRs:
-    name: "Enable PIRs"
-    entities:
-      - input_boolean.kitchen_pir_enable
-      - input_boolean.family_pir_enable
-      - input_boolean.lounge_pir_enable
-
   Lights:
     name: "Lights"
     entities:
@@ -127,7 +120,20 @@
       - script.restart_hass
       - script.update_config_from_github
 
-  guest_mode:
+  automations_guest_mode:
     name: Guest Mode
     entities:
       - input_boolean.guest_mode
+
+  automations_lighting:
+    name: Lighting
+    entities:
+      - input_boolean.dave_bedside_auto
+      - input_boolean.rae_bedside_auto
+
+    automations_pir:
+      name: "Enable PIRs"
+      entities:
+        - input_boolean.kitchen_pir_enable
+        - input_boolean.family_pir_enable
+        - input_boolean.lounge_pir_enable
