@@ -77,3 +77,10 @@
       control: hidden
     switch.washing_machine:
       control: hidden
+
+    switch.grafana:
+      icon: mdi:chart-line
+    switch.nodered:
+      icon: mdi:home-automation
+    switch.influxdb:
+      icon: mdi:database

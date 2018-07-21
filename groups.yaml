@@ -113,6 +113,8 @@
     name: "Docker Containers"
     entities:
       - switch.grafana
+      - switch.nodered
+      - switch.influxdb
 
   system:
     name: System
