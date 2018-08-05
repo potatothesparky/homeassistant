@@ -1,0 +1,12 @@
+- platform: template
+  sensors:
+    holiday_countdown:
+      value_template: >-
+      {%- set when = states.calendar.holidays.attributes.start_time -%}
+      {%- set countdown = as_timestamp(when) - (as_timestamp(now().strftime("%Y-%m-%d %H:%M:%S"))) -%}
+      {%- set countdown = countdown - 10000000 -%}
+      {%- set minutes = ((countdown % 3600) / 60) | int -%}
+      {%- set hours = ((countdown % 86400) / 3600) | int -%}
+      {%- set days = (countdown / 86400) | int -%}
+      {%- set value = {"days": days, "hours": hours, "minutes": minutes} -%}
+      {{value}}
