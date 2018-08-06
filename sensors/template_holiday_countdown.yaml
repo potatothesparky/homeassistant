@@ -1,12 +1,44 @@
 - platform: template
   sensors:
-    holiday_countdown:
+    holiday_countdown_days:
+      friendly_name: "Holiday Countdown (days)"
+      entity_id: sensor.date_time
+      icon_template: mdi:airplane-takeoff
       value_template: >-
         {%- set when = states.calendar.holidays.attributes.start_time -%}
         {%- set countdown = as_timestamp(when) - (as_timestamp(now().strftime("%Y-%m-%d %H:%M:%S"))) -%}
-        {%- set countdown = countdown - 10000000 -%}
-        {%- set minutes = ((countdown % 3600) / 60) | int -%}
-        {%- set hours = ((countdown % 86400) / 3600) | int -%}
+        {%- set countdown = countdown -%}
         {%- set days = (countdown / 86400) | int -%}
-        {%- set value = {"days": days, "hours": hours, "minutes": minutes} -%}
-        {{value|tojson}}
+        {{days}}
+    holiday_countdown_hours:
+      friendly_name: "Holiday Countdown (hours)"
+      entity_id: sensor.date_time
+      icon_template: mdi:airplane-takeoff
+      value_template: >-
+        {%- set when = states.calendar.holidays.attributes.start_time -%}
+        {%- set countdown = as_timestamp(when) - (as_timestamp(now().strftime("%Y-%m-%d %H:%M:%S"))) -%}
+        {%- set countdown = countdown -%}
+        {%- set hours = ((countdown % 86400) / 3600) | int -%}
+        {{hours}}
+    holiday_countdown_minutes:
+      friendly_name: "Holiday Countdown (minutes)"
+      entity_id: sensor.date_time
+      icon_template: mdi:airplane-takeoff
+      value_template: >-
+        {%- set when = states.calendar.holidays.attributes.start_time -%}
+        {%- set countdown = as_timestamp(when) - (as_timestamp(now().strftime("%Y-%m-%d %H:%M:%S"))) -%}
+        {%- set countdown = countdown -%}
+        {%- set minutes = ((countdown % 3600) / 60) | int -%}
+        {{minutes}}
+    holiday_countdown_string:
+      friendly_name: "Holiday Countdown (minutes)"
+      entity_id: sensor.date_time
+      icon_template: mdi:airplane-takeoff
+      value_template: >-
+        {%- set when = states.calendar.holidays.attributes.start_time -%}
+        {%- set countdown = as_timestamp(when) - (as_timestamp(now().strftime("%Y-%m-%d %H:%M:%S"))) -%}
+        {%- set countdown = countdown -%}
+        {%- set days = (countdown / 86400) | int -%}
+        {%- set hours = ((countdown % 86400) / 3600) | int -%}
+        {%- set minutes = ((countdown % 3600) / 60) | int -%}
+        {{days}} Days, {{hours}} Hours and {{minutes}} minutes
