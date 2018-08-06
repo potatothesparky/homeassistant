@@ -31,14 +31,15 @@
         {%- set minutes = ((countdown % 3600) / 60) | int -%}
         {{minutes}}
     holiday_countdown_string:
-      friendly_name: "Holiday Countdown (minutes)"
+      friendly_name: "Holiday Countdown (string)"
       entity_id: sensor.time
       icon_template: mdi:airplane-takeoff
       value_template: >-
         {%- set when = states.calendar.holidays.attributes.start_time -%}
+        {%- set where = states.calendar.holidays.attributes.message -%}
         {%- set countdown = as_timestamp(when) - (as_timestamp(now().strftime("%Y-%m-%d %H:%M:%S"))) -%}
         {%- set countdown = countdown -%}
         {%- set days = (countdown / 86400) | int -%}
         {%- set hours = ((countdown % 86400) / 3600) | int -%}
         {%- set minutes = ((countdown % 3600) / 60) | int -%}
-        {{days}} Days, {{hours}} Hours and {{minutes}} minutes
+        {{days}} Days, {{hours}} Hours and {{minutes}} minutes until {{where}}
