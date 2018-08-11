@@ -14,11 +14,12 @@
           Unknown
         {% endif %}
       icon_template: >-
-        {% if states.sensor_garage_roller_door.state == 'Closed' %}
+        {% if states.binary_sensor.door_window_sensor_158d0002045498.state == 'off' %}
           mdi:garage
-        {% elif states.sensor_garage_roller_door.state == 'Open' %}
+        {% elif states.binary_sensor.door_window_sensor_158d000205b28a.state == 'off' %}
           mdi:garage-open
-        {% elif states.sensor_garage_roller_door.state == 'Moving' %}
+        {% elif states.binary_sensor.door_window_sensor_158d0002045498.state == 'on' and
+        states.binary_sensor.door_window_sensor_158d000205b28a.state == 'on' %}
           mdi:garage-alert
         {% else %}
           mdi:help
