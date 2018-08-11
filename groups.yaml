@@ -38,6 +38,14 @@
       - group.Docker
       - group.system
 
+  page_security:
+    name: Security
+    view: yes
+    icon: mdi:security-lock
+    entities:
+      - group.garage
+      - group.front_door
+
   page_automations:
     name: Automations
     view: yes
@@ -139,3 +147,14 @@
       - input_boolean.kitchen_pir_enable
       - input_boolean.family_pir_enable
       - input_boolean.lounge_pir_enable
+
+  garage:
+    name: Garage
+    entities:
+      - sensor.garage_roller_door
+      - binary_sensor.door_window_sensor_158d00020b54d9
+
+  front_door:
+    name: Front Door
+    entities:
+      - binary_sensor.door_window_sensor_158d00019f623a
