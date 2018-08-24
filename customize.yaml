@@ -34,6 +34,12 @@
       friendly_name: Laundry RH
     sensor.pressure_158d00022c7738:
       friendly_name: Laundry Pressure
+    sensor.temperature_158d00022cd713:
+      friendly_name: Garage Temp
+    sensor.humidity_158d00022cd713:
+      friendly_name: Garage RH
+    sensor.pressure_158d00022cd713:
+      friendly_name: Garage Pressure
 
     binary_sensor.switch_158d00014a0bd0:
       friendly_name: Front Doorbell Switch
