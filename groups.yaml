@@ -140,6 +140,7 @@
     entities:
       - input_boolean.dave_bedside_auto
       - input_boolean.rae_bedside_auto
+      - input_boolean.garage_lights_door_auto
 
   automations_pir:
     name: "Enable PIRs"

@@ -5,6 +5,8 @@ resources:
     type: js
   - url: /local/my-webfont.css
     type: css
+  - url: /local/custom_ui/weather-card.js
+    type: js
 
 # Optional background for all views. Check https://developer.mozilla.org/en-US/docs/Web/CSS/background for more examples.
 background: center / cover no-repeat url("/background.png") fixed
@@ -61,3 +63,11 @@ views:
         title: Lovelace
         content: >
           Welcome to your **Lovelace UI**.
+
+  - icon: mdi:weather-cloudy
+    id: weather
+    title: Weather
+    cards:
+      - type: "custom:weather-card"
+        entity_weather: weather.yweather
+        entity_sun: sun.sun
