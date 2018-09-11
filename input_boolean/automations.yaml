@@ -28,3 +28,8 @@ dave_bedside_auto:
 rae_bedside_auto:
   name: Automatic Evening Rae Bedside
   icon: mdi:lamp
+
+#garage lighting
+garage_lights_door_auto:
+  name: Automatic garage lighting (Doors)
+  icon: mdi:door
