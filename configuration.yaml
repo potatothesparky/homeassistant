@@ -59,6 +59,10 @@ map:
 # Track the sun
 sun:
 
+weather:
+  - platfrom: yweather
+    woeid: 1100968
+
 ios:
 
 device_tracker:
