@@ -1,5 +1,5 @@
 - platform: darksky
-  api_key: YOUR_API_KEY
+  api_key: 79d57ac54fa47ea6ab4382325cc74f5c
   forecast:
     - 1
     - 2
