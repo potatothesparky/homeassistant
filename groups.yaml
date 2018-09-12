@@ -54,6 +54,7 @@
       - group.automations_guest_mode
       - group.automations_pir
       - group.automations_lighting
+      - group.automations_config
 
   StudyTemp:
     name: "Study Temp"
@@ -143,11 +144,17 @@
       - input_boolean.garage_lights_door_auto
 
   automations_pir:
-    name: "Enable PIRs"
+    name: Enable PIRs
     entities:
       - input_boolean.kitchen_pir_enable
       - input_boolean.family_pir_enable
       - input_boolean.lounge_pir_enable
+
+  automations_config:
+    name: Configuration Automation
+    entities:
+      - input_boolean.config_auto_update
+      - input_boolean.config_auto_restart
 
   garage:
     name: Garage

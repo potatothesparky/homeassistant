@@ -33,3 +33,13 @@ rae_bedside_auto:
 garage_lights_door_auto:
   name: Automatic garage lighting (Doors)
   icon: mdi:door
+
+#github auto pull
+config_auto_update:
+  name: Config Auto Update
+  icon: mdi:download
+
+#restart after config download
+config_auto_restart:
+  name: Restart After Config Update
+  icon: mdi:restart
