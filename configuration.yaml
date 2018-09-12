@@ -60,7 +60,7 @@ map:
 sun:
 
 weather:
-  - platfrom: yweather
+  - platform: yweather
     woeid: 1100968
 
 ios:
