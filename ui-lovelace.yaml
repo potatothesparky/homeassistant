@@ -5,7 +5,7 @@ resources:
     type: js
   - url: /local/my-webfont.css
     type: css
-  - url: /local/custom_ui/weather-card.js
+  - url: /local/custom_ui/weather_card.js
     type: js
 
 # Optional background for all views. Check https://developer.mozilla.org/en-US/docs/Web/CSS/background for more examples.
