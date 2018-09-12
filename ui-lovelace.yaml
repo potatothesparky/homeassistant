@@ -68,6 +68,6 @@ views:
     id: weather
     title: Weather
     cards:
-      - type: "custom:weather-card"
+      - type: "custom:weather_card"
         entity_weather: weather.yweather
         entity_sun: sun.sun
