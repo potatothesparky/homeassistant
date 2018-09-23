@@ -10,7 +10,6 @@
       - group.SpareBedTemp
       - device_tracker.davids_iphone
       - device_tracker.raes_iphone
-      - device_tracker.androida30d7b7b2656f096
       - camera.locations
       - group.Bitcoin
       - camera.bom_rain_radar
