@@ -63,8 +63,8 @@
   SpareBedTemp:
     name: "Spare Bed Temp"
     entities:
-      - sensor.temperature_158d0001825996
-      - sensor.Humidity_158d0001825996
+      - sensor.temperature_158d00020f4c4f
+      - sensor.Humidity_158d00020f4c4f
 
   LoungeTemp:
     name: "Lounge Temp"

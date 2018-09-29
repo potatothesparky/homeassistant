@@ -2,9 +2,9 @@
       friendly_name: Study Temp
     sensor.humidity_158d00016fe9f4:
       friendly_name: Study RH
-    sensor.temperature_158d0001825996:
+    sensor.temperature_158d00020f4c4f:
       friendly_name: Spare Bed Temp
-    sensor.Humidity_158d0001825996:
+    sensor.Humidity_158d00020f4c4f:
       friendly_name: Spare Bed RH
     sensor.temperature_158d0001ad39a8:
       friendly_name: Lounge Temp
