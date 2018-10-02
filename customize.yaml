@@ -22,6 +22,10 @@
       friendly_name: Master Bed Temp
     sensor.Humidity_158d0001dcc73d:
       friendly_name: Master Bed RH
+    sensor.temperature_158d00022c8ff3:
+      friendly_name: Bathroom Temp
+    sensor.Humidity_158d00022c8ff3:
+      friendly_name: Bathroom RH
     sensor.temperature_158d00022b66c0:
       friendly_name: Outdoor Temp
     sensor.humidity_158d00022b66c0:
