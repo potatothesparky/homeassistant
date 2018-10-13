@@ -25,7 +25,7 @@ views:
     # Optional unique id for direct access /lovelace/${id}
     id: example
     # Each view can have a different theme applied. Theme should be defined in the frontend.
-    theme: dark-mode
+    theme: darkcyan
     # The cards to show on this view.
     cards:
         # The filter card will filter entities for their state
@@ -48,6 +48,7 @@ views:
   - icon: mdi:home-assistant
     # Title of the view. Will be used as the tooltip for tab icon
     title: Second view
+    theme: darkcyan
     cards:
         # Entities card will take a list of entities and show their state.
       - type: entities
@@ -71,6 +72,7 @@ views:
   - icon: mdi:weather-cloudy
     id: weather
     title: Weather
+    theme: darkcyan
     cards:
       #yweather
       - type: "custom:weather-card"
