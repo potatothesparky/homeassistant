@@ -10,6 +10,7 @@
 !switch
 !script
 !input_boolean
+!themes
 !www
 !www/**
 secrets.yaml
