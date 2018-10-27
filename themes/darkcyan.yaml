@@ -16,7 +16,7 @@
 # Colors based on variables, see above
   label-badge-background-color: "var(--secondary-background-color)"
   label-badge-text-color: "var(--text-primary-color)"
-  paper-card-header-color: "#var(--paper-item-icon-color)"
+  paper-card-header-color: "var(--paper-item-icon-color)"
   paper-grey-50: "var(--primary-text-color)"
   paper-item-icon-active-color: "var(--primary-color)"
   paper-item-icon_-_color: "var(--primary-text-color)"
