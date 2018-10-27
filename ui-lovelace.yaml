@@ -18,7 +18,6 @@ resources:
 background: center / cover no-repeat url("local/images/background.jpg") fixed
 # Exclude entities from "Unused entities" view
 excluded_entities:
-  - weblink.router
 views:
     # View tab title.
   - title: Example
