@@ -8,9 +8,9 @@
   paper-item-icon-color: "#d3d3d3"
   paper-listbox-background-color: "#202020"
   paper-listbox-color: "#FFFFFF"
-  primary-background-color: "#202020"
+  #primary-background-color: "#202020"
   primary-text-color: "#cfcfcf"
-  secondary-background-color: "#2b2b2b"
+  #secondary-background-color: "#2b2b2b"
   secondary-text-color: "#04d9f4"
   sidebar-icon-color: "#42d7f4"
 # Colors based on variables, see above
