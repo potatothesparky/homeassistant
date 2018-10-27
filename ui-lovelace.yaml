@@ -22,11 +22,9 @@ excluded_entities:
 views:
     # View tab title.
   - title: Example
-    background: center / cover no-repeat url("local/images/background.jpg") fixed
     # Optional unique id for direct access /lovelace/${id}
     id: example
     # Each view can have a different theme applied. Theme should be defined in the frontend.
-    theme: darkcyan
     # The cards to show on this view.
     cards:
         # The filter card will filter entities for their state
@@ -49,8 +47,6 @@ views:
   - icon: mdi:home-assistant
     # Title of the view. Will be used as the tooltip for tab icon
     title: Second view
-    background: center / cover no-repeat url("local/images/background.jpg") fixed
-    theme: darkcyan
     cards:
         # Entities card will take a list of entities and show their state.
       - type: entities
@@ -74,8 +70,6 @@ views:
   - icon: mdi:weather-cloudy
     id: weather
     title: Weather
-    background: center / cover no-repeat url("local/images/background.jpg") fixed
-    theme: darkcyan
     cards:
       #yweather
       - type: "custom:weather-card"
