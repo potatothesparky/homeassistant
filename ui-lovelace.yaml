@@ -1,4 +1,4 @@
-title: Lovlace test
+title: Lovelace test
 # Include external resources
 resources:
   - url: /local/my-custom-card.js
@@ -18,7 +18,7 @@ views:
 
   - title:  Rooms
     id: rooms
-    background: center / cover no-repeat url("/local/background.png") fixed
+    background: center / cover no-repeat url("/local/images/background.png") fixed
     theme: darkcyan
     cards:
       - type: glance
@@ -26,7 +26,7 @@ views:
         entities:
           - binary_sensor.motion_sensor_158d0001d98554
           - input_boolean.lounge_pir_enable
-          - sensor.humidity_158d0001ad39a8
+          - sensor.temperature_158d0001ad39a8
           - sensor.humidity_158d0001ad39a8
 
 
