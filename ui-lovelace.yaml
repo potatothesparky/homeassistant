@@ -17,10 +17,10 @@ resources:
 # Optional background for all views. Check https://developer.mozilla.org/en-US/docs/Web/CSS/background for more examples.
 background: center / cover no-repeat url("local/images/background.jpg") fixed
 # Exclude entities from "Unused entities" view
-excluded_entities:
 views:
     # View tab title.
   - title: Example
+    background: center / cover no-repeat url("local/images/background.jpg") fixed
     # Optional unique id for direct access /lovelace/${id}
     id: example
     # Each view can have a different theme applied. Theme should be defined in the frontend.
@@ -43,9 +43,10 @@ views:
         entity: light.rae_bedside
 
     # Specify a tab icon if you want the view tab to be an icon.
-  - icon: mdi:home-assistant
+  - title: Second view
+    background: center / cover no-repeat url("local/images/background.jpg") fixed
+    icon: mdi:home-assistant
     # Title of the view. Will be used as the tooltip for tab icon
-    title: Second view
     cards:
         # Entities card will take a list of entities and show their state.
       - type: entities
@@ -67,6 +68,7 @@ views:
           Welcome to your **Lovelace UI**.
 
   - icon: mdi:weather-cloudy
+    background: center / cover no-repeat url("local/images/background.jpg") fixed
     id: weather
     title: Weather
     cards:
