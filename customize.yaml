@@ -13,6 +13,12 @@
     switch.garage_3:
       friendly_name: Garage
       icon: mdi:lightbulb
+    light.rae_bedside:
+      friendly_name: Rae Lamp
+      icon: mdi:lamp
+    light.dave_bedside:
+      friendly_name: Dave Lamp
+      icon: mdi:lamp
 
     sensor.temperature_158d00016fe9f4:
       friendly_name: Study Temp
