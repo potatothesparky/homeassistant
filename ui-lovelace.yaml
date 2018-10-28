@@ -25,13 +25,17 @@ views:
         title: Lounge Room
         entities:
           - entity: switch.living_2_6
+            name: Lights
+            tap_action: toggle
           - entity: binary_sensor.motion_sensor_158d0001d98554
             name: Motion
           - entity: input_boolean.lounge_pir_enable
-            name: Motion (Auto)
+            name: Sensor Lights
             tap_action: toggle
           - entity: sensor.temperature_158d0001ad39a8
+            name: Temp
           - entity: sensor.humidity_158d0001ad39a8
+            name: Humidity
 
 
 
