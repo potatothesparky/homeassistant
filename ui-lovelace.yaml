@@ -24,10 +24,14 @@ views:
       - type: glance
         title: Lounge Room
         entities:
-          - binary_sensor.motion_sensor_158d0001d98554
-          - input_boolean.lounge_pir_enable
-          - sensor.temperature_158d0001ad39a8
-          - sensor.humidity_158d0001ad39a8
+          - entity: switch.living_2_6
+          - entity: binary_sensor.motion_sensor_158d0001d98554
+            name: Motion
+          - entity: input_boolean.lounge_pir_enable
+            name: Motion (Auto)
+            tap_action: toggle
+          - entity: sensor.temperature_158d0001ad39a8
+          - entity: sensor.humidity_158d0001ad39a8
 
 
 
