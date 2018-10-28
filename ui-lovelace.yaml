@@ -14,91 +14,56 @@ resources:
   - url: /local/custom_ui/dark-sky-weather-card.css
     type: css
 
-# Optional background for all views. Check https://developer.mozilla.org/en-US/docs/Web/CSS/background for more examples.
-background: center / cover no-repeat url("local/images/background.jpg") fixed
-# Exclude entities from "Unused entities" view
 views:
-    # View tab title.
-  - title: Example
-    background: center / cover no-repeat url("local/images/background.jpg") fixed
-    # Optional unique id for direct access /lovelace/${id}
-    id: example
-    # Each view can have a different theme applied. Theme should be defined in the frontend.
-    # The cards to show on this view.
+
+  - title:  Rooms
+    id: rooms
+    background: center / cover no-repeat url("/local/background.png") fixed
+    theme: darkcyan
     cards:
-        # The filter card will filter entities for their state
-      - type: entity-filter
+      - type: glance
+        title: Lounge Room
         entities:
-          - device_tracker.davids_iphone
-          - device_tracker.raes_iphone
-        state_filter:
-          - 'home'
-        card:
-          type: glance
-          title: People that are home
+          - binary_sensor.motion_sensor_158d0001d98554
+          - input_boolean.lounge_pir_enable
+          - sensor.humidity_158d0001ad39a8
+          - sensor.humidity_158d0001ad39a8
 
-        # The picture entity card will represent an entity with a picture
-      - type: picture-entity
-        image: https://www.home-assistant.io/images/default-social.png
-        entity: light.rae_bedside
 
-    # Specify a tab icon if you want the view tab to be an icon.
-  - title: Second view
-    background: center / cover no-repeat url("local/images/background.jpg") fixed
-    icon: mdi:home-assistant
-    # Title of the view. Will be used as the tooltip for tab icon
-    cards:
-        # Entities card will take a list of entities and show their state.
-      - type: entities
-        # Title of the entities card
-        title: Example
-        # The entities here will be shown in the same order as specified.
-        # Each entry is an entity ID or a map with extra options.
-        entities:
-          - switch.kitchen_4
-          - switch.living_5
-          - entity: switch.living_5
-            # Override the name to use
-            name: Downstairs Living
 
-        # The markdown card will render markdown text.
-      - type: markdown
-        title: Lovelace
-        content: >
-          Welcome to your **Lovelace UI**.
-
-  - icon: mdi:weather-cloudy
-    background: center / cover no-repeat url("local/images/background.jpg") fixed
-    id: weather
-    title: Weather
-    cards:
-      #yweather
-      - type: "custom:weather-card"
-        entity_weather: weather.yweather
-        entity_sun: sun.sun
-      #darksky weather
-      - type: custom:dark-sky-weather-card
-        entity_sun: sun.sun
-        entity_daily_summary: sensor.dark_sky_daily_summary
-        entity_current_conditions: sensor.dark_sky_icon
-        entity_humidity: sensor.dark_sky_humidity
-        entity_pressure: sensor.dark_sky_pressure
-        entity_temperature: sensor.dark_sky_temperature
-        entity_visibility: sensor.dark_sky_visibility
-        entity_wind_bearing: sensor.dark_sky_wind_bearing
-        entity_wind_speed: sensor.dark_sky_wind_speed
-        entity_forecast_high_temp_1: sensor.dark_sky_daytime_high_temperature_1
-        entity_forecast_high_temp_2: sensor.dark_sky_daytime_high_temperature_2
-        entity_forecast_high_temp_3: sensor.dark_sky_daytime_high_temperature_3
-        entity_forecast_high_temp_4: sensor.dark_sky_daytime_high_temperature_4
-        entity_forecast_high_temp_5: sensor.dark_sky_daytime_high_temperature_5
-        entity_forecast_low_temp_1: sensor.dark_sky_overnight_low_temperature
-        entity_forecast_low_temp_2: sensor.dark_sky_overnight_low_temperature_1
-        entity_forecast_low_temp_3: sensor.dark_sky_overnight_low_temperature_2
-        entity_forecast_low_temp_4: sensor.dark_sky_overnight_low_temperature_3
-        entity_forecast_low_temp_5: sensor.dark_sky_overnight_low_temperature_4
-        entity_forecast_icon_1: sensor.dark_sky_icon_1
-        entity_forecast_icon_2: sensor.dark_sky_icon_2
-        entity_forecast_icon_3: sensor.dark_sky_icon_3
-        entity_forecast_icon_4: sensor.dark_sky_icon_4
-        entity_forecast_icon_5: sensor.dark_sky_icon_5
+#
+#  - icon: mdi:weather-cloudy
+#    background: center / cover no-repeat url("local/images/background.jpg") fixed
+#    id: weather
+#    title: Weather
+#    cards:
+#      #yweather
+#      - type: "custom:weather-card"
+#        entity_weather: weather.yweather
+#        entity_sun: sun.sun
+#      #darksky weather
+#      - type: custom:dark-sky-weather-card
+#        entity_sun: sun.sun
+#        entity_daily_summary: sensor.dark_sky_daily_summary
+#        entity_current_conditions: sensor.dark_sky_icon
+#        entity_humidity: sensor.dark_sky_humidity
+#        entity_pressure: sensor.dark_sky_pressure
+#        entity_temperature: sensor.dark_sky_temperature
+#        entity_visibility: sensor.dark_sky_visibility
+#        entity_wind_bearing: sensor.dark_sky_wind_bearing
+#        entity_wind_speed: sensor.dark_sky_wind_speed
+#        entity_forecast_high_temp_1: sensor.dark_sky_daytime_high_temperature_1
+#        entity_forecast_high_temp_2: sensor.dark_sky_daytime_high_temperature_2
+#        entity_forecast_high_temp_3: sensor.dark_sky_daytime_high_temperature_3
+#        entity_forecast_high_temp_4: sensor.dark_sky_daytime_high_temperature_4
+#        entity_forecast_high_temp_5: sensor.dark_sky_daytime_high_temperature_5
+#        entity_forecast_low_temp_1: sensor.dark_sky_overnight_low_temperature
+#        entity_forecast_low_temp_2: sensor.dark_sky_overnight_low_temperature_1
+#        entity_forecast_low_temp_3: sensor.dark_sky_overnight_low_temperature_2
+#        entity_forecast_low_temp_4: sensor.dark_sky_overnight_low_temperature_3
+#        entity_forecast_low_temp_5: sensor.dark_sky_overnight_low_temperature_4
+#        entity_forecast_icon_1: sensor.dark_sky_icon_1
+#        entity_forecast_icon_2: sensor.dark_sky_icon_2
+#        entity_forecast_icon_3: sensor.dark_sky_icon_3
+#        entity_forecast_icon_4: sensor.dark_sky_icon_4
+#        entity_forecast_icon_5: sensor.dark_sky_icon_5
