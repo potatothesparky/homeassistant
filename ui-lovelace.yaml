@@ -19,7 +19,7 @@ views:
   - title:  Rooms
     id: rooms
     background: center / cover no-repeat url("/local/images/background.jpg") fixed
-    theme: "darkcyan"
+    theme: darkcyan
     cards:
       - type: glance
         title: Lounge Room
@@ -80,7 +80,17 @@ views:
           - entity: sensor.humidity_158d0001dcc73d
             name: Humidity
 
-
+  - title:  Energy
+    id: energy
+    background: center / cover no-repeat url("/local/images/background.jpg") fixed
+    theme: darkcyan
+    cards:
+      - type: gauge
+        title: solar power
+        entity: sensor.solar_power_current
+        unit_of_measurement: W
+        min: 0
+        max: 3200
 
 
 #
