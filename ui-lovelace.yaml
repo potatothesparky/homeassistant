@@ -80,7 +80,7 @@ views:
           - entity: sensor.humidity_158d0001dcc73d
             name: Humidity
 
-  - title:  Energy
+  - title: Energy
     id: energy
     background: center / cover no-repeat url("/local/images/background.jpg") fixed
     theme: darkcyan
