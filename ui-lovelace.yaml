@@ -41,6 +41,7 @@ views:
         show_empty: false
 
       - type: entity-filter
+        title: Chores
         entities:
           - input_boolean.chore_empty_washing_machine
           - input_boolean.chore_empty_dryer
@@ -49,7 +50,7 @@ views:
         state_filter:
           - "on"
         card:
-          title: Chores
+          #title: Chores
         show_empty: false
 
 
