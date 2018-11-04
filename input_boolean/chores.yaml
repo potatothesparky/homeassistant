@@ -7,3 +7,6 @@ chore_empty_dryer:
 chore_empty_dishwasher:
   name: Empty Dishwasher
   icon: mdi:dishwasher
+chore_feed_dogs:
+  name: Feed Dogs
+  icon: mdi:dog
