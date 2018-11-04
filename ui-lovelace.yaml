@@ -25,6 +25,7 @@ views:
           - input_boolean.chore_empty_washing_machine
           - input_boolean.chore_empty_dryer
           - input_boolean.chore_empty_dishwasher
+          - input_boolean.chore_feed_dogs
         state_filter:
           - "on"
         card:
