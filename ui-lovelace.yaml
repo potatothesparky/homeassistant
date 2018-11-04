@@ -20,6 +20,15 @@ views:
     background: center / cover no-repeat url("/local/images/background.jpg") fixed
     theme: darkcyan
     cards:
+      - type: glance
+        title: People
+        entities:
+          - device_tracker.david_iphone
+          - device_tracker.raes_iphone
+          - device_tracker.elisabehsiphone
+          - device_tracker.danielsiphone
+          - device_tracker.melsiphone
+
       - type: entity-filter
         entities:
           - input_boolean.chore_empty_washing_machine
