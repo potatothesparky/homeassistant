@@ -22,6 +22,7 @@ views:
     cards:
       - type: glance
         title: People
+        columns: 2
         entities:
           - device_tracker.david_iphone
           - device_tracker.raes_iphone

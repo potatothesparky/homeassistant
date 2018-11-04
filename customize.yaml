@@ -98,8 +98,10 @@
 
     device_tracker.davids_iphone:
       friendly_name: David
+      entity_picture: /local/images/dave.jpg
     device_tracker.raes_iphone:
       friendly_name: Rae
+      entity_picture: /local/images/rae.jpg
     device_tracker.angelsiphone:
       friendly_name: Angel
     device_tracker.androida30d7b7b2656f096:
