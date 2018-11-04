@@ -3,7 +3,7 @@
     garage_roller_door:
       friendly_name: "Garage Roller Door"
       entity_id:
-        binary_sensor.door_window_sensor_158d0002045498
+        binary_sensor.door_window_sensor_158d0002045498,
         binary_sensor.door_window_sensor_158d000205b28a
       value_template: >-
         {% if states.binary_sensor.door_window_sensor_158d0002045498.state == 'off' %}
