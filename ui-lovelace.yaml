@@ -29,6 +29,7 @@ views:
           - "on"
         card:
           title: Chores
+        show_empty: false
 
   - title:  Rooms
     id: rooms
