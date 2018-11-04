@@ -20,7 +20,7 @@ views:
     background: center / cover no-repeat url("/local/images/background.jpg") fixed
     theme: darkcyan
     cards:
-      - type: entity_filter
+      - type: entity-filter
         entities:
           - input_boolean.chore_empty_washing_machine
           - input_boolean.chore_empty_dryer
