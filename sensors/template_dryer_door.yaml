@@ -3,6 +3,7 @@
     dryer_door:
       friendly_name: "Dryer Door"
       icon_template: mdi:tumble-dryer
+      entity_id: binary_sensor.door_window_sensor_158d00019f60eb
       value_template: >-
         {% if states.binary_sensor.door_window_sensor_158d00019f60eb.state == 'on' %}
           Open
