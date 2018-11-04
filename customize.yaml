@@ -104,6 +104,17 @@
       friendly_name: Angel
     device_tracker.androida30d7b7b2656f096:
       friendly_name: Angel
+    device_tracker.elisabehsiphone:
+      friendly_name: Mum
+    device_tracker.danielsiphone:
+      friendly_name: Daniel
+    device_tracker.melsiphone:
+      friendly_name: Mel
+
+
+
+
+
 
     sensor.bitcoin:
       icon: mdi:currency-btc

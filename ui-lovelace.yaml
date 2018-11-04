@@ -25,9 +25,19 @@ views:
         entities:
           - device_tracker.david_iphone
           - device_tracker.raes_iphone
+
+      - type: entity-filter
+        title: Guests
+        entities:
           - device_tracker.elisabehsiphone
           - device_tracker.danielsiphone
           - device_tracker.melsiphone
+        state_filter:
+          - "Home"
+        card:
+          title: Guests
+          show_state: false
+        show_empty: false
 
       - type: entity-filter
         entities:
@@ -40,6 +50,7 @@ views:
         card:
           title: Chores
         show_empty: false
+
 
   - title:  Rooms
     id: rooms
@@ -103,6 +114,46 @@ views:
           - entity: sensor.temperature_158d0001dcc73d
             name: Temp
           - entity: sensor.humidity_158d0001dcc73d
+            name: Humidity
+
+      - type: glance
+        title: Study
+        entities:
+          - entity: sensor.temperature_158d00016fe9f4
+            name: Temp
+          - entity: sensor.humidity_158d00016fe9f4
+            name: Humidity
+
+      - type: glance
+        title: Spare Bedroom
+        entities:
+          - entity: sensor.temperature_158d00020f4c4f
+            name: Temp
+          - entity: sensor.humidity_158d00020f4c4f
+            name: Humidity
+
+      - type: glance
+        title: Garage
+        entities:
+          - entity: sensor.temperature_158d00022cd713
+            name: Temp
+          - entity: sensor.humidity_158d00022cd713
+            name: Humidity
+
+      - type: glance
+        title: Laundry
+        entities:
+          - entity: sensor.temperature_158d00022c7738
+            name: Temp
+          - entity: sensor.humidity_158d00022c7738
+            name: Humidity
+
+      - type: glance
+        title: Bathroom
+        entities:
+          - entity: sensor.temperature_158d00022c8ff3
+            name: Temp
+          - entity: sensor.humidity_158d00022c8ff3
             name: Humidity
 
   - title: Energy
