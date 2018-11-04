@@ -1,4 +1,4 @@
-title: Lovelace test
+title: Home
 # Include external resources
 resources:
   - url: /local/my-custom-card.js
@@ -15,6 +15,20 @@ resources:
     type: css
 
 views:
+  - title: home
+    id: home
+    background: center / cover no-repeat url("/local/images/background.jpg") fixed
+    theme: darkcyan
+    cards:
+      - type: entity_filter
+        entities:
+          - input_boolean.chore_empty_washing_machine
+          - input_boolean.chore_empty_dryer
+          - input_boolean.chore_empty_dishwasher
+        state_filter:
+          - "on"
+        card:
+          title: Chores
 
   - title:  Rooms
     id: rooms

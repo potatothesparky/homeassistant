@@ -1,0 +1,9 @@
+chore_empty_washing_machine:
+  name: Empty Washing Machine
+  icon: mdi:washing-machine
+chore_empty_dryer:
+  name: Emtpy Dryer
+  icon: mdi:tumble-dryer
+chore_empty_dishwasher:
+  name: Empty Dishwasher
+  icon: mdi:dishwasher
