@@ -54,7 +54,7 @@ views:
 
       - type: picture-entity
         entity: switch.plug_158d00023efccc
-        image: local/images/christmastree.jpg
+        image: /local/images/christmastree.jpg
 
 
   - title:  Rooms
