@@ -52,6 +52,11 @@ views:
           title: Chores
         show_empty: false
 
+      - type: entities
+        title: Holiday
+        entities:
+          - entity: sensor.holiday_countdown_string
+
       - type: picture-entity
         entity: switch.plug_158d00023efccc
         image: /local/images/christmastree.jpg
