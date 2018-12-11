@@ -56,6 +56,7 @@ views:
         title: Holiday
         entities:
           - entity: sensor.holiday_countdown_string
+            name: Holiday
 
       - type: picture-entity
         entity: switch.plug_158d00023efccc
