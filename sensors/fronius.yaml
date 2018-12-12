@@ -1,10 +1,24 @@
 - platform: modbus
   scan_interval: 10
   registers:
-    - name: Today Energy
+    - name: Fronius_Energy_Total
       unit_of_measurement: Wh
       slave: 1
       register_type: holding
       register: 40101
+      count: 2
+      data_type: float
+    - name: Fronius_Power
+      unit_of_measurement: W
+      slave: 1
+      register_type: holding
+      register: 40091
+      count: 2
+      data_type: float
+    - name: Fronius_AC_Current
+      unit_of_measurement: A
+      slave: 1
+      register_type: holding
+      register: 40071
       count: 2
       data_type: float
