@@ -5,6 +5,6 @@
       unit_of_measurement: Wh
       slave: 1
       register_type: holding
-      register: 40094
+      register: 40102
       count: 2
-      data_type: uint
+      data_type: float
