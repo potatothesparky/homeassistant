@@ -10,3 +10,6 @@ chore_empty_dishwasher:
 chore_feed_dogs:
   name: Feed Dogs
   icon: mdi:dog
+chore_fertilise_garden:
+  name: Fertilise Garden
+  icon: mdi:flower
