@@ -1,0 +1,10 @@
+- platform: modbus
+  scan_interval: 10
+  registers:
+    - name: Today Energy
+      unit_of_measurement: Wh
+      slave: 1
+      register_type: holding
+      register: 40094
+      count: 2
+      data_type: uint

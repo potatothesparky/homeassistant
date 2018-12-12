@@ -66,6 +66,11 @@ weather:
 
 ios:
 
+modbus:
+  type: tcp
+  host: 192.168.1.174
+  port: 502
+
 device_tracker:
   - platform: owntracks_http
 
