@@ -46,6 +46,7 @@ views:
           - input_boolean.chore_empty_dryer
           - input_boolean.chore_empty_dishwasher
           - input_boolean.chore_feed_dogs
+          - input_boolean.chore_fertilise_garden
         state_filter:
           - "on"
         card:
