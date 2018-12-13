@@ -1,6 +1,39 @@
 - platform: modbus
   scan_interval: 10
   registers:
+    #Fronius Registers
+    #Note! These registers only apply to inverters. These registers are not relevant
+    #to Fronius String Controls and energy meters
+    - name: Fronius_Site_Power
+      unit_of_measurement: W
+      slave: 1
+      register_type: holding
+      register: 499
+      count: 2
+      data_type: uint
+    - name: Fronius_Site_Energy_Day
+      unit_of_measurement: Wh
+      slave: 1
+      register_type: holding
+      register: 501
+      count: 4
+      data_type: uint
+    - name: Fronius_Site_Energy_Year
+      unit_of_measurement: Wh
+      slave: 1
+      register_type: holding
+      register: 505
+      count: 4
+      data_type: uint
+    - name: Fronius_Site_Energy_Total
+      unit_of_measurement: Wh
+      slave: 1
+      register_type: holding
+      register: 509
+      count: 4
+      data_type: uint
+
+      
     - name: Fronius_Energy_Total
       unit_of_measurement: Wh
       slave: 1
