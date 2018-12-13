@@ -1,0 +1,48 @@
+- platform: template
+  sensors:
+    Fronius_Operating_State_Text:
+      friendly_name: 'Fronius Operating State'
+      #Inverter Status reference codes
+      #I_STATUS_OFF = 1 = Inverter is off
+      #I_STATUS_SLEEPING = 2 = Auto shutdown
+      #I_STATUS_STARTING = 3 = Inverter starting
+      #I_STATUS_MPPT = 4 = Inverter working normally
+      #I_STATUS_THROTTLED = 5 = Power reduction active
+      #I_STATUS_SHUTTING_DOWN = 6 = Inverter shutting down
+      #I_STATUS_FAULT = 7 = One or more faults present, see St*or Evt* register
+      #I_STATUS_STANDBY = 8 = Standby
+      #I_STATUS_NO_BUSINIT = 9 = No SolarNet communication
+      #I_STATUS_NO_COMM_INV = 10 = No communication with inverter possible
+      #I_STATUS_SN_OVERCURRENT = 11 = Overcurrent detected on SolarNet plug
+      #I_STATUS_BOOTLOAD = 12 = Inverter is currently being updated
+      #I_STATUS_AFCI = 13 = AFCI event (arc detection)
+      value_template: >-
+        {% if states.sensor.fronius_operating_state == 1 %}
+          Inverter is off
+        {% elif states.sensor.fronius_operating_state == 2 %}
+          Auto shutdown
+        {% elif states.sensor.fronius_operating_state == 3 %}
+          Inverter starting
+        {% elif states.sensor.fronius_operating_state == 4 %}
+          Inverter working normally
+        {% elif states.sensor.fronius_operating_state == 5 %}
+          Power reduction active
+        {% elif states.sensor.fronius_operating_state == 6 %}
+          Inverter shutting down
+        {% elif states.sensor.fronius_operating_state == 7 %}
+          Fault
+        {% elif states.sensor.fronius_operating_state == 8 %}
+          Standby
+        {% elif states.sensor.fronius_operating_state == 9 %}
+          No SolarNet communication
+        {% elif states.sensor.fronius_operating_state == 10 %}
+          No inverter communication
+        {% elif states.sensor.fronius_operating_state == 11 %}
+          Overcurrent detected on SolarNet plug
+        {% elif states.sensor.fronius_operating_state == 12 %}
+          Inverter is currently being updated
+        {% elif states.sensor.fronius_operating_state == 13 %}
+          Arc fault current detected
+        {% else %}
+          n/a
+        {% endif %}
