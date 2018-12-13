@@ -1,7 +1,8 @@
 - platform: template
   sensors:
-    Fronius_Operating_State_Text:
+    fronius_operating_state_text:
       friendly_name: 'Fronius Operating State'
+      entity_id: sensor.fronius_operating_state
       #Inverter Status reference codes
       #I_STATUS_OFF = 1 = Inverter is off
       #I_STATUS_SLEEPING = 2 = Auto shutdown
