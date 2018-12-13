@@ -109,3 +109,4 @@
       count: 1
       data_type: uint
       precision: 2
+      scale: 0.01
