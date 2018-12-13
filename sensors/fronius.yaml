@@ -1,5 +1,5 @@
 - platform: modbus
-  scan_interval: 10
+  scan_interval: 5
   registers:
     #Fronius Registers
     #Note! These registers only apply to inverters. These registers are not relevant
@@ -101,3 +101,11 @@
       register: 40118
       count: 1
       data_type: uint
+    #Immediate Control Model (IC123)
+    - name: Fronius_Output_Max_Limit_Pct
+      slave: 1
+      register_type: holding
+      register: 40242
+      count: 1
+      data_type: uint
+      precision: 2
