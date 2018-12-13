@@ -18,31 +18,31 @@
       #I_STATUS_BOOTLOAD = 12 = Inverter is currently being updated
       #I_STATUS_AFCI = 13 = AFCI event (arc detection)
       value_template: >-
-        {% if states.sensor.fronius_operating_state == 1 %}
+        {% if states.sensor.fronius_operating_state.state == '1' %}
           Inverter is off
-        {% elif states.sensor.fronius_operating_state == 2 %}
+        {% elif states.sensor.fronius_operating_state.state == '2' %}
           Auto shutdown
-        {% elif states.sensor.fronius_operating_state == 3 %}
+        {% elif states.sensor.fronius_operating_state.state == '3' %}
           Inverter starting
-        {% elif states.sensor.fronius_operating_state == 4 %}
+        {% elif states.sensor.fronius_operating_state.state == '4' %}
           Inverter working normally
-        {% elif states.sensor.fronius_operating_state == 5 %}
+        {% elif states.sensor.fronius_operating_state.state == '5' %}
           Power reduction active
-        {% elif states.sensor.fronius_operating_state == 6 %}
+        {% elif states.sensor.fronius_operating_state.state == '6' %}
           Inverter shutting down
-        {% elif states.sensor.fronius_operating_state == 7 %}
+        {% elif states.sensor.fronius_operating_state.state == '7' %}
           Fault
-        {% elif states.sensor.fronius_operating_state == 8 %}
+        {% elif states.sensor.fronius_operating_state.state == '8' %}
           Standby
-        {% elif states.sensor.fronius_operating_state == 9 %}
+        {% elif states.sensor.fronius_operating_state.state == '9' %}
           No SolarNet communication
-        {% elif states.sensor.fronius_operating_state == 10 %}
+        {% elif states.sensor.fronius_operating_state.state == '10' %}
           No inverter communication
-        {% elif states.sensor.fronius_operating_state == 11 %}
+        {% elif states.sensor.fronius_operating_state.state == '11' %}
           Overcurrent detected on SolarNet plug
-        {% elif states.sensor.fronius_operating_state == 12 %}
+        {% elif states.sensor.fronius_operating_state.state == '12' %}
           Inverter is currently being updated
-        {% elif states.sensor.fronius_operating_state == 13 %}
+        {% elif states.sensor.fronius_operating_state.state == '13' %}
           Arc fault current detected
         {% else %}
           n/a
