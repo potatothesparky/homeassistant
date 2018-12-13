@@ -111,3 +111,64 @@
       data_type: uint
       precision: 2
       scale: 0.01
+    - name: Fronius_Output_Max_Limit_Enable
+      slave: 1
+      register_type: holding
+      register: 40246
+      count: 1
+      data_type: uint
+    #Multiple MPPT Inverter Extension Model (I160)
+    - name: Fronius_DC1_Current
+      unit_of_measurement: A
+      slave: 1
+      register_type: holding
+      register: 40282
+      count: 1
+      data_type: uint
+      precision: 2
+      scale: 0.01
+    - name: Fronius_DC1_Voltage
+      unit_of_measurement: V
+      slave: 1
+      register_type: holding
+      register: 40283
+      count: 1
+      data_type: uint
+      precision: 2
+      scale: 0.01
+    - name: Fronius_DC1_Power
+      unit_of_measurement: V
+      slave: 1
+      register_type: holding
+      register: 40284
+      count: 1
+      data_type: uint
+      precision: 2
+      scale: 0.01
+    - name: Fronius_DC2_Current
+      unit_of_measurement: A
+      slave: 1
+      register_type: holding
+      register: 40302
+      count: 1
+      data_type: uint
+      precision: 2
+      scale: 0.01
+    - name: Fronius_DC2_Voltage
+      unit_of_measurement: V
+      slave: 1
+      register_type: holding
+      register: 40303
+      count: 1
+      data_type: uint
+      precision: 2
+      scale: 0.01
+    - name: Fronius_DC2_Power
+      unit_of_measurement: W
+      slave: 1
+      register_type: holding
+      register: 40304
+      count: 1
+      data_type: uint
+      precision: 2
+      scale: 0.01

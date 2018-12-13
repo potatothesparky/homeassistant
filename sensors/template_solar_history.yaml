@@ -1,6 +1,6 @@
 - platform: template
   sensors:
-    bitcoin_24h:
+    solar_energy_yesterday:
       value_template: '{{ states.sensor.bitcoin.attributes.percent_change_24h }}'
       friendly_name: 'Price Change 24Hr'
       unit_of_measurement: '%'
