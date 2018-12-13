@@ -1,0 +1,10 @@
+- platform: template
+  sensors:
+    bitcoin_24h:
+      value_template: '{{ states.sensor.bitcoin.attributes.percent_change_24h }}'
+      friendly_name: 'Price Change 24Hr'
+      unit_of_measurement: '%'
+    bitcoin_7d:
+      value_template: '{{ states.sensor.bitcoin.attributes.percent_change_7d }}'
+      friendly_name: 'Price Change 7 Days'
+      unit_of_measurement: '%'

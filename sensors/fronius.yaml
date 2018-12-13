@@ -80,13 +80,14 @@
       data_type: float
       precision: 0
     - name: Fronius_AC_Power_Factor
-      unit_of_measurement: '%'
+      unit_of_measurement:
       slave: 1
       register_type: holding
       register: 40099
       count: 2
       data_type: float
-      precision: 0
+      precision: 2
+      scale: 0.01
     - name: Fronius_DC_Total_Power
       unit_of_measurement: W
       slave: 1
