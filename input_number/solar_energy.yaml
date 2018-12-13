@@ -1,0 +1,29 @@
+solar_energy_1:
+  name: Solar Energy Generated Yesterday
+  min: 0
+  max: 100000
+  unit_of_measurement: Wh
+solar_energy_2:
+  min: 0
+  max: 100000
+  unit_of_measurement: Wh
+solar_energy_3:
+  min: 0
+  max: 100000
+  unit_of_measurement: Wh
+solar_energy_4:
+  min: 0
+  max: 100000
+  unit_of_measurement: Wh
+solar_energy_5:
+  min: 0
+  max: 100000
+  unit_of_measurement: Wh
+solar_energy_6:
+  min: 0
+  max: 100000
+  unit_of_measurement: Wh
+solar_energy_7:
+  min: 0
+  max: 100000
+  unit_of_measurement: Wh

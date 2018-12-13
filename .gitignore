@@ -10,6 +10,7 @@
 !switch
 !script
 !input_boolean
+!input_number
 !themes
 !www
 !www/**
