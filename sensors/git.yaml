@@ -2,3 +2,5 @@
   resource: https://api.github.com/repos/potatothesparky/homeassistant/branches
   method: GET
   name: Git Branches
+  headers:
+    User-Agent: potatothesparky
