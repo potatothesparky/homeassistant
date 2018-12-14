@@ -1,9 +1,7 @@
 - platform: jsonrest
+  scan_interval: 120
   resource: https://api.github.com/repos/potatothesparky/homeassistant/branches
   method: GET
   name: Git Branches
-  authentication: basic
-  username: potatothesparky
-  password: !secret github_api_password
   headers:
     User-Agent: potatothesparky
