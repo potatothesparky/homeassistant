@@ -1,5 +1,5 @@
 - platform: modbus
-  scan_interval: 1
+  scan_interval: 5
   registers:
     #Fronius Registers
     #Note! These registers only apply to inverters. These registers are not relevant
