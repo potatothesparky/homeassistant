@@ -179,6 +179,10 @@ views:
         unit_of_measurement: W
         min: 0
         max: 8300
+        severity:
+          green: 5000
+          yellow: 2000
+          red: 0
 
 
 #
