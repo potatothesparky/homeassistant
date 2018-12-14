@@ -184,6 +184,37 @@ views:
           yellow: 2000
           red: 0
 
+      - type: entities
+        entities:
+          - sensor.fronius_site_energy_day
+          - sensor.fronius_site_energy_year
+          - sensor.fronius_site_energy_total
+          - input_number.solar_energy_1
+          - input_number.solar_energy_2
+          - input_number.solar_energy_3
+          - input_number.solar_energy_4
+          - input_number.solar_energy_5
+          - input_number.solar_energy_6
+          - input_number.solar_energy_7
+
+
+      - type: entities
+        entities:
+          - sensor.fronius_ac_voltage
+          - sensor.fronius_ac_frequency
+          - sensor.fronius_ac_current
+          - sensor.fronius_operating_state_text
+          - sensor.fronius_dc1_power
+          - sensor.fronius_dc1_voltage
+          - sensor.fronius_dc1_current
+          - sensor.fronius_dc2_power
+          - sensor.fronius_dc2_voltage
+          - sensor.fronius_dc2_current
+          - sensor.fronius_dc_total_power
+          - sensor.fronius_output_max_limit_pct
+          - sensor.fronius_output_max_limit_enable
+
+
 
 #
 #  - icon: mdi:weather-cloudy
