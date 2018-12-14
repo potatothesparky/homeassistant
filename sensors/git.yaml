@@ -5,4 +5,5 @@
   headers:
     User-Agent: potatothesparky
   json_attributes:
+    - name
   value_template: '{{ value_json }}'
