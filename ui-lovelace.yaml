@@ -175,10 +175,10 @@ views:
     cards:
       - type: gauge
         title: solar power
-        entity: sensor.solar_power_current
+        entity: sensor.fronius_site_power
         unit_of_measurement: W
         min: 0
-        max: 3200
+        max: 8300
 
 
 #
