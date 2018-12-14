@@ -4,3 +4,5 @@
   name: Git Branches
   headers:
     User-Agent: potatothesparky
+  json_attributes:
+  value_template: '{{ value_json }}'
