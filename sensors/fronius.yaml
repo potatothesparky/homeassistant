@@ -118,6 +118,12 @@
       count: 1
       data_type: uint
     #Multiple MPPT Inverter Extension Model (I160)
+    - name: Fronius_DC_Power_Scale_Factor
+      slave: 1
+      register_type: holding
+      register: 40267
+      count: 1
+      data_type: int
     - name: Fronius_DC1_Current
       unit_of_measurement: A
       slave: 1
@@ -136,7 +142,7 @@
       data_type: uint
       precision: 2
       scale: 0.01
-    - name: Fronius_DC1_Power
+    - name: Fronius_DC1_Power_Raw
       unit_of_measurement: V
       slave: 1
       register_type: holding
@@ -144,7 +150,6 @@
       count: 1
       data_type: uint
       precision: 2
-      scale: 0.01
     - name: Fronius_DC2_Current
       unit_of_measurement: A
       slave: 1
@@ -163,7 +168,7 @@
       data_type: uint
       precision: 2
       scale: 0.01
-    - name: Fronius_DC2_Power
+    - name: Fronius_DC2_Power_Raw
       unit_of_measurement: W
       slave: 1
       register_type: holding
@@ -171,4 +176,3 @@
       count: 1
       data_type: uint
       precision: 2
-      scale: 0.01
