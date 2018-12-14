@@ -47,7 +47,7 @@
         {% else %}
           n/a
         {% endif %}
-    Fronius_DC1_Power:
+    fronius_dc1_power:
       friendly_name: "Fronius DC1 Power"
       entity_id: sensor.fronius_dc1_power_raw
       unit_of_measurement: 'W'
@@ -59,7 +59,7 @@
         {% else %}
           n/a
         {% endif %}
-    Fronius_DC2_Power:
+    fronius_dc2_power:
       friendly_name: "Fronius DC2 Power"
       entity_id: sensor.fronius_dc2_power_raw
       unit_of_measurement: 'W'
