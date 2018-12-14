@@ -1,0 +1,20 @@
+dryer_status:
+  name: Dryer Status
+  options:
+    - Idle
+    - Started
+    - Drying
+    - Cooling
+    - Finished
+  initial: Idle
+washing_machine_status:
+  name: Washing Machine Status
+  options:
+    - Idle
+    - Washing
+    - Finished
+  initial: Idle
+git_branch:
+  name: Git Branch
+  options:
+    - master
