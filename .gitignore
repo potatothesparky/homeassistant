@@ -1,6 +1,7 @@
 *
 !*.yaml
 !*.sh
+!*.py
 !.gitignore
 !.travis.yml
 !sensors
@@ -12,6 +13,7 @@
 !input_boolean
 !input_number
 !themes
+!custom_components
 !www
 !www/**
 secrets.yaml
