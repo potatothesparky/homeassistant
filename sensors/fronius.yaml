@@ -149,7 +149,6 @@
       register: 40284
       count: 1
       data_type: uint
-      precision: 2
     - name: Fronius_DC2_Current
       unit_of_measurement: A
       slave: 1
@@ -175,4 +174,3 @@
       register: 40304
       count: 1
       data_type: uint
-      precision: 2

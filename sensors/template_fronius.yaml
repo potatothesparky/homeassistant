@@ -47,3 +47,27 @@
         {% else %}
           n/a
         {% endif %}
+    Fronius_DC1_Power:
+      friendly_name: "Fronius DC1 Power"
+      entity_id: sensor.fronius_dc1_power_raw
+      unit_of_measurement: 'W'
+      value_template: >-
+        {% if states.sensor.fronius_dc_power_scale_factor.state == '-1' %}
+          {{ states('sensor.fronius_dc1_power_raw')|float * 0.1}}
+        {% elif states.sensor.fronius_dc_power_scale_factor.state == '-2' %}
+          {{ states('sensor.fronius_dc1_power_raw')|float * 0.01}}
+        {% else %}
+          n/a
+        {% endif %}
+    Fronius_DC2_Power:
+      friendly_name: "Fronius DC2 Power"
+      entity_id: sensor.fronius_dc2_power_raw
+      unit_of_measurement: 'W'
+      value_template: >-
+        {% if states.sensor.fronius_dc_power_scale_factor.state == '-1' %}
+          {{ states('sensor.fronius_dc2_power_raw')|float * 0.1}}
+        {% elif states.sensor.fronius_dc_power_scale_factor.state == '-2' %}
+          {{ states('sensor.fronius_dc2_power_raw')|float * 0.01}}
+        {% else %}
+          n/a
+        {% endif %}
