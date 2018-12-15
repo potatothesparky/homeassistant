@@ -213,19 +213,19 @@ views:
 
       - type: entities
         entities:
-          - sensor.fronius_ac_voltage
-          - sensor.fronius_ac_frequency
-          - sensor.fronius_ac_current
-          - sensor.fronius_operating_state_text
-          - sensor.fronius_dc1_power
-          - sensor.fronius_dc1_voltage
-          - sensor.fronius_dc1_current
-          - sensor.fronius_dc2_power
-          - sensor.fronius_dc2_voltage
-          - sensor.fronius_dc2_current
-          - sensor.fronius_dc_total_power
-          - sensor.fronius_output_max_limit_pct
-          - sensor.fronius_output_max_limit_enable
+          - sensor.fronius_inverter_ac_voltage
+          - sensor.fronius_inverter_ac_frequency
+          - sensor.fronius_inverter_ac_current
+          - sensor.fronius_inverter_operating_state_text
+          - sensor.fronius_inverter_dc1_power
+          - sensor.fronius_inverter_dc1_voltage
+          - sensor.fronius_inverter_dc1_current
+          - sensor.fronius_inverter_dc2_power
+          - sensor.fronius_inverter_dc2_voltage
+          - sensor.fronius_inverter_dc2_current
+          - sensor.fronius_inverter_dc_total_power
+          - sensor.fronius_inverter_output_max_limit_pct
+          - sensor.fronius_inverter_output_max_limit_enable
 
 
 
