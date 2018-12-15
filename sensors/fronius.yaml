@@ -175,7 +175,8 @@
       register: 40304
       count: 1
       data_type: uint
-    #fronius smart meter - slave no is '240'
+    #fronius smart meter
+    #slave no is '240'
     - name: Fronius_Meter_Current
       unit_of_measurement: A
       slave: 240
@@ -183,6 +184,7 @@
       register: 40071
       count: 2
       data_type: float
+      precision: 2
     - name: Fronius_Meter_Voltage
       unit_of_measurement: V
       slave: 240
@@ -190,6 +192,7 @@
       register: 40079
       count: 2
       data_type: float
+      precision: 2
     - name: Fronius_Meter_Frequency
       unit_of_measurement: Hz
       slave: 240
@@ -197,6 +200,7 @@
       register: 40095
       count: 2
       data_type: float
+      precision: 2
     - name: Fronius_Meter_Power
       unit_of_measurement: W
       slave: 240
@@ -204,6 +208,7 @@
       register: 40097
       count: 2
       data_type: float
+      precision: 2
     - name: Fronius_Meter_Apparent_Power
       unit_of_measurement: VA
       slave: 240
@@ -211,13 +216,15 @@
       register: 40105
       count: 2
       data_type: float
+      precision: 2
     - name: Fronius_Meter_Reactive_Power
       unit_of_measurement: VAr
       slave: 240
       register_type: holding
-      register: 40114
+      register: 40113
       count: 2
       data_type: float
+      precision: 2
     - name: Fronius_Meter_Power_Factor
       unit_of_measurement: PF
       slave: 240
@@ -225,6 +232,7 @@
       register: 40121
       count: 2
       data_type: float
+      precision: 2
     - name: Fronius_Meter_Energy_Exported
       unit_of_measurement: Wh
       slave: 240
@@ -232,6 +240,7 @@
       register: 40129
       count: 2
       data_type: float
+      precision: 2
     - name: Fronius_Meter_Energy_Imported
       unit_of_measurement: Wh
       slave: 240
@@ -239,3 +248,4 @@
       register: 40137
       count: 2
       data_type: float
+      precision: 2

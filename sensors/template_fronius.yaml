@@ -1,8 +1,8 @@
 - platform: template
   sensors:
-    fronius_operating_state_text:
+    fronius_inverter_operating_state_text:
       friendly_name: 'Fronius Operating State'
-      entity_id: sensor.fronius_operating_state
+      entity_id: sensor.fronius_inverter_operating_state
       #Inverter Status reference codes
       #I_STATUS_OFF = 1 = Inverter is off
       #I_STATUS_SLEEPING = 2 = Auto shutdown
@@ -18,56 +18,56 @@
       #I_STATUS_BOOTLOAD = 12 = Inverter is currently being updated
       #I_STATUS_AFCI = 13 = AFCI event (arc detection)
       value_template: >-
-        {% if states.sensor.fronius_operating_state.state == '1' %}
+        {% if states.sensor.fronius_inverter_operating_state.state == '1' %}
           Inverter is off
-        {% elif states.sensor.fronius_operating_state.state == '2' %}
+        {% elif states.sensor.fronius_inverter_operating_state.state == '2' %}
           Auto shutdown
-        {% elif states.sensor.fronius_operating_state.state == '3' %}
+        {% elif states.sensor.fronius_inverter_operating_state.state == '3' %}
           Inverter starting
-        {% elif states.sensor.fronius_operating_state.state == '4' %}
+        {% elif states.sensor.fronius_inverter_operating_state.state == '4' %}
           Inverter working normally
-        {% elif states.sensor.fronius_operating_state.state == '5' %}
+        {% elif states.sensor.fronius_inverter_operating_state.state == '5' %}
           Power reduction active
-        {% elif states.sensor.fronius_operating_state.state == '6' %}
+        {% elif states.sensor.fronius_inverter_operating_state.state == '6' %}
           Inverter shutting down
-        {% elif states.sensor.fronius_operating_state.state == '7' %}
+        {% elif states.sensor.fronius_inverter_operating_state.state == '7' %}
           Fault
-        {% elif states.sensor.fronius_operating_state.state == '8' %}
+        {% elif states.sensor.fronius_inverter_operating_state.state == '8' %}
           Standby
-        {% elif states.sensor.fronius_operating_state.state == '9' %}
+        {% elif states.sensor.fronius_inverter_operating_state.state == '9' %}
           No SolarNet communication
-        {% elif states.sensor.fronius_operating_state.state == '10' %}
+        {% elif states.sensor.fronius_inverter_operating_state.state == '10' %}
           No inverter communication
-        {% elif states.sensor.fronius_operating_state.state == '11' %}
+        {% elif states.sensor.fronius_inverter_operating_state.state == '11' %}
           Overcurrent detected on SolarNet plug
-        {% elif states.sensor.fronius_operating_state.state == '12' %}
+        {% elif states.sensor.fronius_inverter_operating_state.state == '12' %}
           Inverter is currently being updated
-        {% elif states.sensor.fronius_operating_state.state == '13' %}
+        {% elif states.sensor.fronius_inverter_operating_state.state == '13' %}
           Arc fault current detected
         {% else %}
           n/a
         {% endif %}
-    fronius_dc1_power:
+    fronius_inverter_dc1_power:
       friendly_name: "Fronius DC1 Power"
-      entity_id: sensor.fronius_dc1_power_raw
+      entity_id: sensor.fronius_inverter_dc1_power_raw
       unit_of_measurement: 'W'
       value_template: >-
-        {% if states.sensor.fronius_dc_power_scale_factor.state == '-1' %}
-          {{ (states('sensor.fronius_dc1_power_raw')|float * 0.1)|round(1)}}
-        {% elif states.sensor.fronius_dc_power_scale_factor.state == '-2' %}
-          {{ (states('sensor.fronius_dc1_power_raw')|float * 0.01)|round(1)}}
+        {% if states.sensor.fronius_inverter_dc_power_scale_factor.state == '-1' %}
+          {{ (states('sensor.fronius_inverter_dc1_power_raw')|float * 0.1)|round(1)}}
+        {% elif states.sensor.fronius_inverter_dc_power_scale_factor.state == '-2' %}
+          {{ (states('sensor.fronius_inverter_dc1_power_raw')|float * 0.01)|round(1)}}
         {% else %}
           n/a
         {% endif %}
-    fronius_dc2_power:
+    fronius_inverter_dc2_power:
       friendly_name: "Fronius DC2 Power"
-      entity_id: sensor.fronius_dc2_power_raw
+      entity_id: sensor.fronius_inverter_dc2_power_raw
       unit_of_measurement: 'W'
       value_template: >-
-        {% if states.sensor.fronius_dc_power_scale_factor.state == '-1' %}
-          {{ (states('sensor.fronius_dc2_power_raw')|float * 0.1)|round(1)}}
-        {% elif states.sensor.fronius_dc_power_scale_factor.state == '-2' %}
-          {{ (states('sensor.fronius_dc2_power_raw')|float * 0.01)|round(1)}}
+        {% if states.sensor.fronius_inverter_dc_power_scale_factor.state == '-1' %}
+          {{ (states('sensor.fronius_inverter_dc2_power_raw')|float * 0.1)|round(1)}}
+        {% elif states.sensor.fronius_inverter_dc_power_scale_factor.state == '-2' %}
+          {{ (states('sensor.fronius_inverter_dc2_power_raw')|float * 0.01)|round(1)}}
         {% else %}
           n/a
         {% endif %}
