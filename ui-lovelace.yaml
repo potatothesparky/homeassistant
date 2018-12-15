@@ -177,15 +177,15 @@ views:
     cards:
       - type: custom:power-wheel-card
         title: Power distribution
-        solar_power_entity: sensor.fronius_site_power
+        solar_power_entity: sensor.fronius_site_power_kw
         solar_power_icon: mdi:solar-power
-        grid_power_entity: sensor.fronius_meter_power
+        grid_power_entity: sensor.fronius_meter_power_kw
         grid_power_icon: mdi:flash
         home_power_icon: mdi:home
         decimals: 2
         color_power_icons: true
-        consuming_color: "#33ff33"
-        producing_color: "#dd5500"
+        consuming_color: "#dd5500"
+        producing_color: "#33ff33"
       - type: horizontal-stack
         cards:
           - type: gauge
@@ -199,7 +199,7 @@ views:
               yellow: 2000
               red: 0
           - type: gauge
-            title: House
+            title: Usage
             entity: sensor.fronius_meter_power
             unit_of_measurement: W
             min: -10000

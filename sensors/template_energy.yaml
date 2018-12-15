@@ -1,0 +1,33 @@
+#template sensors to make energy sensors more user readable
+- platform: template
+  sensors:
+    #WIP - still working on this one
+#    solar_energy_sunday:
+#      friendly_name: "Sunday"
+#      icon_template: mdi:solar-power
+#      entity_id: input_number.solar_energy_1
+#      value_template: >-
+#        {% set test=now().weekday() + 1 %}
+#        {{test}}
+#        {% if test > 7 %}
+#          {% set test = test -7 %}
+#          {{test}}
+#        {% else %}
+#          {{test}}
+#        {% endif %}
+#        {% set var="input_number.solar_energy_" + test|string %}
+#        {{var}}
+#        {{ now().weekday() }}
+#        {{ (states('input_number.solar_energy_ '+ test|string)|float / 1000)|round(2) }}
+    Fronius_Meter_Power_kW:
+      friendly_name: House
+      icon_template: mdi:flash
+      entity_id: sensor.fronius_meter_power
+      value_template: >-
+        {{ (states('sensor.fronius_meter_power')|float / 1000)|round(2) }}
+    Fronius_Site_Power_kW:
+      friendly_name: House
+      icon_template: mdi:solar-power
+      entity_id: sensor.fronius_site_power
+      value_template: >-
+        {{ (states('sensor.fronius_site_power')|float / 1000)|round(2) }}

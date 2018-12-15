@@ -1,3 +1,4 @@
+#templates for the fronius solar inverter
 - platform: template
   sensors:
     fronius_inverter_operating_state_text:
@@ -47,6 +48,8 @@
         {% else %}
           n/a
         {% endif %}
+#the inverter has a scale factor on the DC power register, the scale factor adjusts as the power increases.
+#template sensors below read the scale factor and ajust the output accordingly
     fronius_inverter_dc1_power:
       friendly_name: "Fronius DC1 Power"
       entity_id: sensor.fronius_inverter_dc1_power_raw

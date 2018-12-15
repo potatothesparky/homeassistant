@@ -1,5 +1,5 @@
+#7 day historical solar energy generation
 solar_energy_1:
-  name: Solar Energy Generated Yesterday
   min: 0
   max: 100000
   unit_of_measurement: Wh
@@ -33,4 +33,55 @@ solar_energy_7:
   min: 0
   max: 100000
   unit_of_measurement: Wh
+  mode: box
+#electrical energy import/export registers to keep track of how much energy
+#is consumed during different time periods (tariffs)
+#peak time = 0700-0900 and 1800-2000
+#shoulder time = 0900-1800 and 2000-2200
+#offpeak time = 2200-0700
+energy_imported_peak_today:
+  min: 0
+  max: 100000
+  unit_of_measurement: Wh
+  mode: box
+energy_imported_shoulder_today:
+  min: 0
+  max: 100000
+  unit_of_measurement: Wh
+  mode: box
+energy_imported_offpeak_today:
+  min: 0
+  max: 100000
+  unit_of_measurement: Wh
+  mode: box
+energy_exported_today:
+  min: 0
+  max: 100000
+  unit_of_measurement: Wh
+  mode: box
+#electrical energy tariff rates in $AUD
+energy_import_tariff_peak:
+  min: 0
+  max: 10
+  unit_of_measurement: $
+  mode: box
+energy_import_tariff_shoulder:
+  min: 0
+  max: 10
+  unit_of_measurement: $
+  mode: box
+energy_import_tariff_offpeak:
+  min: 0
+  max: 10
+  unit_of_measurement: $
+  mode: box
+energy_export_tariff:
+  min: 0
+  max: 10
+  unit_of_measurement: $
+  mode: box
+energy_daily_service_charge:
+  min: 0
+  max: 10
+  unit_of_measurement: $
   mode: box
