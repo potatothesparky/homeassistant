@@ -186,16 +186,28 @@ views:
         color_power_icons: true
         consuming_color: "#33ff33"
         producing_color: "#dd5500"
-      - type: gauge
-        title: solar power
-        entity: sensor.fronius_site_power
-        unit_of_measurement: W
-        min: 0
-        max: 8300
-        severity:
-          green: 5000
-          yellow: 2000
-          red: 0
+      - type: horizontal-stack
+        cards:
+          - type: gauge
+            title: Solar
+            entity: sensor.fronius_site_power
+            unit_of_measurement: W
+            min: 0
+            max: 8300
+            severity:
+              green: 5000
+              yellow: 2000
+              red: 0
+          - type: gauge
+            title: House
+            entity: sensor.fronius_meter_power
+            unit_of_measurement: W
+            min: -10000
+            max: 10000
+            severity:
+              green: 0
+              yellow: 2000
+              red: 5000
 
       - type: entities
         entities:
