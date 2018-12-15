@@ -39,7 +39,7 @@
     #register address map is dependant on setting on inverter either 'float' or 'int+SF'
     #inverter has been set to 'float' so registers below are referencing the 'float' map
     #Common & Inverter Model
-    - name: Fronius_AC_Current
+    - name: Fronius_Inverter_AC_Current
       unit_of_measurement: A
       slave: 1
       register_type: holding
@@ -47,7 +47,7 @@
       count: 2
       data_type: float
       precision: 2
-    - name: Fronius_AC_Voltage
+    - name: Fronius_Inverter_AC_Voltage
       unit_of_measurement: V
       slave: 1
       register_type: holding
@@ -55,7 +55,7 @@
       count: 2
       data_type: float
       precision: 1
-    - name: Fronius_AC_Frequency
+    - name: Fronius_Inverter_AC_Frequency
       unit_of_measurement: Hz
       slave: 1
       register_type: holding
@@ -63,7 +63,7 @@
       count: 2
       data_type: float
       precision: 2
-    - name: Fronius_AC_Apparent_Power
+    - name: Fronius_Inverter_AC_Apparent_Power
       unit_of_measurement: VA
       slave: 1
       register_type: holding
@@ -71,7 +71,7 @@
       count: 2
       data_type: float
       precision: 0
-    - name: Fronius_AC_Reactive_Power
+    - name: Fronius_Inverter_AC_Reactive_Power
       unit_of_measurement: VAr
       slave: 1
       register_type: holding
@@ -79,7 +79,8 @@
       count: 2
       data_type: float
       precision: 0
-    - name: Fronius_AC_Power_Factor
+    - name: Fronius_Inverter_AC_Power_Factor
+      unit_of_measurement: PF
       slave: 1
       register_type: holding
       register: 40099
@@ -87,7 +88,7 @@
       data_type: float
       precision: 2
       scale: 0.01
-    - name: Fronius_DC_Total_Power
+    - name: Fronius_Inverter_DC_Total_Power
       unit_of_measurement: W
       slave: 1
       register_type: holding
@@ -95,14 +96,14 @@
       count: 2
       data_type: float
       precision: 2
-    - name: Fronius_Operating_State
+    - name: Fronius_Inverter_Operating_State
       slave: 1
       register_type: holding
       register: 40118
       count: 1
       data_type: uint
     #Immediate Control Model (IC123)
-    - name: Fronius_Output_Max_Limit_Pct
+    - name: Fronius_Inverter_Output_Max_Limit_Pct
       unit_of_measurement: '%'
       slave: 1
       register_type: holding
@@ -111,20 +112,20 @@
       data_type: uint
       precision: 2
       scale: 0.01
-    - name: Fronius_Output_Max_Limit_Enable
+    - name: Fronius_Inverter_Output_Max_Limit_Enable
       slave: 1
       register_type: holding
       register: 40246
       count: 1
       data_type: uint
     #Multiple MPPT Inverter Extension Model (I160)
-    - name: Fronius_DC_Power_Scale_Factor
+    - name: Fronius_Inverter_DC_Power_Scale_Factor
       slave: 1
       register_type: holding
       register: 40267
       count: 1
       data_type: int
-    - name: Fronius_DC1_Current
+    - name: Fronius_Inverter_DC1_Current
       unit_of_measurement: A
       slave: 1
       register_type: holding
@@ -133,7 +134,7 @@
       data_type: uint
       precision: 2
       scale: 0.01
-    - name: Fronius_DC1_Voltage
+    - name: Fronius_Inverter_DC1_Voltage
       unit_of_measurement: V
       slave: 1
       register_type: holding
@@ -142,14 +143,14 @@
       data_type: uint
       precision: 2
       scale: 0.01
-    - name: Fronius_DC1_Power_Raw
+    - name: Fronius_Inverter_DC1_Power_Raw
       unit_of_measurement: V
       slave: 1
       register_type: holding
       register: 40284
       count: 1
       data_type: uint
-    - name: Fronius_DC2_Current
+    - name: Fronius_Inverter_DC2_Current
       unit_of_measurement: A
       slave: 1
       register_type: holding
@@ -158,7 +159,7 @@
       data_type: uint
       precision: 2
       scale: 0.01
-    - name: Fronius_DC2_Voltage
+    - name: Fronius_Inverter_DC2_Voltage
       unit_of_measurement: V
       slave: 1
       register_type: holding
@@ -167,7 +168,7 @@
       data_type: uint
       precision: 2
       scale: 0.01
-    - name: Fronius_DC2_Power_Raw
+    - name: Fronius_Inverter_DC2_Power_Raw
       unit_of_measurement: W
       slave: 1
       register_type: holding
@@ -175,16 +176,66 @@
       count: 1
       data_type: uint
     #fronius smart meter - slave no is '240'
-    - name: Fronius_meter_ID
+    - name: Fronius_Meter_Current
+      unit_of_measurement: A
       slave: 240
       register_type: holding
-      register: 40069
-      count: 1
-      data_type: uint
-    - name: Fronius_meter_power
+      register: 40071
+      count: 2
+      data_type: float
+    - name: Fronius_Meter_Voltage
+      unit_of_measurement: V
+      slave: 240
+      register_type: holding
+      register: 40079
+      count: 2
+      data_type: float
+    - name: Fronius_Meter_Frequency
+      unit_of_measurement: Hz
+      slave: 240
+      register_type: holding
+      register: 40095
+      count: 2
+      data_type: float
+    - name: Fronius_Meter_Power
       unit_of_measurement: W
       slave: 240
       register_type: holding
       register: 40097
+      count: 2
+      data_type: float
+    - name: Fronius_Meter_Apparent_Power
+      unit_of_measurement: VA
+      slave: 240
+      register_type: holding
+      register: 40105
+      count: 2
+      data_type: float
+    - name: Fronius_Meter_Reactive_Power
+      unit_of_measurement: VAr
+      slave: 240
+      register_type: holding
+      register: 40114
+      count: 2
+      data_type: float
+    - name: Fronius_Meter_Power_Factor
+      unit_of_measurement: PF
+      slave: 240
+      register_type: holding
+      register: 40121
+      count: 2
+      data_type: float
+    - name: Fronius_Meter_Energy_Exported
+      unit_of_measurement: Wh
+      slave: 240
+      register_type: holding
+      register: 40129
+      count: 2
+      data_type: float
+    - name: Fronius_Meter_Energy_Imported
+      unit_of_measurement: Wh
+      slave: 240
+      register_type: holding
+      register: 40137
       count: 2
       data_type: float
