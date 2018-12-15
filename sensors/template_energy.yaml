@@ -19,13 +19,13 @@
 #        {{var}}
 #        {{ now().weekday() }}
 #        {{ (states('input_number.solar_energy_ '+ test|string)|float / 1000)|round(2) }}
-    Fronius_Meter_Power_kW:
+    fronius_meter_power_kw:
       friendly_name: House
       icon_template: mdi:flash
       entity_id: sensor.fronius_meter_power
       value_template: >-
         {{ (states('sensor.fronius_meter_power')|float / 1000)|round(2) }}
-    Fronius_Site_Power_kW:
+    fronius_site_power_kw:
       friendly_name: House
       icon_template: mdi:solar-power
       entity_id: sensor.fronius_site_power
