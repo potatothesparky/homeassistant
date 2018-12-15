@@ -174,10 +174,17 @@
       register: 40304
       count: 1
       data_type: uint
-    #fronius smart meter
+    #fronius smart meter - slave no is '240'
     - name: Fronius_meter_ID
       slave: 240
       register_type: holding
       register: 40069
       count: 1
       data_type: uint
+    - name: Fronius_meter_power
+      unit_of_measurement: W
+      slave: 240
+      register_type: holding
+      register: 40097
+      count: 2
+      data_type: float
