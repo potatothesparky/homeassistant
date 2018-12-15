@@ -205,8 +205,8 @@ views:
             min: -10000
             max: 10000
             severity:
-              green: 0
-              yellow: 2000
+              green: -10000
+              yellow: 0
               red: 5000
 
       - type: entities
