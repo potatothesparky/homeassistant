@@ -13,7 +13,7 @@ resources:
     type: js
   - url: /local/custom_ui/dark-sky-weather-card.css
     type: css
-  - url: /local/power-wheel-card.js?v=1
+  - url: /local/custom_ui/power-wheel-card.js?v=1
     type: module
 
 views:
