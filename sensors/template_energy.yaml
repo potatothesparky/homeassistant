@@ -33,3 +33,10 @@
       unit_of_measurement: kW
       value_template: >-
         {{ (states('sensor.fronius_site_power')|float / 1000)|round(2) }}
+    energy_cost_today:
+      friendly_name: Energy Cost Today
+      icon_template: mdi:currency-usd
+      entity_id: input_number.energy_cost_today
+      unit_of_measurement: $
+      value_template: >-
+        {{ (states('input_number.energy_cost_today')|float)|round(2) }}

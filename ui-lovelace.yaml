@@ -208,6 +208,10 @@ views:
               green: -10000
               yellow: 0
               red: 5000
+              
+      - type: entities
+        entities:
+          - sensor.energy_cost_today
 
       - type: entities
         entities:
