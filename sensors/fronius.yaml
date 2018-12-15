@@ -174,3 +174,10 @@
       register: 40304
       count: 1
       data_type: uint
+    #fronius smart meter
+    - name: Fronius_meter_ID
+      slave: 240
+      register_type: holding
+      register: 40069
+      count: 1
+      data_type: uint
