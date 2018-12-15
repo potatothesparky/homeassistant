@@ -85,3 +85,9 @@ energy_daily_service_charge:
   max: 10
   unit_of_measurement: $
   mode: box
+#electrical energy cost today
+energy_cost_today:
+  min: -100
+  max: 100
+  unit_of_measurement: $
+  mode: box
