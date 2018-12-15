@@ -192,7 +192,7 @@
       register: 40079
       count: 2
       data_type: float
-      precision: 2
+      precision: 1
     - name: Fronius_Meter_Frequency
       unit_of_measurement: Hz
       slave: 240
@@ -240,7 +240,6 @@
       register: 40129
       count: 2
       data_type: float
-      precision: 2
     - name: Fronius_Meter_Energy_Imported
       unit_of_measurement: Wh
       slave: 240
@@ -248,4 +247,3 @@
       register: 40137
       count: 2
       data_type: float
-      precision: 2

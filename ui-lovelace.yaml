@@ -13,6 +13,8 @@ resources:
     type: js
   - url: /local/custom_ui/dark-sky-weather-card.css
     type: css
+  - url: /local/power-wheel-card.js?v=1
+    type: module
 
 views:
   - title: home
@@ -173,6 +175,17 @@ views:
     background: center / cover no-repeat url("/local/images/background.jpg") fixed
     theme: darkcyan
     cards:
+      - type: custom:power-wheel-card
+        title: Power distribution
+        solar_power_entity: sensor.fronius_site_power
+        solar_power_icon: mdi:solar-power
+        grid_power_entity: sensor.fronius_meter_power
+        grid_power_icon: mdi:flash
+        home_power_icon: mdi:home
+        decimals: 2
+        color_power_icons: true
+        consuming_color: "#33ff33"
+        producing_color: "#dd5500"
       - type: gauge
         title: solar power
         entity: sensor.fronius_site_power
