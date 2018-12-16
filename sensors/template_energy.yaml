@@ -40,3 +40,31 @@
       unit_of_measurement: $
       value_template: >-
         {{ (states('input_number.energy_cost_today')|float)|round(2) }}
+    energy_exported_today:
+      friendly_name: Energy exported Today
+      icon_template: mdi:flash
+      entity_id: input_number.energy_exported_today
+      unit_of_measurement: kWh
+      value_template: >-
+        {{ (states('input_number.energy_exported_today')|float / 1000)|round(2) }}
+    energy_imported_peak_today:
+      friendly_name: Energy Imported Peak Today
+      icon_template: mdi:flash
+      entity_id: input_number.energy_imported_peak_today
+      unit_of_measurement: kWh
+      value_template: >-
+        {{ (states('input_number.energy_imported_peak_today')|float / 1000)|round(2) }}
+    energy_imported_shoulder_today:
+      friendly_name: Energy Imported Shoulder Today
+      icon_template: mdi:flash
+      entity_id: input_number.energy_imported_shoulder_today
+      unit_of_measurement: kWh
+      value_template: >-
+        {{ (states('input_number.energy_imported_shoulder_today')|float / 1000)|round(2) }}
+    energy_imported_offpeak_today:
+      friendly_name: Energy Imported Off-Peak Today
+      icon_template: mdi:flash
+      entity_id: input_number.energy_imported_offpeak_today
+      unit_of_measurement: kWh
+      value_template: >-
+        {{ (states('input_number.energy_imported_offpeak_today')|float / 1000)|round(2) }}
