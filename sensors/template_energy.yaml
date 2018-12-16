@@ -26,6 +26,13 @@
       unit_of_measurement: kW
       value_template: >-
         {{ (states('sensor.fronius_meter_power')|float / 1000)|round(2) }}
+    fronius_site_energy_day_kwh:
+      friendly_name: House
+      icon_template: mdi:flash
+      entity_id: sensor.fronius_site_energy_day
+      unit_of_measurement: kWh
+      value_template: >-
+        {{ (states('sensor.fronius_site_energy_day')|float / 1000)|round(2) }}
     fronius_site_power_kw:
       friendly_name: House
       icon_template: mdi:solar-power

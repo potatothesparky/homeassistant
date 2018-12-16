@@ -62,6 +62,7 @@ views:
               - sensor.energy_imported_shoulder_today
               - sensor.energy_imported_offpeak_today
               - sensor.energy_exported_today
+              - sensor.fronius_site_energy_day_kwh
 
       - type: entity-filter
         entities:
