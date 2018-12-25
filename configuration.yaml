@@ -163,6 +163,7 @@ influxdb:
   host: 192.168.1.10
   include:
     entities: !include influxdb/entities.yaml
+  tags_attributes: friendly_name
 
 # Cloud
 cloud:
