@@ -160,7 +160,7 @@ vera:
 
 
 influxdb:
-  host: 192.168.1.200
+  host: 192.168.1.10
   include:
     entities: !include influxdb/entities.yaml
 
