@@ -44,6 +44,34 @@
 - sensor.solar_energy_this_month
 - sensor.solar_energy_total
 
+#fronius inverter
+- sensor.fronius_inverter_ac_current
+- sensor.fronius_inverter_ac_frequency
+- sensor.fronius_inverter_ac_voltage
+- sensor.fronius_inverter_dc1_power
+- sensor.fronius_inverter_dc2_power
+- sensor.fronius_inverter_dc_total_power
+- sensor.fronius_inverter_output_max_limit_pct
+#fronius meter
+- sensor.fronius_meter_current
+- sensor.fronius_meter_energy_exported
+- sensor.fronius_meter_energy_imported
+- sensor.fronius_meter_frequency
+- sensor.fronius_meter_power
+- sensor.fronius_meter_voltage
+#fronius site
+- sensor.fronius_site_energy_day
+- sensor.fronius_site_energy_total
+- sensor.fronius_site_energy_year
+- sensor.fronius_site_power
+
+#energy
+- sensor.energy_cost_today
+- sensor.energy_exported_today
+- sensor.energy_imported_offpeak_today
+- sensor.energy_imported_peak_today
+- sensor.energy_imported_shoulder_today
+
 # PC Stats
 - sensor.processor_use
 - sensor.memory_use_percent
