@@ -91,3 +91,9 @@ energy_cost_today:
   max: 100
   unit_of_measurement: $
   mode: box
+#solar system payback period
+solar_system_cost_price_payback:
+  min: -10000
+  max: 10000
+  unit_of_measurement: $
+  mode: box

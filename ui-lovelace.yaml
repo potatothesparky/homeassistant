@@ -234,6 +234,7 @@ views:
       - type: entities
         entities:
           - sensor.energy_cost_today
+          - sensor.solar_system_cost_price_payback
 
       - type: entities
         entities:

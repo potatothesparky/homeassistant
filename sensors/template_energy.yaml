@@ -75,3 +75,10 @@
       unit_of_measurement: kWh
       value_template: >-
         {{ (states('input_number.energy_imported_offpeak_today')|float / 1000)|round(2) }}
+    solar_system_cost_price_payback:
+      friendly_name: Solar Payback
+      icon_template: mdi:currency-usd
+      entity_id: input_number.solar_system_cost_price_payback
+      unit_of_measurement: $
+      value_template: >-
+        {{ (states('input_number.solar_system_cost_price_payback')|float)|round(2) }}
