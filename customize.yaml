@@ -117,11 +117,6 @@
     switch.plug_158d00023efccc:
       friendly_name: Christmas Tree
 
-
-
-
-
-
     sensor.bitcoin:
       icon: mdi:currency-btc
     sensor.bitcoin_24h:
@@ -140,3 +135,20 @@
       icon: mdi:home-automation
     switch.influxdb:
       icon: mdi:database
+
+
+    sensor.plant_1_moisture:
+      friendly_name: Peace Lilly (Buffet) Moisture
+      icon: mdi:water-percent
+    sensor.plant_1_battery:
+      friendly_name: Peace Lilly (Buffet) Battery
+      icon: mdi:battery
+    sensor.plant_1_temperature:
+      friendly_name: Peace Lilly (Buffet) Temperature
+      icon: mdi:temperature-celsius
+    sensor.plant_1_conductivity:
+      friendly_name: Peace Lilly (Buffet) Fertility
+      icon: mdi:cup-water
+    sensor.plant_1_brightness:
+      friendly_name: Peace Lilly (Buffet) Brightness
+      icon: mdi:brightness-5

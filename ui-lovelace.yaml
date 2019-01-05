@@ -266,6 +266,20 @@ views:
           - sensor.fronius_inverter_output_max_limit_pct
           - sensor.fronius_inverter_output_max_limit_enable
 
+  - title: Garden
+    id: garden
+    background: center / cover no-repeat url("/local/images/background.jpg") fixed
+    theme: darkcyan
+    cards:
+      - type: entities
+        title: Peace Lilly
+        entities:
+          - sensor.plant_1_temperature
+          - sensor.plant_1_moisture
+          - sensor.plant_1_brightness
+          - sensor.plant_1_conductivity
+          - sensor.plant_1_battery
+
 
 
 #

@@ -67,6 +67,7 @@
 
 #energy
 - sensor.energy_cost_today
+- sensor.solar_system_cost_price_payback
 - sensor.energy_exported_today
 - sensor.energy_imported_offpeak_today
 - sensor.energy_imported_peak_today
@@ -89,3 +90,10 @@
 - device_tracker.raes_iphone
 - device_tracker.raesiphone
 - device_tracker.renee_iphone
+
+#plants
+- sensor.plant_1_temperature
+- sensor.plant_1_conductivity
+- sensor.plant_1_brightness
+- sensor.plant_1_moisture
+- sensor.plant_1_battery
