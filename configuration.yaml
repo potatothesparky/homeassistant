@@ -16,9 +16,6 @@ homeassistant:
 # Show links to resources in log and frontend
 #introduction:
 logger:
-  logs:
-    xiaomi_gateway: debug
-    switch.xiaomi_aqara: debug
 
 # Enables the frontend
 frontend:
@@ -151,10 +148,6 @@ camera:
     still_image_url: !secret bom_rain_radar
     limit_refetch_to_url_change: true
 
-remember_the_milk:
-  - name: your_rtm_account
-    api_key: !secret RTM_api_key
-    shared_secret: !secret RTM_shared_secret
 
 google:
   client_id: !secret google_calendar_ID
