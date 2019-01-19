@@ -1,4 +1,4 @@
-#- platform: rest
+- platform: rest
   resource: http://192.168.1.200:8126/container/grafana
   name: Grafana
   body_on: '{"state": "start"}'
