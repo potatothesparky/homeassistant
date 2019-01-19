@@ -32,6 +32,7 @@ http:
   api_password: !secret http_password
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
   base_url: !secret base_url
+  ssl_profile: intermediate
   ssl_certificate: !secret ssl_certificate
   ssl_key: !secret ssl_key
 
