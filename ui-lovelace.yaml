@@ -230,16 +230,16 @@ views:
 #              yellow: 0
 #              red: 5000
 
-      - type: entities
-        entities:
-          - sensor.energy_cost_today
-          - sensor.solar_system_cost_price_payback
+      # - type: entities
+      #   entities:
+      #     - sensor.energy_cost_today
+      #     - sensor.solar_system_cost_price_payback
 
       - type: entities
         entities:
-          - sensor.fronius_site_energy_day
-          - sensor.fronius_site_energy_year
-          - sensor.fronius_site_energy_total
+          # - sensor.fronius_site_energy_day
+          # - sensor.fronius_site_energy_year
+          # - sensor.fronius_site_energy_total
           - input_number.solar_energy_1
           - input_number.solar_energy_2
           - input_number.solar_energy_3
@@ -251,19 +251,19 @@ views:
 
       - type: entities
         entities:
-          - sensor.fronius_inverter_ac_voltage
-          - sensor.fronius_inverter_ac_frequency
-          - sensor.fronius_inverter_ac_current
-          - sensor.fronius_inverter_operating_state_text
-          - sensor.fronius_inverter_dc1_power
-          - sensor.fronius_inverter_dc1_voltage
-          - sensor.fronius_inverter_dc1_current
-          - sensor.fronius_inverter_dc2_power
-          - sensor.fronius_inverter_dc2_voltage
-          - sensor.fronius_inverter_dc2_current
-          - sensor.fronius_inverter_dc_total_power
-          - sensor.fronius_inverter_output_max_limit_pct
-          - sensor.fronius_inverter_output_max_limit_enable
+          # - sensor.fronius_inverter_ac_voltage
+          # - sensor.fronius_inverter_ac_frequency
+          # - sensor.fronius_inverter_ac_current
+          # - sensor.fronius_inverter_operating_state_text
+          # - sensor.fronius_inverter_dc1_power
+          # - sensor.fronius_inverter_dc1_voltage
+          # - sensor.fronius_inverter_dc1_current
+          # - sensor.fronius_inverter_dc2_power
+          # - sensor.fronius_inverter_dc2_voltage
+          # - sensor.fronius_inverter_dc2_current
+          # - sensor.fronius_inverter_dc_total_power
+          # - sensor.fronius_inverter_output_max_limit_pct
+          # - sensor.fronius_inverter_output_max_limit_enable
 
   - title: Garden
     id: garden

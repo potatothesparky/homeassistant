@@ -96,7 +96,7 @@
     binary_sensor.cube_158d0002486698:
       friendly_name: Bedroom Cube
 
-    device_tracker.david_iphone:
+    device_tracker.davids_iphone:
       friendly_name: David
       entity_picture: /local/images/dave.jpg
     device_tracker.raes_iphone:
