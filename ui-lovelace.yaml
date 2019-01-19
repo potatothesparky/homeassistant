@@ -44,25 +44,24 @@ views:
 
       - type: vertical-stack
         cards:
-          - type: custom:power-wheel-card
-            title: Power distribution
-            solar_power_entity: sensor.fronius_site_power_kw
-            solar_power_icon: mdi:solar-power
-            grid_power_entity: sensor.fronius_meter_power_kw
-            grid_power_icon: mdi:flash
-            home_power_icon: mdi:home
-            decimals: 2
-            color_power_icons: true
-            consuming_color: "#dd5500"
-            producing_color: "#33ff33"
-          - type: entities
-            entities:
-              - sensor.energy_cost_today
-              - sensor.energy_imported_peak_today
-              - sensor.energy_imported_shoulder_today
-              - sensor.energy_imported_offpeak_today
-              - sensor.energy_exported_today
-              - sensor.fronius_site_energy_day_kwh
+#          - type: custom:power-wheel-card
+#            title: Power distribution
+#            solar_power_entity: sensor.fronius_site_power_kw
+#            solar_power_icon: mdi:solar-power
+#            grid_power_entity: sensor.fronius_meter_power_kw
+#            grid_power_icon: mdi:flash
+#            home_power_icon: mdi:home
+#            decimals: 2
+#            color_power_icons: true
+#            consuming_color: "#dd5500"
+#            producing_color: "#33ff33"
+#          - type: entities
+#              - sensor.energy_cost_today
+#              - sensor.energy_imported_peak_today
+#              - sensor.energy_imported_shoulder_today
+#              - sensor.energy_imported_offpeak_today
+#              - sensor.energy_exported_today
+#              - sensor.fronius_site_energy_day_kwh
 
       - type: entity-filter
         entities:
@@ -83,9 +82,9 @@ views:
           - entity: sensor.holiday_countdown_string
             name: Holiday
 
-      - type: picture-entity
-        entity: switch.plug_158d00023efccc
-        image: /local/images/christmastree.jpg
+#      - type: picture-entity
+#        entity: switch.plug_158d00023efccc
+#        image: /local/images/christmastree.jpg
 
 
   - title:  Rooms
@@ -197,39 +196,39 @@ views:
     background: center / cover no-repeat url("/local/images/background.jpg") fixed
     theme: darkcyan
     cards:
-      - type: custom:power-wheel-card
-        title: Power distribution
-        solar_power_entity: sensor.fronius_site_power_kw
-        solar_power_icon: mdi:solar-power
-        grid_power_entity: sensor.fronius_meter_power_kw
-        grid_power_icon: mdi:flash
-        home_power_icon: mdi:home
-        decimals: 2
-        color_power_icons: true
-        consuming_color: "#dd5500"
-        producing_color: "#33ff33"
-      - type: horizontal-stack
-        cards:
-          - type: gauge
-            title: Solar
-            entity: sensor.fronius_site_power
-            unit_of_measurement: W
-            min: 0
-            max: 8300
-            severity:
-              green: 5000
-              yellow: 2000
-              red: 0
-          - type: gauge
-            title: Usage
-            entity: sensor.fronius_meter_power
-            unit_of_measurement: W
-            min: -10000
-            max: 10000
-            severity:
-              green: -10000
-              yellow: 0
-              red: 5000
+#      - type: custom:power-wheel-card
+#        title: Power distribution
+#        solar_power_entity: sensor.fronius_site_power_kw
+#        solar_power_icon: mdi:solar-power
+#        grid_power_entity: sensor.fronius_meter_power_kw
+#        grid_power_icon: mdi:flash
+#        home_power_icon: mdi:home
+#        decimals: 2
+#        color_power_icons: true
+#        consuming_color: "#dd5500"
+#        producing_color: "#33ff33"
+#      - type: horizontal-stack
+#        cards:
+#          - type: gauge
+#            title: Solar
+#            entity: sensor.fronius_site_power
+#            unit_of_measurement: W
+#            min: 0
+#            max: 8300
+#            severity:
+#              green: 5000
+#              yellow: 2000
+#              red: 0
+#          - type: gauge
+#            title: Usage
+#            entity: sensor.fronius_meter_power
+#            unit_of_measurement: W
+#            min: -10000
+#            max: 10000
+#            severity:
+#              green: -10000
+#              yellow: 0
+#              red: 5000
 
       - type: entities
         entities:
