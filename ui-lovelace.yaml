@@ -42,8 +42,8 @@ views:
           show_state: false
         show_empty: false
 
-      - type: vertical-stack
-        cards:
+#      - type: vertical-stack
+#        cards:
 #          - type: custom:power-wheel-card
 #            title: Power distribution
 #            solar_power_entity: sensor.fronius_site_power_kw
