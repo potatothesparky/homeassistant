@@ -4,6 +4,7 @@
 !*.py
 !.gitignore
 !.travis.yml
+!*.pem
 !sensors
 !influxdb
 !bin
