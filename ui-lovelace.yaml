@@ -38,26 +38,26 @@ views:
           show_state: false
         show_empty: false
 
-     - type: vertical-stack
-       cards:
-         - type: custom:power-wheel-card
-           title: Power distribution
-           solar_power_entity: sensor.fronius_site_power_kw
-           solar_power_icon: mdi:solar-power
-           grid_power_entity: sensor.fronius_meter_power_kw
-           grid_power_icon: mdi:flash
-           home_power_icon: mdi:home
-           decimals: 2
-           color_power_icons: true
-           consuming_color: "#dd5500"
-           producing_color: "#33ff33"
-         - type: entities
-             - sensor.energy_cost_today
-             - sensor.energy_imported_peak_today
-             - sensor.energy_imported_shoulder_today
-             - sensor.energy_imported_offpeak_today
-             - sensor.energy_exported_today
-             - sensor.fronius_site_energy_day_kwh
+      - type: vertical-stack
+        cards:
+          - type: custom:power-wheel-card
+            title: Power distribution
+            solar_power_entity: sensor.fronius_site_power_kw
+            solar_power_icon: mdi:solar-power
+            grid_power_entity: sensor.fronius_meter_power_kw
+            grid_power_icon: mdi:flash
+            home_power_icon: mdi:home
+            decimals: 2
+            color_power_icons: true
+            consuming_color: "#dd5500"
+            producing_color: "#33ff33"
+          - type: entities
+            - sensor.energy_cost_today
+            - sensor.energy_imported_peak_today
+            - sensor.energy_imported_shoulder_today
+            - sensor.energy_imported_offpeak_today
+            - sensor.energy_exported_today
+            - sensor.fronius_site_energy_day_kwh
 
       - type: entity-filter
         entities:
