@@ -29,255 +29,255 @@ views:
           - device_tracker.davids_iphone
           - device_tracker.raes_iphone
 
-      - type: entity-filter
-        title: Guests
-        entities:
-          - device_tracker.elisabehsiphone
-          - device_tracker.danielsiphone
-          - device_tracker.melsiphone
-        state_filter:
-          - "Home"
-        card:
-          title: Guests
-          show_state: false
-        show_empty: false
-
-     - type: vertical-stack
-       cards:
-         - type: custom:power-wheel-card
-           title: Power distribution
-           solar_power_entity: sensor.fronius_site_power_kw
-           solar_power_icon: mdi:solar-power
-           grid_power_entity: sensor.fronius_meter_power_kw
-           grid_power_icon: mdi:flash
-           home_power_icon: mdi:home
-           decimals: 2
-           color_power_icons: true
-           consuming_color: "#dd5500"
-           producing_color: "#33ff33"
-         - type: entities
-             - sensor.energy_cost_today
-             - sensor.energy_imported_peak_today
-             - sensor.energy_imported_shoulder_today
-             - sensor.energy_imported_offpeak_today
-             - sensor.energy_exported_today
-             - sensor.fronius_site_energy_day_kwh
-
-      - type: entity-filter
-        entities:
-          - input_boolean.chore_empty_washing_machine
-          - input_boolean.chore_empty_dryer
-          - input_boolean.chore_empty_dishwasher
-          - input_boolean.chore_feed_dogs
-          - input_boolean.chore_fertilise_garden
-        state_filter:
-          - "on"
-        card:
-          title: Chores
-        show_empty: false
-
-      - type: entities
-        title: Holiday
-        entities:
-          - entity: sensor.holiday_countdown_string
-            name: Holiday
+     #  - type: entity-filter
+     #    title: Guests
+     #    entities:
+     #      - device_tracker.elisabehsiphone
+     #      - device_tracker.danielsiphone
+     #      - device_tracker.melsiphone
+     #    state_filter:
+     #      - "Home"
+     #    card:
+     #      title: Guests
+     #      show_state: false
+     #    show_empty: false
+     #
+     # - type: vertical-stack
+     #   cards:
+     #     - type: custom:power-wheel-card
+     #       title: Power distribution
+     #       solar_power_entity: sensor.fronius_site_power_kw
+     #       solar_power_icon: mdi:solar-power
+     #       grid_power_entity: sensor.fronius_meter_power_kw
+     #       grid_power_icon: mdi:flash
+     #       home_power_icon: mdi:home
+     #       decimals: 2
+     #       color_power_icons: true
+     #       consuming_color: "#dd5500"
+     #       producing_color: "#33ff33"
+     #     - type: entities
+     #         - sensor.energy_cost_today
+     #         - sensor.energy_imported_peak_today
+     #         - sensor.energy_imported_shoulder_today
+     #         - sensor.energy_imported_offpeak_today
+     #         - sensor.energy_exported_today
+     #         - sensor.fronius_site_energy_day_kwh
+     #
+     #  - type: entity-filter
+     #    entities:
+     #      - input_boolean.chore_empty_washing_machine
+     #      - input_boolean.chore_empty_dryer
+     #      - input_boolean.chore_empty_dishwasher
+     #      - input_boolean.chore_feed_dogs
+     #      - input_boolean.chore_fertilise_garden
+     #    state_filter:
+     #      - "on"
+     #    card:
+     #      title: Chores
+     #    show_empty: false
+     #
+     #  - type: entities
+     #    title: Holiday
+     #    entities:
+     #      - entity: sensor.holiday_countdown_string
+     #        name: Holiday
 
 #      - type: picture-entity
 #        entity: switch.plug_158d00023efccc
 #        image: /local/images/christmastree.jpg
 
 
-  - title:  Rooms
-    id: rooms
-    background: center / cover no-repeat url("/local/images/background.jpg") fixed
-    theme: darkcyan
-    cards:
-      - type: glance
-        title: Lounge Room
-        entities:
-          - entity: switch.living_2_6
-            name: Lights
-            tap_action: toggle
-          - entity: binary_sensor.motion_sensor_158d0001d98554
-            name: Motion
-          - entity: input_boolean.lounge_pir_enable
-            name: Sensor Lights
-            tap_action: toggle
-          - entity: sensor.temperature_158d0001ad39a8
-            name: Temp
-          - entity: sensor.humidity_158d0001ad39a8
-            name: Humidity
+  # - title:  Rooms
+  #   id: rooms
+  #   background: center / cover no-repeat url("/local/images/background.jpg") fixed
+  #   theme: darkcyan
+  #   cards:
+  #     - type: glance
+  #       title: Lounge Room
+  #       entities:
+  #         - entity: switch.living_2_6
+  #           name: Lights
+  #           tap_action: toggle
+  #         - entity: binary_sensor.motion_sensor_158d0001d98554
+  #           name: Motion
+  #         - entity: input_boolean.lounge_pir_enable
+  #           name: Sensor Lights
+  #           tap_action: toggle
+  #         - entity: sensor.temperature_158d0001ad39a8
+  #           name: Temp
+  #         - entity: sensor.humidity_158d0001ad39a8
+  #           name: Humidity
+  #
+  #     - type: glance
+  #       title: Kitchen
+  #       entities:
+  #         - entity: switch.kitchen_4
+  #           name: Lights
+  #           tap_action: toggle
+  #         - entity: binary_sensor.motion_sensor_158d0001d6720e
+  #           name: Motion
+  #         - entity: input_boolean.kitchen_pir_enable
+  #           name: Sensor Lights
+  #           tap_action: toggle
+  #
+  #     - type: glance
+  #       title: Family Room
+  #       entities:
+  #         - entity: switch.living_5
+  #           name: Lights
+  #           tap_action: toggle
+  #         - entity: binary_sensor.motion_sensor_158d0001d67162
+  #           name: Motion
+  #         - entity: input_boolean.family_pir_enable
+  #           name: Sensor Lights
+  #           tap_action: toggle
+  #         - entity: sensor.temperature_158d0001b1c7c6
+  #           name: Temp
+  #         - entity: sensor.humidity_158d0001b1c7c6
+  #           name: Humidity
+  #
+  #     - type: glance
+  #       title: Master Bedroom
+  #       entities:
+  #         - entity: switch.master_bed_7
+  #           name: Lights
+  #           tap_action: toggle
+  #         - entity: light.rae_bedside
+  #           name: Rae
+  #         - entity: light.dave_bedside
+  #           name: Dave
+  #         - entity: sensor.temperature_158d0001dcc73d
+  #           name: Temp
+  #         - entity: sensor.humidity_158d0001dcc73d
+  #           name: Humidity
+  #
+  #     - type: glance
+  #       title: Study
+  #       entities:
+  #         - entity: sensor.temperature_158d00016fe9f4
+  #           name: Temp
+  #         - entity: sensor.humidity_158d00016fe9f4
+  #           name: Humidity
+  #
+  #     - type: glance
+  #       title: Spare Bedroom
+  #       entities:
+  #         - entity: sensor.temperature_158d00020f4c4f
+  #           name: Temp
+  #         - entity: sensor.humidity_158d00020f4c4f
+  #           name: Humidity
+  #
+  #     - type: glance
+  #       title: Garage
+  #       entities:
+  #         - entity: sensor.temperature_158d00022cd713
+  #           name: Temp
+  #         - entity: sensor.humidity_158d00022cd713
+  #           name: Humidity
+  #
+  #     - type: glance
+  #       title: Laundry
+  #       entities:
+  #         - entity: sensor.temperature_158d00022c7738
+  #           name: Temp
+  #         - entity: sensor.humidity_158d00022c7738
+  #           name: Humidity
+  #
+  #     - type: glance
+  #       title: Bathroom
+  #       entities:
+  #         - entity: sensor.temperature_158d00022c8ff3
+  #           name: Temp
+  #         - entity: sensor.humidity_158d00022c8ff3
+  #           name: Humidity
 
-      - type: glance
-        title: Kitchen
-        entities:
-          - entity: switch.kitchen_4
-            name: Lights
-            tap_action: toggle
-          - entity: binary_sensor.motion_sensor_158d0001d6720e
-            name: Motion
-          - entity: input_boolean.kitchen_pir_enable
-            name: Sensor Lights
-            tap_action: toggle
+#   - title: Energy
+#     id: energy
+#     background: center / cover no-repeat url("/local/images/background.jpg") fixed
+#     theme: darkcyan
+#     cards:
+# #      - type: custom:power-wheel-card
+# #        title: Power distribution
+# #        solar_power_entity: sensor.fronius_site_power_kw
+# #        solar_power_icon: mdi:solar-power
+# #        grid_power_entity: sensor.fronius_meter_power_kw
+# #        grid_power_icon: mdi:flash
+# #        home_power_icon: mdi:home
+# #        decimals: 2
+# #        color_power_icons: true
+# #        consuming_color: "#dd5500"
+# #        producing_color: "#33ff33"
+# #      - type: horizontal-stack
+# #        cards:
+# #          - type: gauge
+# #            title: Solar
+# #            entity: sensor.fronius_site_power
+# #            unit_of_measurement: W
+# #            min: 0
+# #            max: 8300
+# #            severity:
+# #              green: 5000
+# #              yellow: 2000
+# #              red: 0
+# #          - type: gauge
+# #            title: Usage
+#            # entity: sensor.fronius_meter_power
+#            # unit_of_measurement: W
+#            # min: -10000
+#            # max: 10000
+#            # severity:
+#            #   green: -10000
+#            #   yellow: 0
+#            #   red: 5000
+#
+#       # - type: entities
+#       #   entities:
+#       #     - sensor.energy_cost_today
+#       #     - sensor.solar_system_cost_price_payback
+#
+#       - type: entities
+#         entities:
+#           # - sensor.fronius_site_energy_day
+#           # - sensor.fronius_site_energy_year
+#           # - sensor.fronius_site_energy_total
+#           - input_number.solar_energy_1
+#           - input_number.solar_energy_2
+#           - input_number.solar_energy_3
+#           - input_number.solar_energy_4
+#           - input_number.solar_energy_5
+#           - input_number.solar_energy_6
+#           - input_number.solar_energy_7
+#
+#
+#       # - type: entities
+#       #   entities:
+#           # - sensor.fronius_inverter_ac_voltage
+#           # - sensor.fronius_inverter_ac_frequency
+#           # - sensor.fronius_inverter_ac_current
+#           # - sensor.fronius_inverter_operating_state_text
+#           # - sensor.fronius_inverter_dc1_power
+#           # - sensor.fronius_inverter_dc1_voltage
+#           # - sensor.fronius_inverter_dc1_current
+#           # - sensor.fronius_inverter_dc2_power
+#           # - sensor.fronius_inverter_dc2_voltage
+#           # - sensor.fronius_inverter_dc2_current
+#           # - sensor.fronius_inverter_dc_total_power
+#           # - sensor.fronius_inverter_output_max_limit_pct
+#           # - sensor.fronius_inverter_output_max_limit_enable
 
-      - type: glance
-        title: Family Room
-        entities:
-          - entity: switch.living_5
-            name: Lights
-            tap_action: toggle
-          - entity: binary_sensor.motion_sensor_158d0001d67162
-            name: Motion
-          - entity: input_boolean.family_pir_enable
-            name: Sensor Lights
-            tap_action: toggle
-          - entity: sensor.temperature_158d0001b1c7c6
-            name: Temp
-          - entity: sensor.humidity_158d0001b1c7c6
-            name: Humidity
-
-      - type: glance
-        title: Master Bedroom
-        entities:
-          - entity: switch.master_bed_7
-            name: Lights
-            tap_action: toggle
-          - entity: light.rae_bedside
-            name: Rae
-          - entity: light.dave_bedside
-            name: Dave
-          - entity: sensor.temperature_158d0001dcc73d
-            name: Temp
-          - entity: sensor.humidity_158d0001dcc73d
-            name: Humidity
-
-      - type: glance
-        title: Study
-        entities:
-          - entity: sensor.temperature_158d00016fe9f4
-            name: Temp
-          - entity: sensor.humidity_158d00016fe9f4
-            name: Humidity
-
-      - type: glance
-        title: Spare Bedroom
-        entities:
-          - entity: sensor.temperature_158d00020f4c4f
-            name: Temp
-          - entity: sensor.humidity_158d00020f4c4f
-            name: Humidity
-
-      - type: glance
-        title: Garage
-        entities:
-          - entity: sensor.temperature_158d00022cd713
-            name: Temp
-          - entity: sensor.humidity_158d00022cd713
-            name: Humidity
-
-      - type: glance
-        title: Laundry
-        entities:
-          - entity: sensor.temperature_158d00022c7738
-            name: Temp
-          - entity: sensor.humidity_158d00022c7738
-            name: Humidity
-
-      - type: glance
-        title: Bathroom
-        entities:
-          - entity: sensor.temperature_158d00022c8ff3
-            name: Temp
-          - entity: sensor.humidity_158d00022c8ff3
-            name: Humidity
-
-  - title: Energy
-    id: energy
-    background: center / cover no-repeat url("/local/images/background.jpg") fixed
-    theme: darkcyan
-    cards:
-#      - type: custom:power-wheel-card
-#        title: Power distribution
-#        solar_power_entity: sensor.fronius_site_power_kw
-#        solar_power_icon: mdi:solar-power
-#        grid_power_entity: sensor.fronius_meter_power_kw
-#        grid_power_icon: mdi:flash
-#        home_power_icon: mdi:home
-#        decimals: 2
-#        color_power_icons: true
-#        consuming_color: "#dd5500"
-#        producing_color: "#33ff33"
-#      - type: horizontal-stack
-#        cards:
-#          - type: gauge
-#            title: Solar
-#            entity: sensor.fronius_site_power
-#            unit_of_measurement: W
-#            min: 0
-#            max: 8300
-#            severity:
-#              green: 5000
-#              yellow: 2000
-#              red: 0
-#          - type: gauge
-#            title: Usage
-           # entity: sensor.fronius_meter_power
-           # unit_of_measurement: W
-           # min: -10000
-           # max: 10000
-           # severity:
-           #   green: -10000
-           #   yellow: 0
-           #   red: 5000
-
-      # - type: entities
-      #   entities:
-      #     - sensor.energy_cost_today
-      #     - sensor.solar_system_cost_price_payback
-
-      - type: entities
-        entities:
-          # - sensor.fronius_site_energy_day
-          # - sensor.fronius_site_energy_year
-          # - sensor.fronius_site_energy_total
-          - input_number.solar_energy_1
-          - input_number.solar_energy_2
-          - input_number.solar_energy_3
-          - input_number.solar_energy_4
-          - input_number.solar_energy_5
-          - input_number.solar_energy_6
-          - input_number.solar_energy_7
-
-
-      # - type: entities
-      #   entities:
-          # - sensor.fronius_inverter_ac_voltage
-          # - sensor.fronius_inverter_ac_frequency
-          # - sensor.fronius_inverter_ac_current
-          # - sensor.fronius_inverter_operating_state_text
-          # - sensor.fronius_inverter_dc1_power
-          # - sensor.fronius_inverter_dc1_voltage
-          # - sensor.fronius_inverter_dc1_current
-          # - sensor.fronius_inverter_dc2_power
-          # - sensor.fronius_inverter_dc2_voltage
-          # - sensor.fronius_inverter_dc2_current
-          # - sensor.fronius_inverter_dc_total_power
-          # - sensor.fronius_inverter_output_max_limit_pct
-          # - sensor.fronius_inverter_output_max_limit_enable
-
-  - title: Garden
-    id: garden
-    background: center / cover no-repeat url("/local/images/background.jpg") fixed
-    theme: darkcyan
-    cards:
-      - type: entities
-        title: Peace Lilly
-        entities:
-          - sensor.plant_1_temperature
-          - sensor.plant_1_moisture
-          - sensor.plant_1_brightness
-          - sensor.plant_1_conductivity
-          - sensor.plant_1_battery
+  # - title: Garden
+  #   id: garden
+  #   background: center / cover no-repeat url("/local/images/background.jpg") fixed
+  #   theme: darkcyan
+  #   cards:
+  #     - type: entities
+  #       title: Peace Lilly
+  #       entities:
+  #         - sensor.plant_1_temperature
+  #         - sensor.plant_1_moisture
+  #         - sensor.plant_1_brightness
+  #         - sensor.plant_1_conductivity
+  #         - sensor.plant_1_battery
 
 
 
