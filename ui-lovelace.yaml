@@ -26,7 +26,7 @@ views:
         title: People
         columns: 2
         entities:
-          - device_tracker.david_iphone
+          - device_tracker.davids_iphone
           - device_tracker.raes_iphone
 
       - type: entity-filter
@@ -42,26 +42,26 @@ views:
           show_state: false
         show_empty: false
 
-#      - type: vertical-stack
-#        cards:
-#          - type: custom:power-wheel-card
-#            title: Power distribution
-#            solar_power_entity: sensor.fronius_site_power_kw
-#            solar_power_icon: mdi:solar-power
-#            grid_power_entity: sensor.fronius_meter_power_kw
-#            grid_power_icon: mdi:flash
-#            home_power_icon: mdi:home
-#            decimals: 2
-#            color_power_icons: true
-#            consuming_color: "#dd5500"
-#            producing_color: "#33ff33"
-#          - type: entities
-#              - sensor.energy_cost_today
-#              - sensor.energy_imported_peak_today
-#              - sensor.energy_imported_shoulder_today
-#              - sensor.energy_imported_offpeak_today
-#              - sensor.energy_exported_today
-#              - sensor.fronius_site_energy_day_kwh
+     - type: vertical-stack
+       cards:
+         - type: custom:power-wheel-card
+           title: Power distribution
+           solar_power_entity: sensor.fronius_site_power_kw
+           solar_power_icon: mdi:solar-power
+           grid_power_entity: sensor.fronius_meter_power_kw
+           grid_power_icon: mdi:flash
+           home_power_icon: mdi:home
+           decimals: 2
+           color_power_icons: true
+           consuming_color: "#dd5500"
+           producing_color: "#33ff33"
+         - type: entities
+             - sensor.energy_cost_today
+             - sensor.energy_imported_peak_today
+             - sensor.energy_imported_shoulder_today
+             - sensor.energy_imported_offpeak_today
+             - sensor.energy_exported_today
+             - sensor.fronius_site_energy_day_kwh
 
       - type: entity-filter
         entities:
@@ -221,14 +221,14 @@ views:
 #              red: 0
 #          - type: gauge
 #            title: Usage
-#            entity: sensor.fronius_meter_power
-#            unit_of_measurement: W
-#            min: -10000
-#            max: 10000
-#            severity:
-#              green: -10000
-#              yellow: 0
-#              red: 5000
+           # entity: sensor.fronius_meter_power
+           # unit_of_measurement: W
+           # min: -10000
+           # max: 10000
+           # severity:
+           #   green: -10000
+           #   yellow: 0
+           #   red: 5000
 
       # - type: entities
       #   entities:
@@ -249,8 +249,8 @@ views:
           - input_number.solar_energy_7
 
 
-      - type: entities
-        entities:
+      # - type: entities
+      #   entities:
           # - sensor.fronius_inverter_ac_voltage
           # - sensor.fronius_inverter_ac_frequency
           # - sensor.fronius_inverter_ac_current
