@@ -1,10 +1,6 @@
 title: Home
 # Include external resources
 resources:
-  - url: /local/my-custom-card.js
-    type: js
-  - url: /local/my-webfont.css
-    type: css
   - url: /local/custom_ui/weather-card.js
     type: js
   - url: /local/custom_ui/weather-card.css
@@ -29,58 +25,58 @@ views:
           - device_tracker.davids_iphone
           - device_tracker.raes_iphone
 
-     #  - type: entity-filter
-     #    title: Guests
-     #    entities:
-     #      - device_tracker.elisabehsiphone
-     #      - device_tracker.danielsiphone
-     #      - device_tracker.melsiphone
-     #    state_filter:
-     #      - "Home"
-     #    card:
-     #      title: Guests
-     #      show_state: false
-     #    show_empty: false
-     #
-     # - type: vertical-stack
-     #   cards:
-     #     - type: custom:power-wheel-card
-     #       title: Power distribution
-     #       solar_power_entity: sensor.fronius_site_power_kw
-     #       solar_power_icon: mdi:solar-power
-     #       grid_power_entity: sensor.fronius_meter_power_kw
-     #       grid_power_icon: mdi:flash
-     #       home_power_icon: mdi:home
-     #       decimals: 2
-     #       color_power_icons: true
-     #       consuming_color: "#dd5500"
-     #       producing_color: "#33ff33"
-     #     - type: entities
-     #         - sensor.energy_cost_today
-     #         - sensor.energy_imported_peak_today
-     #         - sensor.energy_imported_shoulder_today
-     #         - sensor.energy_imported_offpeak_today
-     #         - sensor.energy_exported_today
-     #         - sensor.fronius_site_energy_day_kwh
-     #
-     #  - type: entity-filter
-     #    entities:
-     #      - input_boolean.chore_empty_washing_machine
-     #      - input_boolean.chore_empty_dryer
-     #      - input_boolean.chore_empty_dishwasher
-     #      - input_boolean.chore_feed_dogs
-     #      - input_boolean.chore_fertilise_garden
-     #    state_filter:
-     #      - "on"
-     #    card:
-     #      title: Chores
-     #    show_empty: false
-     #
-     #  - type: entities
-     #    title: Holiday
-     #    entities:
-     #      - entity: sensor.holiday_countdown_string
-     #        name: Holiday
+      - type: entity-filter
+        title: Guests
+        entities:
+          - device_tracker.elisabehsiphone
+          - device_tracker.danielsiphone
+          - device_tracker.melsiphone
+        state_filter:
+          - "Home"
+        card:
+          title: Guests
+          show_state: false
+        show_empty: false
+
+     - type: vertical-stack
+       cards:
+         - type: custom:power-wheel-card
+           title: Power distribution
+           solar_power_entity: sensor.fronius_site_power_kw
+           solar_power_icon: mdi:solar-power
+           grid_power_entity: sensor.fronius_meter_power_kw
+           grid_power_icon: mdi:flash
+           home_power_icon: mdi:home
+           decimals: 2
+           color_power_icons: true
+           consuming_color: "#dd5500"
+           producing_color: "#33ff33"
+         - type: entities
+             - sensor.energy_cost_today
+             - sensor.energy_imported_peak_today
+             - sensor.energy_imported_shoulder_today
+             - sensor.energy_imported_offpeak_today
+             - sensor.energy_exported_today
+             - sensor.fronius_site_energy_day_kwh
+
+      - type: entity-filter
+        entities:
+          - input_boolean.chore_empty_washing_machine
+          - input_boolean.chore_empty_dryer
+          - input_boolean.chore_empty_dishwasher
+          - input_boolean.chore_feed_dogs
+          - input_boolean.chore_fertilise_garden
+        state_filter:
+          - "on"
+        card:
+          title: Chores
+        show_empty: false
+
+      - type: entities
+        title: Holiday
+        entities:
+          - entity: sensor.holiday_countdown_string
+            name: Holiday
 
 #      - type: picture-entity
 #        entity: switch.plug_158d00023efccc
