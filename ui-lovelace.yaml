@@ -1,15 +1,15 @@
 title: Home
 # Include external resources
 resources:
-  - url: /local/custom_ui/weather-card.js
-    type: js
-  - url: /local/custom_ui/weather-card.css
-    type: css
-  - url: /local/custom_ui/dark-sky-weather-card.js?v=2
-    type: js
-  - url: /local/custom_ui/dark-sky-weather-card.css
-    type: css
-  - url: /local/custom_ui/power-wheel-card.js?v=1
+  # - url: /local/custom_ui/weather-card.js
+  #   type: js
+  # - url: /local/custom_ui/weather-card.css
+  #   type: css
+  # - url: /local/custom_ui/dark-sky-weather-card.js?v=2
+  #   type: js
+  # - url: /local/custom_ui/dark-sky-weather-card.css
+  #   type: css
+  - url: /local/custom_ui/power-wheel-card.js?v=2
     type: module
 
 views:
@@ -43,12 +43,13 @@ views:
           - type: custom:power-wheel-card
             title: Power distribution
             solar_power_entity: sensor.fronius_site_power_kw
-            solar_power_icon: mdi:solar-power
-            grid_power_entity: sensor.fronius_meter_power_kw
-            grid_power_icon: mdi:flash
-            home_power_icon: mdi:home
-            decimals: 2
-            color_power_icons: true
+            grid_power_consumption_entity: sensor.fronius_meter_power_consumption
+            grid_power_production_entity: sensor.fronius_meter_power_production
+            solar_icon: mdi:solar-power
+            grid_icon: mdi:trasmission-tower
+            home_icon: mdi:home
+            power_decimals: 2
+            color_icons: true
             consuming_color: "#dd5500"
             producing_color: "#33ff33"
           - type: entities

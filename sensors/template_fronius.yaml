@@ -74,3 +74,27 @@
         {% else %}
           n/a
         {% endif %}
+
+    fronius_meter_power_consumption:
+      friendly_name: Grid Consumption
+      icon_template: mdi:flash
+      entity_id: sensor.fronius_meter_power
+      unit_of_measurement: kW
+      value_template: >-
+        {% if states('sensor.fronius_meter_power')|float > 0 %}
+          {{ (states('sensor.fronius_meter_power')|float / 1000)|round(2) }}
+        {% else %}
+          0|float
+        {% endif %}
+
+    fronius_meter_power_production:
+      friendly_name: Grid Production
+      icon_template: mdi:flash
+      entity_id: sensor.fronius_meter_power
+      unit_of_measurement: kW
+      value_template: >-
+        {% if states('sensor.fronius_meter_power')|float < 0 %}
+          {{ (states('sensor.fronius_meter_power')|float / -1000)|round(2) }}
+        {% else %}
+          0|float
+        {% endif %}
