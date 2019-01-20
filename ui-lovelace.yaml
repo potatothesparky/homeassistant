@@ -46,7 +46,7 @@ views:
             grid_power_consumption_entity: sensor.fronius_meter_power_consumption
             grid_power_production_entity: sensor.fronius_meter_power_production
             solar_icon: mdi:solar-power
-            grid_icon: mdi:trasmission-tower
+            grid_icon: mdi:transmission-tower
             home_icon: mdi:home
             power_decimals: 2
             color_icons: true
