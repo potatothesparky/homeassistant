@@ -85,109 +85,109 @@ views:
 #        image: /local/images/christmastree.jpg
 
 
-  # - title:  Rooms
-  #   id: rooms
-  #   background: center / cover no-repeat url("/local/images/background.jpg") fixed
-  #   theme: darkcyan
-  #   cards:
-  #     - type: glance
-  #       title: Lounge Room
-  #       entities:
-  #         - entity: switch.living_2_6
-  #           name: Lights
-  #           tap_action: toggle
-  #         - entity: binary_sensor.motion_sensor_158d0001d98554
-  #           name: Motion
-  #         - entity: input_boolean.lounge_pir_enable
-  #           name: Sensor Lights
-  #           tap_action: toggle
-  #         - entity: sensor.temperature_158d0001ad39a8
-  #           name: Temp
-  #         - entity: sensor.humidity_158d0001ad39a8
-  #           name: Humidity
-  #
-  #     - type: glance
-  #       title: Kitchen
-  #       entities:
-  #         - entity: switch.kitchen_4
-  #           name: Lights
-  #           tap_action: toggle
-  #         - entity: binary_sensor.motion_sensor_158d0001d6720e
-  #           name: Motion
-  #         - entity: input_boolean.kitchen_pir_enable
-  #           name: Sensor Lights
-  #           tap_action: toggle
-  #
-  #     - type: glance
-  #       title: Family Room
-  #       entities:
-  #         - entity: switch.living_5
-  #           name: Lights
-  #           tap_action: toggle
-  #         - entity: binary_sensor.motion_sensor_158d0001d67162
-  #           name: Motion
-  #         - entity: input_boolean.family_pir_enable
-  #           name: Sensor Lights
-  #           tap_action: toggle
-  #         - entity: sensor.temperature_158d0001b1c7c6
-  #           name: Temp
-  #         - entity: sensor.humidity_158d0001b1c7c6
-  #           name: Humidity
-  #
-  #     - type: glance
-  #       title: Master Bedroom
-  #       entities:
-  #         - entity: switch.master_bed_7
-  #           name: Lights
-  #           tap_action: toggle
-  #         - entity: light.rae_bedside
-  #           name: Rae
-  #         - entity: light.dave_bedside
-  #           name: Dave
-  #         - entity: sensor.temperature_158d0001dcc73d
-  #           name: Temp
-  #         - entity: sensor.humidity_158d0001dcc73d
-  #           name: Humidity
-  #
-  #     - type: glance
-  #       title: Study
-  #       entities:
-  #         - entity: sensor.temperature_158d00016fe9f4
-  #           name: Temp
-  #         - entity: sensor.humidity_158d00016fe9f4
-  #           name: Humidity
-  #
-  #     - type: glance
-  #       title: Spare Bedroom
-  #       entities:
-  #         - entity: sensor.temperature_158d00020f4c4f
-  #           name: Temp
-  #         - entity: sensor.humidity_158d00020f4c4f
-  #           name: Humidity
-  #
-  #     - type: glance
-  #       title: Garage
-  #       entities:
-  #         - entity: sensor.temperature_158d00022cd713
-  #           name: Temp
-  #         - entity: sensor.humidity_158d00022cd713
-  #           name: Humidity
-  #
-  #     - type: glance
-  #       title: Laundry
-  #       entities:
-  #         - entity: sensor.temperature_158d00022c7738
-  #           name: Temp
-  #         - entity: sensor.humidity_158d00022c7738
-  #           name: Humidity
-  #
-  #     - type: glance
-  #       title: Bathroom
-  #       entities:
-  #         - entity: sensor.temperature_158d00022c8ff3
-  #           name: Temp
-  #         - entity: sensor.humidity_158d00022c8ff3
-  #           name: Humidity
+  - title:  Rooms
+    id: rooms
+    background: center / cover no-repeat url("/local/images/background.jpg") fixed
+    theme: darkcyan
+    cards:
+      - type: glance
+        title: Lounge Room
+        entities:
+          - entity: switch.living_2_6
+            name: Lights
+            tap_action: toggle
+          - entity: binary_sensor.motion_sensor_158d0001d98554
+            name: Motion
+          - entity: input_boolean.lounge_pir_enable
+            name: Sensor Lights
+            tap_action: toggle
+          - entity: sensor.temperature_158d0001ad39a8
+            name: Temp
+          - entity: sensor.humidity_158d0001ad39a8
+            name: Humidity
+
+      - type: glance
+        title: Kitchen
+        entities:
+          - entity: switch.kitchen_4
+            name: Lights
+            tap_action: toggle
+          - entity: binary_sensor.motion_sensor_158d0001d6720e
+            name: Motion
+          - entity: input_boolean.kitchen_pir_enable
+            name: Sensor Lights
+            tap_action: toggle
+
+      - type: glance
+        title: Family Room
+        entities:
+          - entity: switch.living_5
+            name: Lights
+            tap_action: toggle
+          - entity: binary_sensor.motion_sensor_158d0001d67162
+            name: Motion
+          - entity: input_boolean.family_pir_enable
+            name: Sensor Lights
+            tap_action: toggle
+          - entity: sensor.temperature_158d0001b1c7c6
+            name: Temp
+          - entity: sensor.humidity_158d0001b1c7c6
+            name: Humidity
+
+      - type: glance
+        title: Master Bedroom
+        entities:
+          - entity: switch.master_bed_7
+            name: Lights
+            tap_action: toggle
+          - entity: light.rae_bedside
+            name: Rae
+          - entity: light.dave_bedside
+            name: Dave
+          - entity: sensor.temperature_158d0001dcc73d
+            name: Temp
+          - entity: sensor.humidity_158d0001dcc73d
+            name: Humidity
+
+      - type: glance
+        title: Study
+        entities:
+          - entity: sensor.temperature_158d00016fe9f4
+            name: Temp
+          - entity: sensor.humidity_158d00016fe9f4
+            name: Humidity
+
+      - type: glance
+        title: Spare Bedroom
+        entities:
+          - entity: sensor.temperature_158d00020f4c4f
+            name: Temp
+          - entity: sensor.humidity_158d00020f4c4f
+            name: Humidity
+
+      - type: glance
+        title: Garage
+        entities:
+          - entity: sensor.temperature_158d00022cd713
+            name: Temp
+          - entity: sensor.humidity_158d00022cd713
+            name: Humidity
+
+      - type: glance
+        title: Laundry
+        entities:
+          - entity: sensor.temperature_158d00022c7738
+            name: Temp
+          - entity: sensor.humidity_158d00022c7738
+            name: Humidity
+
+      - type: glance
+        title: Bathroom
+        entities:
+          - entity: sensor.temperature_158d00022c8ff3
+            name: Temp
+          - entity: sensor.humidity_158d00022c8ff3
+            name: Humidity
 
 #   - title: Energy
 #     id: energy
