@@ -80,8 +80,8 @@ views:
           - entity: sensor.holiday_countdown_string
             name: Holiday
 
-     - type: entity-button
-       entity: switch.plug_158d00023efccc
+      - type: entity-button
+        entity: switch.plug_158d00023efccc
 
 
   - title:  Rooms
