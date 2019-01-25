@@ -80,9 +80,8 @@ views:
           - entity: sensor.holiday_countdown_string
             name: Holiday
 
-#      - type: picture-entity
-#        entity: switch.plug_158d00023efccc
-#        image: /local/images/christmastree.jpg
+     - type: entity-button
+       entity: switch.plug_158d00023efccc
 
 
   - title:  Rooms
@@ -189,93 +188,93 @@ views:
           - entity: sensor.humidity_158d00022c8ff3
             name: Humidity
 
-#   - title: Energy
-#     id: energy
-#     background: center / cover no-repeat url("/local/images/background.jpg") fixed
-#     theme: darkcyan
-#     cards:
-# #      - type: custom:power-wheel-card
-# #        title: Power distribution
-# #        solar_power_entity: sensor.fronius_site_power_kw
-# #        solar_power_icon: mdi:solar-power
-# #        grid_power_entity: sensor.fronius_meter_power_kw
-# #        grid_power_icon: mdi:flash
-# #        home_power_icon: mdi:home
-# #        decimals: 2
-# #        color_power_icons: true
-# #        consuming_color: "#dd5500"
-# #        producing_color: "#33ff33"
-# #      - type: horizontal-stack
-# #        cards:
-# #          - type: gauge
-# #            title: Solar
-# #            entity: sensor.fronius_site_power
-# #            unit_of_measurement: W
-# #            min: 0
-# #            max: 8300
-# #            severity:
-# #              green: 5000
-# #              yellow: 2000
-# #              red: 0
-# #          - type: gauge
-# #            title: Usage
-#            # entity: sensor.fronius_meter_power
-#            # unit_of_measurement: W
-#            # min: -10000
-#            # max: 10000
-#            # severity:
-#            #   green: -10000
-#            #   yellow: 0
-#            #   red: 5000
-#
-#       # - type: entities
-#       #   entities:
-#       #     - sensor.energy_cost_today
-#       #     - sensor.solar_system_cost_price_payback
-#
-#       - type: entities
-#         entities:
-#           # - sensor.fronius_site_energy_day
-#           # - sensor.fronius_site_energy_year
-#           # - sensor.fronius_site_energy_total
-#           - input_number.solar_energy_1
-#           - input_number.solar_energy_2
-#           - input_number.solar_energy_3
-#           - input_number.solar_energy_4
-#           - input_number.solar_energy_5
-#           - input_number.solar_energy_6
-#           - input_number.solar_energy_7
-#
-#
-#       # - type: entities
-#       #   entities:
-#           # - sensor.fronius_inverter_ac_voltage
-#           # - sensor.fronius_inverter_ac_frequency
-#           # - sensor.fronius_inverter_ac_current
-#           # - sensor.fronius_inverter_operating_state_text
-#           # - sensor.fronius_inverter_dc1_power
-#           # - sensor.fronius_inverter_dc1_voltage
-#           # - sensor.fronius_inverter_dc1_current
-#           # - sensor.fronius_inverter_dc2_power
-#           # - sensor.fronius_inverter_dc2_voltage
-#           # - sensor.fronius_inverter_dc2_current
-#           # - sensor.fronius_inverter_dc_total_power
-#           # - sensor.fronius_inverter_output_max_limit_pct
-#           # - sensor.fronius_inverter_output_max_limit_enable
+  - title: Energy
+    id: energy
+    background: center / cover no-repeat url("/local/images/background.jpg") fixed
+    theme: darkcyan
+    cards:
+     - type: custom:power-wheel-card
+       title: Power distribution
+       solar_power_entity: sensor.fronius_site_power_kw
+       solar_power_icon: mdi:solar-power
+       grid_power_entity: sensor.fronius_meter_power_kw
+       grid_power_icon: mdi:flash
+       home_power_icon: mdi:home
+       decimals: 2
+       color_power_icons: true
+       consuming_color: "#dd5500"
+       producing_color: "#33ff33"
+     - type: horizontal-stack
+       cards:
+         - type: gauge
+           title: Solar
+           entity: sensor.fronius_site_power
+           unit_of_measurement: W
+           min: 0
+           max: 8300
+           severity:
+             green: 5000
+             yellow: 2000
+             red: 0
+         - type: gauge
+           title: Usage
+           entity: sensor.fronius_meter_power
+           unit_of_measurement: W
+           min: -10000
+           max: 10000
+           severity:
+             green: -10000
+             yellow: 0
+             red: 5000
 
-  # - title: Garden
-  #   id: garden
-  #   background: center / cover no-repeat url("/local/images/background.jpg") fixed
-  #   theme: darkcyan
-  #   cards:
-  #     - type: entities
-  #       title: Peace Lilly
-  #       entities:
-  #         - sensor.plant_1_temperature
-  #         - sensor.plant_1_moisture
-  #         - sensor.plant_1_brightness
-  #         - sensor.plant_1_conductivity
-  #         - sensor.plant_1_battery
+      - type: entities
+        entities:
+          - sensor.energy_cost_today
+          - sensor.solar_system_cost_price_payback
+
+      - type: entities
+        entities:
+          - sensor.fronius_site_energy_day
+          - sensor.fronius_site_energy_year
+          - sensor.fronius_site_energy_total
+          - input_number.solar_energy_1
+          - input_number.solar_energy_2
+          - input_number.solar_energy_3
+          - input_number.solar_energy_4
+          - input_number.solar_energy_5
+          - input_number.solar_energy_6
+          - input_number.solar_energy_7
+
+
+      - type: entities
+        entities:
+          - sensor.fronius_inverter_ac_voltage
+          - sensor.fronius_inverter_ac_frequency
+          - sensor.fronius_inverter_ac_current
+          - sensor.fronius_inverter_operating_state_text
+          - sensor.fronius_inverter_dc1_power
+          - sensor.fronius_inverter_dc1_voltage
+          - sensor.fronius_inverter_dc1_current
+          - sensor.fronius_inverter_dc2_power
+          - sensor.fronius_inverter_dc2_voltage
+          - sensor.fronius_inverter_dc2_current
+          - sensor.fronius_inverter_dc_total_power
+          - sensor.fronius_inverter_output_max_limit_pct
+          - sensor.fronius_inverter_output_max_limit_enable
+
+  - title: Garden
+    id: garden
+    background: center / cover no-repeat url("/local/images/background.jpg") fixed
+    theme: darkcyan
+    cards:
+      - type: entities
+        title: Peace Lilly
+        entities:
+          - sensor.plant_1_temperature
+          - sensor.plant_1_moisture
+          - sensor.plant_1_brightness
+          - sensor.plant_1_conductivity
+          - sensor.plant_1_battery
 
 
 
