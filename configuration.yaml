@@ -32,21 +32,6 @@ http:
   api_password: !secret http_password
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
   base_url: !secret base_url
-#  ssl_profile: intermediate
-#  ssl_certificate: !secret ssl_certificate
-#  ssl_key: !secret ssl_key
-#  cors_allowed_origins:
-#    - https://google.com
-#    - https://www.home-assistant.io
-#  use_x_forwarded_for: true
-#  trusted_proxies:
-#    - 127.0.0.1
-#    - ::1
-#  trusted_networks:
-#    - 127.0.0.1
-#    - ::1
-#    - 192.168.1.0/24
-#    - fd00::/8
 
 # Checks for available updates
 # Note: This component will send some information about your system to
@@ -82,6 +67,11 @@ weather:
     woeid: 1100968
 
 ios:
+
+telegram_bot:
+  api_key: !secret telegram_bot_api
+  allowed_chat_ids:
+    - !secret telegram_bot_user_dave
 
 mqtt:
   broker: 192.168.1.10
