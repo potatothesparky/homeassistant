@@ -196,12 +196,13 @@ views:
       - type: custom:power-wheel-card
         title: Power distribution
         solar_power_entity: sensor.fronius_site_power_kw
-        solar_power_icon: mdi:solar-power
-        grid_power_entity: sensor.fronius_meter_power_kw
-        grid_power_icon: mdi:flash
-        home_power_icon: mdi:home
-        decimals: 2
-        color_power_icons: true
+        grid_power_consumption_entity: sensor.fronius_meter_power_consumption
+        grid_power_production_entity: sensor.fronius_meter_power_production
+        solar_icon: mdi:solar-power
+        grid_icon: mdi:flash
+        home_icon: mdi:home
+        power_decimals: 2
+        color_icons: true
         consuming_color: "#dd5500"
         producing_color: "#33ff33"
       - type: horizontal-stack
