@@ -69,9 +69,10 @@ weather:
 ios:
 
 telegram_bot:
-  api_key: !secret telegram_bot_api
-  allowed_chat_ids:
-    - !secret telegram_bot_user_dave
+  - platform: webhooks
+    api_key: !secret telegram_bot_api
+    allowed_chat_ids:
+      - !secret telegram_bot_user_dave
 
 mqtt:
   broker: 192.168.1.10
