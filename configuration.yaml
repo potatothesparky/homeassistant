@@ -114,7 +114,7 @@ input_text:
 notify:
   - platform: ios
 
-  - name: lemonhouse
+  - name: telegram_dave
     platform: telegram
     chat_id: !secret telegram_bot_user_dave
 
