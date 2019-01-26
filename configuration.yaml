@@ -71,6 +71,7 @@ ios:
 telegram_bot:
   - platform: webhooks
     api_key: !secret telegram_bot_api
+    url: !secret telegram_bot_url
     allowed_chat_ids:
       - !secret telegram_bot_user_dave
 
