@@ -72,6 +72,8 @@ telegram_bot:
   - platform: webhooks
     api_key: !secret telegram_bot_api
     url: !secret telegram_bot_url
+    trusted_networks:
+      - 10.0.3.4
     allowed_chat_ids:
       - !secret telegram_bot_user_dave
 
