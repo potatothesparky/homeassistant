@@ -114,6 +114,10 @@ input_text:
 notify:
   - platform: ios
 
+  - name: lemonhouse
+    platform: telegram
+    chat_id: !secret telegram_bot_user_dave
+
 media_player:
   - platform: samsungtv
     host: 192.168.1.172
