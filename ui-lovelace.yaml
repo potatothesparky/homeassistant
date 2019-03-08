@@ -11,6 +11,8 @@ resources:
   #   type: css
   - url: /local/custom_ui/power-wheel-card.js?v=4
     type: module
+  - url: /local/custom_ui/upcoming-media-card.js?v=1
+    type: js
 
 views:
   - title: home
@@ -284,7 +286,15 @@ views:
           - sensor.plant_1_conductivity
           - sensor.plant_1_battery
 
-
+  - title: Media
+    id: media
+    background: center / cover no-repeat url("/local/images/background.jpg") fixed
+    theme: darkcyan
+    cards:
+      - type: custom:upcoming-media-card
+        entity: sensor.plex_recently_added
+        title: New Media
+        date: ddmm
 
 #
 #  - icon: mdi:weather-cloudy
