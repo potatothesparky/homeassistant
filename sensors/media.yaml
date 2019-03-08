@@ -3,4 +3,4 @@
   host: 192.168.1.10
   port: 32400
   max: 10
-  img_dir: 'images/plex_recently_added/'
+  img_dir: '/images/plex_recently_added/'
