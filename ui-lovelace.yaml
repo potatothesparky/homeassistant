@@ -13,7 +13,7 @@ resources:
     type: module
   - url: /customcards/custom_ui/upcoming-media-card.js?track=true
     type: js
-  - url: /customcards/github/custom-cards/tracker-card.js?track=true
+  - url: /customcards/custom_ui/tracker-card.js?track=true
     type: module
 
 views:
