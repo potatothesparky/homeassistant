@@ -9,10 +9,12 @@ resources:
   #   type: js
   # - url: /local/custom_ui/dark-sky-weather-card.css
   #   type: css
-  - url: /local/custom_ui/power-wheel-card.js?v=4
+  - url: /customcards/custom_ui/power-wheel-card.js?track=true
     type: module
-  - url: /local/custom_ui/upcoming-media-card.js?v=1
+  - url: /customcards/custom_ui/upcoming-media-card.js?track=true
     type: js
+  - url: /customcards/github/custom-cards/tracker-card.js?track=true
+    type: module
 
 views:
   - title: home
@@ -295,6 +297,13 @@ views:
         entity: sensor.plex_recently_added
         title: New Media
         date: ddmm
+
+  - title: Settings
+    id: settings
+    background: center / cover no-repeat url("/local/images/background.jpg") fixed
+    theme: darkcyan
+    cards:
+      - type: custom:tracker-card
 
 #
 #  - icon: mdi:weather-cloudy

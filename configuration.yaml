@@ -27,6 +27,8 @@ lovelace:
 # Enables configuration UI
 config:
 
+custom_updater:
+
 http:
   # Secrets are defined in the file secrets.yaml
   api_password: !secret http_password
