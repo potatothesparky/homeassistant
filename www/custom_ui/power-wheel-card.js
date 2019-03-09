@@ -1,95 +1,240 @@
-import {
-  LitElement, html
-} from 'https://unpkg.com/@polymer/lit-element@^0.6.5/lit-element.js?module';
+/**
+ *
+ * power-wheel-card by Gerben ten Hove
+ * https://github.com/gurbyz/custom-cards-lovelace/tree/master/power-wheel-card
+ *
+ */
+
+const __VERSION = "0.0.11";
+
+const LitElement = Object.getPrototypeOf(customElements.get("home-assistant-main"));
+const html = LitElement.prototype.html;
+const css = LitElement.prototype.css;
 
 class PowerWheelCard extends LitElement {
   static get properties() {
     return {
-      hass: Object,
-      config: Object,
+      hass: { type: Object },
+      config: { type: Object },
+      autoToggleView: { type: Boolean },
+      autoToggleViewTimerId: { type: Number },
+      data: { type: Object },
+      messages: { type: Array },
+      sensors: { type: Array },
+      view: { type: String },
+      views: { type: Object },
     }
-  };
+  }
 
-  _generateClass(producingIsPositive, value) {
-    if (producingIsPositive) {
-      return value > 0 ? 'producing' : ((value < 0) ? 'consuming' : 'inactive');
-    } else {
-      return value > 0 ? 'consuming' : ((value < 0) ? 'producing' : 'inactive');
-    }
-  };
+  static get styles() {
+    return [css`
+      ha-card {
+        padding: 16px;
+      }
+      ha-card .header {
+        font-family: var(--paper-font-headline_-_font-family);
+        -webkit-font-smoothing: var(--paper-font-headline_-_-webkit-font-smoothing);
+        font-size: var(--paper-font-headline_-_font-size);
+        font-weight: var(--paper-font-headline_-_font-weight);
+        letter-spacing: var(--paper-font-headline_-_letter-spacing);
+        line-height: var(--paper-font-headline_-_line-height);
+        color: var(--primary-text-color);
+        padding: 4px 0 12px;
+        display: flex;
+        justify-content: space-between;
+      }
+      ha-card .wheel {
+        position: relative;
+      }
+      ha-card .row {
+        display: flex;
+        justify-content: center;
+        padding: 8px;
+        align-items: center;
+        height: 60px;
+      }
+      ha-card .cell {
+        text-align: center;
+        width: 150px;
+      }
+      ha-card .cell.position {
+        font-weight: bold;
+      }
+      ha-card .cell.arrow {
+        color: var(--state-icon-unavailable-color, #bdbdbd);
+      }
+      ha-card .cell.sensor {
+        cursor: pointer;
+      }
+      .value {
+          min-height: 16px;
+        }
+      .unit-container {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 230px;
+      }
+      #unit {
+        padding: 3px 10px;
+        font-size: calc(1.5 * var(--paper-font-headline_-_font-size));
+      }
+      #unit.toggle {
+        cursor: pointer;
+      }
+      ha-icon {
+        transition: color 0.5s ease-in-out, filter 0.3s ease-in-out;
+        color: var(--paper-item-icon-color, #44739e);
+        width: 48px;
+        height: 48px;
+      }
+      ha-icon.active {
+        color: var(--paper-item-icon-active-color, #fdd835);
+      }
+      ha-icon.inactive {
+        color: var(--state-icon-unavailable-color, #bdbdbd);
+      }
+      ha-icon#toggle-button {
+        padding-top: 4px;
+        width: 24px;
+        height: 24px;
+        float: right;
+        cursor: pointer;
+      }
+      .message {
+        display: block;
+        color: white;
+        padding: 8px;
+        font-weight: 500;
+        margin-bottom: 3px;
+      }
+      .message.error {
+        background-color: #ef5350;
+      }
+      .message.warn {
+        background-color: #fdd835;
+      }
+    `];
+  }
 
-  _makePositionObject(hass, val, entity, configIcon, defaultIcon, decimals, producingIsPositive) {
-    const stateStr = typeof val === 'undefined' ? 'unavailable' : val.toFixed(decimals);
-    const stateObj = hass.states[entity];
+  /* Card functions */
+
+  _generateClass(value) {
+    return value > 0 ? 'producing' : ((value < 0) ? 'consuming' : 'inactive');
+  }
+
+  _generateValueStr(value, decimals) {
+    return this.config.color_icons ? Math.abs(value).toFixed(decimals): value.toFixed(decimals);
+  }
+
+  _makePositionObject(val, entity, configIcon, defaultIcon, decimals) {
+    const valueStr = typeof val === 'undefined' ? 'unavailable' : this._generateValueStr(val, decimals);
+    const stateObj = this.hass.states[entity];
     const icon = configIcon ? configIcon : (stateObj && stateObj.attributes.icon ? stateObj.attributes.icon : defaultIcon);
-    const classValue = this._generateClass(producingIsPositive, val);
+    const classValue = this._generateClass(val);
 
     return {
       stateObj,
-      stateStr,
-      val,
-      icon,
-      classValue,
-    };
-  };
-
-  _makeArrowObject(val, icon, decimals) {
-    const valueStr = typeof val === 'undefined' ? 'unavailable' : val.toFixed(decimals);
-    const classValue = typeof val !== 'undefined' && val > 0 ? 'active' : 'inactive';
-
-    return {
       valueStr,
       val,
       icon,
-      classValue
+      classValue,
+      hasSensor: !!stateObj && this.view !== 'money',
     }
-  };
+  }
 
-  _calculateSolarValue(hass, solar_entity) {
-    const solarStateObj = hass.states[solar_entity];
+  _makeArrowObject(val, entity, iconNormal, iconReversed, decimals) {
+    const valueStr = typeof val === 'undefined' ? 'unavailable' : Math.abs(val).toFixed(decimals);
+    const stateObj = entity ? this.hass.states[entity] : false;
+    const classValue = typeof val !== 'undefined' && val === 0 ? 'inactive' : 'active';
+    const icon = typeof val !== 'undefined' && val < 0 ? iconReversed : iconNormal;
+
+    return {
+      stateObj,
+      valueStr,
+      val,
+      icon,
+      classValue,
+      hasSensor: !!stateObj,
+    }
+  }
+
+  _calculateSolarValue(solar_entity) {
+    const solarStateObj = this.hass.states[solar_entity];
     return solarStateObj ? parseFloat(solarStateObj.state) : undefined;
-  };
+  }
 
-  _calculateGrid2HomeValue(hass, grid_consumption_entity) {
-    const gridConsumptionStateObj = hass.states[grid_consumption_entity];
-    return gridConsumptionStateObj ? parseFloat(gridConsumptionStateObj.state) : undefined;
-  };
+  _calculateGrid2HomeValue(grid_consumption_entity, grid_entity) {
+    if (this.views[this.view].twoGridSensors) {
+      const gridConsumptionStateObj = this.hass.states[grid_consumption_entity];
+      return gridConsumptionStateObj ? parseFloat(gridConsumptionStateObj.state) : undefined;
+    } else if(this.view === 'power') {
+      const gridStateObj = this.hass.states[grid_entity];
+      const value = gridStateObj
+        ? parseFloat(gridStateObj.state) * this.config.production_is_positive : undefined;
+      return value < 0 ? Math.abs(value) : 0;
+    } else {
+      return 0;
+    }
+  }
 
-  _calculateSolar2GridValue(hass, grid_production_entity) {
-    const gridProductionStateObj = hass.states[grid_production_entity];
-    return gridProductionStateObj ? parseFloat(gridProductionStateObj.state) : undefined;
-  };
+  _calculateSolar2GridValue(grid_production_entity, grid_entity) {
+    if (this.views[this.view].twoGridSensors) {
+      const gridProductionStateObj = this.hass.states[grid_production_entity];
+      return gridProductionStateObj ? parseFloat(gridProductionStateObj.state) : undefined;
+    } else if(this.view === 'power') {
+      const gridStateObj = this.hass.states[grid_entity];
+      const value = gridStateObj
+        ? parseFloat(gridStateObj.state) * this.config.production_is_positive : undefined;
+      return value > 0 ? value : 0;
+    } else {
+      return 0;
+    }
+  }
 
-  _calculateGridValue(data) {
-    return typeof data.grid2home.val !== 'undefined' && typeof data.solar2grid.val !== 'undefined'
-      ? data.grid2home.val - data.solar2grid.val : undefined;
-  };
+  _calculateGridValue(grid_entity) {
+    if (this.views[this.view].twoGridSensors) {
+      return typeof this.data.grid2home.val !== 'undefined' && typeof this.data.solar2grid.val !== 'undefined'
+        ? this.data.solar2grid.val - this.data.grid2home.val : undefined;
+    } else {
+      const gridStateObj = this.hass.states[grid_entity];
+      return gridStateObj
+        ? parseFloat(gridStateObj.state) * this.config.production_is_positive : undefined;
+    }
+  }
 
-  _calculateHomeValue(data) {
-    return typeof data.solar.val !== 'undefined' && typeof data.grid.val !== 'undefined'
-      ? data.solar.val + data.grid.val : undefined;
-  };
+  _calculateHomeValue(home_entity) {
+    if (this.views[this.view].twoGridSensors || this.view === 'power') {
+      return typeof this.data.solar.val !== 'undefined' && typeof this.data.grid.val !== 'undefined'
+        ? this.data.grid.val - this.data.solar.val : undefined;
+    } else {
+      const homeStateObj = this.hass.states[home_entity];
+      return homeStateObj ? parseFloat(homeStateObj.state) * this.config.production_is_positive : undefined;
+    }
+  }
 
-  _calculateSolar2HomeValue(data) {
-    return typeof data.solar.val !== 'undefined' && typeof data.solar2grid.val !== 'undefined'
-      ? data.solar.val - data.solar2grid.val : undefined;
-  };
+  _calculateSolar2HomeValue() {
+    if (this.views[this.view].twoGridSensors || this.view === 'power') {
+      return typeof this.data.solar.val !== 'undefined' && typeof this.data.solar2grid.val !== 'undefined'
+        ? this.data.solar.val - this.data.solar2grid.val : undefined;
+    } else {
+      return 0;
+    }
+  }
 
-  _getEntityUnit(stateObj) {
-    return stateObj && stateObj.attributes.unit_of_measurement
-      ? stateObj.attributes.unit_of_measurement : 'unknown unit';
-  };
+  _logConsole(message) {
+    // if (this.config.debug) {
+      console.info(`%cpower-wheel-card%c\n${message}`, "color: green; font-weight: bold", "");
+    // }
+  }
 
-  _defineUnit(hass, view, solar_entity, grid_consumption_entity, grid_production_entity, moneyUnit) {
-    const solarUnit = this._getEntityUnit(hass.states[solar_entity]);
-    const gridConsumptionUnit = this._getEntityUnit(hass.states[grid_consumption_entity]);
-    const gridProductionUnit = this._getEntityUnit(hass.states[grid_production_entity]);
-    return solarUnit === gridConsumptionUnit && gridConsumptionUnit === gridProductionUnit
-      ? (view === 'money' ? moneyUnit : solarUnit) : 'units not equal';
-  };
+  /* Lit functions */
 
-  render() {
-    let data = {
+  constructor() {
+    super();
+    this.data = {
       solar: {},
       solar2grid: {},
       solar2home: {},
@@ -97,197 +242,226 @@ class PowerWheelCard extends LitElement {
       grid2home: {},
       home: {},
     };
-    let unit = '';
+    this.messages = [];
+    this.sensors = [];
+    this.views = {
+      power: {},
+      energy: {},
+      money: {},
+    };
+  }
 
-    if (this.config.view === 'money' && this.money_capable) {
-      data.solar.val = this.config.energy_price * this._calculateSolarValue(this.hass, this.config.solar_energy_entity);
-      data.grid2home.val = this.config.energy_price * this._calculateGrid2HomeValue(this.hass, this.config.grid_energy_consumption_entity);
-      data.solar2grid.val = this.config.energy_price * this._calculateSolar2GridValue(this.hass, this.config.grid_energy_production_entity);
-      data.grid.val = this._calculateGridValue(data);
-      data.home.val = this._calculateHomeValue(data);
-      data.solar2home.val = this._calculateSolar2HomeValue(data);
-      unit = this._defineUnit(this.hass, this.config.view, this.config.solar_energy_entity,
-        this.config.grid_energy_consumption_entity, this.config.grid_energy_production_entity, this.money_unit);
-      data.solar = this._makePositionObject(this.hass, data.solar.val, this.config.solar_energy_entity, this.config.solar_icon,
-        'mdi:weather-sunny', this.money_decimals, true);
-      data.grid = this._makePositionObject(this.hass, data.grid.val, this.config.grid_energy_entity, this.config.grid_icon,
-        'mdi:flash-circle', this.money_decimals, false);
-      data.home = this._makePositionObject(this.hass, data.home.val, this.config.home_energy_entity, this.config.home_icon,
-        'mdi:home', this.money_decimals, false);
-      data.solar2grid = this._makeArrowObject(data.solar2grid.val, 'mdi:arrow-bottom-left', this.money_decimals);
-      data.solar2home = this._makeArrowObject(data.solar2home.val, 'mdi:arrow-bottom-right', this.money_decimals);
-      data.grid2home = this._makeArrowObject(data.grid2home.val, 'mdi:arrow-right', this.money_decimals);
-    } else if (this.config.view === 'energy' && this.energy_capable) {
-      data.solar.val = this._calculateSolarValue(this.hass, this.config.solar_energy_entity);
-      data.grid2home.val = this._calculateGrid2HomeValue(this.hass, this.config.grid_energy_consumption_entity);
-      data.solar2grid.val = this._calculateSolar2GridValue(this.hass, this.config.grid_energy_production_entity);
-      data.grid.val = this._calculateGridValue(data);
-      data.home.val = this._calculateHomeValue(data);
-      data.solar2home.val = this._calculateSolar2HomeValue(data);
-      unit = this._defineUnit(this.hass, this.config.view, this.config.solar_energy_entity,
-        this.config.grid_energy_consumption_entity, this.config.grid_energy_production_entity, this.money_unit);
-      data.solar = this._makePositionObject(this.hass, data.solar.val, this.config.solar_energy_entity, this.config.solar_icon,
-          'mdi:weather-sunny', this.energy_decimals, true);
-      data.grid = this._makePositionObject(this.hass, data.grid.val, this.config.grid_energy_entity, this.config.grid_icon,
-          'mdi:flash-circle', this.energy_decimals, false);
-      data.home = this._makePositionObject(this.hass, data.home.val, this.config.home_energy_entity, this.config.home_icon,
-          'mdi:home', this.energy_decimals, false);
-      data.solar2grid = this._makeArrowObject(data.solar2grid.val, 'mdi:arrow-bottom-left', this.energy_decimals);
-      data.solar2home = this._makeArrowObject(data.solar2home.val, 'mdi:arrow-bottom-right', this.energy_decimals);
-      data.grid2home = this._makeArrowObject(data.grid2home.val, 'mdi:arrow-right', this.energy_decimals);
+  _lovelaceResource() {
+    const scripts = document.getElementsByTagName("script");
+    let src = '404';
+    Object.keys(scripts).some((key) => {
+      let pos = scripts[key].src.indexOf("power-wheel-card.js");
+      if (pos !== -1) {
+        src = scripts[key].src.substr(pos);
+        return true;
+      } else {
+        return false;
+      }
+    });
+    return src;
+  }
+
+  _addMessage(type, text) {
+    this.messages = [ ...this.messages, { type: type, text: text } ];
+    console[type](text);
+  }
+
+  _validateSensors() {
+    this.sensors.forEach(sensor => {
+      if (!this.hass.states[sensor]) {
+        this._addMessage('error', `Entity "${sensor}" not found in HA.`);
+      }
+    });
+  }
+
+  _getSensorUnit(entity) {
+    if (entity) {
+      const stateObj = this.hass.states[entity];
+      const unit = stateObj && stateObj.attributes.unit_of_measurement
+        ? stateObj.attributes.unit_of_measurement : undefined;
+      if (stateObj && !unit) {
+        this._addMessage('error', `Attribute "unit_of_measurement" for the entity "${entity}" not found in HA.`);
+      }
+      return unit;
     } else {
-      data.solar.val = this._calculateSolarValue(this.hass, this.config.solar_power_entity);
-      data.grid2home.val = this._calculateGrid2HomeValue(this.hass, this.config.grid_power_consumption_entity);
-      data.solar2grid.val = this._calculateSolar2GridValue(this.hass, this.config.grid_power_production_entity);
-      data.grid.val = this._calculateGridValue(data);
-      data.home.val = this._calculateHomeValue(data);
-      data.solar2home.val = this._calculateSolar2HomeValue(data);
-      unit = this._defineUnit(this.hass, this.config.view, this.config.solar_power_entity,
-        this.config.grid_power_consumption_entity, this.config.grid_power_production_entity, this.money_unit);
-      data.solar = this._makePositionObject(this.hass, data.solar.val, this.config.solar_power_entity, this.config.solar_icon,
-          'mdi:weather-sunny', this.power_decimals, true);
-      data.grid = this._makePositionObject(this.hass, data.grid.val, this.config.grid_power_entity, this.config.grid_icon,
-          'mdi:flash-circle', this.power_decimals, false);
-      data.home = this._makePositionObject(this.hass, data.home.val, this.config.home_power_entity, this.config.home_icon,
-          'mdi:home', this.power_decimals, false);
-      data.solar2grid = this._makeArrowObject(data.solar2grid.val, 'mdi:arrow-bottom-left', this.power_decimals);
-      data.solar2home = this._makeArrowObject(data.solar2home.val, 'mdi:arrow-bottom-right', this.power_decimals);
-      data.grid2home = this._makeArrowObject(data.grid2home.val, 'mdi:arrow-right', this.power_decimals);
+      return undefined;
+    }
+  }
+
+  _defineUnit(view, solar_entity, grid_entity, grid_consumption_entity, grid_production_entity) {
+    const solarUnit = this._getSensorUnit(solar_entity);
+    let gridUnit;
+    if (this.views[view].twoGridSensors) {
+      const gridConsumptionUnit = this._getSensorUnit(grid_consumption_entity);
+      const gridProductionUnit = this._getSensorUnit(grid_production_entity);
+      gridUnit = gridConsumptionUnit === gridProductionUnit ? gridConsumptionUnit : undefined;
+    } else if (this.views[view].oneGridSensor) {
+      gridUnit = this._getSensorUnit(grid_entity);
+    } else {
+      gridUnit = undefined;
+    }
+    if (solarUnit === gridUnit) {
+      return solarUnit;
+    } else {
+      this._addMessage('error', `Units not equal for all sensors for the ${view} view.`);
+      return 'error';
+    }
+  }
+
+  firstUpdated() {
+    if (this.config.debug) {
+      let line = `Version: ${__VERSION}\nLovelace resource: ${this._lovelaceResource()}\nHA version: ${this.hass.config.version}`;
+      line += `\nAgent: ${navigator.userAgent}`;
+      line += `\nReport issues here: https://github.com/gurbyz/custom-cards-lovelace/issues`;
+      line += `\nProcessed config: ${JSON.stringify(this.config, '', ' ')}\nRegistered sensors: ${JSON.stringify(this.sensors, '', ' ')}`;
+      line += `\nViews object: ${JSON.stringify(this.views, '', ' ')}`;
+      this._logConsole(line);
+      this._addMessage('warn', 'Debug mode is on.');
+    }
+    this._validateSensors();
+    this.views.power.unit = this._defineUnit('power', this.config.solar_power_entity, this.config.grid_power_entity,
+      this.config.grid_power_consumption_entity, this.config.grid_power_production_entity);
+    this.views.energy.unit = this._defineUnit('energy', this.config.solar_energy_entity, this.config.grid_energy_entity,
+      this.config.grid_energy_consumption_entity, this.config.grid_energy_production_entity);
+    this.views.money.unit = this.config.money_unit;
+    this.views = { ...this.views };
+  }
+
+  _sensorChangeDetected(oldValue) {
+    return this.sensors.reduce((change, sensor) => {
+      return change || this.hass.states[sensor].state !== oldValue.states[sensor].state;
+    }, false);
+  }
+
+  shouldUpdate(changedProperties) {
+    // Don't update when there is a new value for a hass property that's not a registered sensor.
+    // Update in all other cases, e.g. when there is a change of config or old values are undefined.
+    let update = true;
+    [ ...changedProperties.keys() ].some((propName) => {
+      const oldValue = changedProperties.get(propName);
+      if (propName === "hass" && oldValue) {
+        update = update && this._sensorChangeDetected(oldValue);
+      }
+      return !update;
+    });
+    return update;
+  }
+
+  render() {
+    if (this.view === 'money' && this.views.money.capable) {
+      this.data.solar.val = this.config.energy_price * this._calculateSolarValue(this.config.solar_energy_entity);
+      this.data.grid2home.val = this.config.energy_price * this._calculateGrid2HomeValue(this.config.grid_energy_consumption_entity, this.config.grid_energy_entity);
+      this.data.solar2grid.val = this.config.energy_price * this._calculateSolar2GridValue(this.config.grid_energy_production_entity, this.config.grid_energy_entity);
+      this.data.grid.val = this._calculateGridValue(this.config.grid_energy_entity);
+      this.data.home.val = this._calculateHomeValue(this.config.home_energy_entity);
+      this.data.solar2home.val = this._calculateSolar2HomeValue();
+      this.data.solar = this._makePositionObject(this.data.solar.val, this.config.solar_energy_entity, this.config.solar_icon,
+        'mdi:weather-sunny', this.config.money_decimals);
+      this.data.grid = this._makePositionObject(this.data.grid.val, this.config.grid_energy_entity, this.config.grid_icon,
+        'mdi:transmission-tower', this.config.money_decimals);
+      this.data.home = this._makePositionObject(this.data.home.val, this.config.home_energy_entity, this.config.home_icon,
+        'mdi:home', this.config.money_decimals);
+      this.data.solar2grid = this._makeArrowObject(this.data.solar2grid.val, false, 'mdi:arrow-bottom-left', 'mdi:arrow-top-right', this.config.money_decimals);
+      this.data.solar2home = this._makeArrowObject(this.data.solar2home.val, false, 'mdi:arrow-bottom-right', 'mdi:arrow-top-left', this.config.money_decimals);
+      this.data.grid2home = this._makeArrowObject(this.data.grid2home.val, false, 'mdi:arrow-right', 'mdi:arrow-left', this.config.money_decimals);
+    } else if (this.view === 'energy' && this.views.energy.capable) {
+      this.data.solar.val = this._calculateSolarValue(this.config.solar_energy_entity);
+      this.data.grid2home.val = this._calculateGrid2HomeValue(this.config.grid_energy_consumption_entity, this.config.grid_energy_entity);
+      this.data.solar2grid.val = this._calculateSolar2GridValue(this.config.grid_energy_production_entity, this.config.grid_energy_entity);
+      this.data.grid.val = this._calculateGridValue(this.config.grid_energy_entity);
+      this.data.home.val = this._calculateHomeValue(this.config.home_energy_entity);
+      this.data.solar2home.val = this._calculateSolar2HomeValue();
+      this.data.solar = this._makePositionObject(this.data.solar.val, this.config.solar_energy_entity, this.config.solar_icon,
+          'mdi:weather-sunny', this.config.energy_decimals);
+      this.data.grid = this._makePositionObject(this.data.grid.val, this.config.grid_energy_entity, this.config.grid_icon,
+          'mdi:transmission-tower', this.config.energy_decimals);
+      this.data.home = this._makePositionObject(this.data.home.val, this.config.home_energy_entity, this.config.home_icon,
+          'mdi:home', this.config.energy_decimals);
+      this.data.solar2grid = this._makeArrowObject(this.data.solar2grid.val, this.config.grid_energy_production_entity, 'mdi:arrow-bottom-left', 'mdi:arrow-top-right', this.config.energy_decimals);
+      this.data.solar2home = this._makeArrowObject(this.data.solar2home.val, false, 'mdi:arrow-bottom-right', 'mdi:arrow-top-left', this.config.energy_decimals);
+      this.data.grid2home = this._makeArrowObject(this.data.grid2home.val, this.config.grid_energy_consumption_entity, 'mdi:arrow-right', 'mdi:arrow-left', this.config.energy_decimals);
+    } else {
+      this.data.solar.val = this._calculateSolarValue(this.config.solar_power_entity);
+      this.data.grid2home.val = this._calculateGrid2HomeValue(this.config.grid_power_consumption_entity, this.config.grid_power_entity);
+      this.data.solar2grid.val = this._calculateSolar2GridValue(this.config.grid_power_production_entity, this.config.grid_power_entity);
+      this.data.grid.val = this._calculateGridValue(this.config.grid_power_entity);
+      this.data.home.val = this._calculateHomeValue();
+      this.data.solar2home.val = this._calculateSolar2HomeValue();
+      this.data.solar = this._makePositionObject(this.data.solar.val, this.config.solar_power_entity, this.config.solar_icon,
+          'mdi:weather-sunny', this.config.power_decimals);
+      this.data.grid = this._makePositionObject(this.data.grid.val, this.config.grid_power_entity, this.config.grid_icon,
+          'mdi:transmission-tower', this.config.power_decimals);
+      this.data.home = this._makePositionObject(this.data.home.val, this.config.home_power_entity, this.config.home_icon,
+          'mdi:home', this.config.power_decimals);
+      this.data.solar2grid = this._makeArrowObject(this.data.solar2grid.val, this.config.grid_power_production_entity, 'mdi:arrow-bottom-left', 'mdi:arrow-top-right', this.config.power_decimals);
+      this.data.solar2home = this._makeArrowObject(this.data.solar2home.val, false, 'mdi:arrow-bottom-right', 'mdi:arrow-top-left', this.config.power_decimals);
+      this.data.grid2home = this._makeArrowObject(this.data.grid2home.val, this.config.grid_power_consumption_entity, 'mdi:arrow-right', 'mdi:arrow-left', this.config.power_decimals);
     }
 
-    // todo: [Feature] Auto toggle view
-    // setTimeout(() => {
-    //   this._toggleView({}, config);
-    // }, 5000);
+    if (this.autoToggleView) {
+      this.autoToggleViewTimerId = this.autoToggleViewTimerId || setInterval(() => {
+        this._toggleViewHelper();
+      }, this.config.auto_toggle_view_period * 1000);
+    } else if (this.autoToggleViewTimerId) {
+      this.autoToggleViewTimerId = clearInterval(this.autoToggleViewTimerId);
+    }
 
     return html`
       <style>
-        ha-card {
-          padding: 16px;
-        }
-        ha-card .header {
-          font-family: var(--paper-font-headline_-_font-family);
-          -webkit-font-smoothing: var(--paper-font-headline_-_-webkit-font-smoothing);
-          font-size: var(--paper-font-headline_-_font-size);
-          font-weight: var(--paper-font-headline_-_font-weight);
-          letter-spacing: var(--paper-font-headline_-_letter-spacing);
-          line-height: var(--paper-font-headline_-_line-height);
-          color: var(--primary-text-color);
-          padding: 4px 0 12px;
-          display: flex;
-          justify-content: space-between;
-        }
-        ha-card .wheel {
-          position: relative;
-        }
-        ha-card .row {
-          display: flex;
-          justify-content: center;
-          padding: 8px;
-          align-items: center;
-          height: 60px;
-        }
-        ha-card .cell {
-          text-align: center;
-          width: 150px;
-        }
-        ha-card .cell.position {
-          cursor: pointer;
-          font-weight: bold;
-        }
-        ha-card .cell.arrow {
-          color: var(--state-icon-unavailable-color, #bdbdbd);
-        }
-        .unit-container {
-          position: absolute;
-          display: table;
-          width: 100%;
-          height: 230px;
-        }
-        .unit {
-          display: table-cell;
-          text-align: center;
-          vertical-align: middle;
-          font-size: calc(1.5 * var(--paper-font-headline_-_font-size));
-          font-weight: bold;
-        }
-        .unit.toggle {
-          cursor: pointer;
-        }
-        ha-icon {
-          transition: color 0.5s ease-in-out, filter 0.3s ease-in-out;
-          color: var(--paper-item-icon-color, #44739e);
-          width: 48px;
-          height: 48px;
-        }
-        ha-icon.active {
-          color: var(--paper-item-icon-active-color, #fdd835);
-        }
-        ha-icon.inactive {
-          color: var(--state-icon-unavailable-color, #bdbdbd);
-        }
         ha-icon.consuming {
-          color: ${this.consumingColor};
+          color: ${this.config.consuming_color};
         }
         ha-icon.producing {
-          color: ${this.producingColor};
-        }
-        ha-icon#toggle-button {
-          padding-top: 4px;
-          width: 24px;
-          height: 24px;
-          float: right;
-          cursor: pointer;
+          color: ${this.config.producing_color};
         }
       </style>
       <ha-card>
-        ${this.energy_capable ? html`<ha-icon id="toggle-button" icon="mdi:recyclexxx" @click="${e => this._toggleView(e, this.config)}" title="Toggle view"></ha-icon>` : ''}
-        <div class="header">
-          ${this.title}
+        ${this.messages.length ? this.messages.map((message) => { return html`<div class="message ${message.type}">${message.text}</div>`}) : ''}
+        ${this.views.energy.capable ? html`<ha-icon id="toggle-button" class="${this.autoToggleView ? `active` : `inactive`}" icon="mdi:recycle" @click="${() => this._toggleAutoToggleView()}" title="Turn ${this.autoToggleView ? `off` : `on`} auto-toggle"></ha-icon>` : ''}
+        <div id="title" class="header">
+          ${this.views[this.view].title}
         </div>
         <div class="wheel">
           <div class="unit-container">
-            ${this.energy_capable ? html`<div class="unit toggle" @click="${e => this._toggleView(e, this.config)}" title="Toggle view">${unit}</div>` : html`<div class="unit">${unit}</div>`}
+            ${this.views.energy.capable ? html`<div id="unit" class="toggle" @click="${() => this._toggleView()}" title="Toggle view">${this.views[this.view].unit}</div>` : html`<div id="unit">${this.views[this.view].unit}</div>`}
           </div>
           <div class="row">
-            ${this._positionCell(data.solar)}
+            ${this._cell('solar', this.data.solar, 'position')}
           </div>
           <div class="row">
-            ${this._arrowCell(data.solar2grid)}
-            ${this._arrowCell(data.solar2home)}
+            ${this._cell('solar2grid', this.data.solar2grid, 'arrow', this.data.solar.val)}
+            ${this._cell('solar2home', this.data.solar2home, 'arrow', this.data.solar.val)}
           </div>
           <div class="row">
-            ${this._positionCell(data.grid)}
-            ${this._arrowCell(data.grid2home)}
-            ${this._positionCell(data.home)}
+            ${this._cell('grid', this.data.grid, 'position')}
+            ${this._cell('grid2home', this.data.grid2home, 'arrow', this.data.grid.val)}
+            ${this._cell('home', this.data.home, 'position')}
           </div>
         </div>
       </ha-card>
     `;
   }
 
-  _positionCell(positionObj) {
+  /* Template functions */
+
+  _cell(id, cellObj, cellType, hideValue) {
     return html`
-      <div class="cell position" @click="${e => this._handleClick(e, positionObj.stateObj)}">
-        <ha-icon class="${positionObj.classValue}" icon="${positionObj.icon}"></ha-icon>
-        <br/>${positionObj.stateStr}&nbsp;
+      <div id="cell-${id}"
+            class="cell ${cellType} ${cellObj.hasSensor ? 'sensor' : ''}"
+            @click="${cellObj.hasSensor ? () => this._handleClick(cellObj.stateObj) : () => {}}"
+            title="${cellObj.hasSensor ? `More info${cellObj.stateObj.attributes.friendly_name ? ':\n' + cellObj.stateObj.attributes.friendly_name : ''}` : ''}">
+        <ha-icon id="icon-${id}" class="${cellObj.classValue}" icon="${cellObj.icon}"></ha-icon>
+        <div id="value-${id}" class="value">${cellType === 'arrow' && (cellObj.val === 0 || cellObj.val === Math.abs(hideValue)) ? '' : cellObj.valueStr}</div>
       </div>
     `;
-  };
+  }
 
-  _arrowCell(arrowObj) {
-    return html`
-      <div class="cell arrow">
-        <ha-icon class="${arrowObj.classValue}" icon="${arrowObj.icon}"></ha-icon>
-        <div>&nbsp;${arrowObj.valueStr}&nbsp;</div>
-      </div>
-    `;
-  };
-
-  _handleClick(ev, stateObj) {
-    if (!stateObj) {
-      return;
-    }
+  _handleClick(stateObj) {
     const event = new Event('hass-more-info', {
       bubbles: true,
       cancelable: true,
@@ -297,68 +471,135 @@ class PowerWheelCard extends LitElement {
     this.shadowRoot.dispatchEvent(event);
   }
 
-  _toggleView(ev, config) {
-    switch (config.view) {
+  _toggleAutoToggleView() {
+    if (!this.autoToggleView) {
+      this._toggleViewHelper();
+    }
+    this.autoToggleView = !this.autoToggleView;
+  }
+
+  _toggleView() {
+    this.autoToggleView = false;
+    this._toggleViewHelper();
+  }
+
+  _toggleViewHelper() {
+    switch (this.view) {
       case 'power':
-        config.view = 'energy';
+        this.view = 'energy';
         break;
       case 'energy':
-        if (this.money_capable) {
-          config.view = 'money';
+        if (this.views.money.capable) {
+          this.view = 'money';
         } else {
-          config.view = 'power';
+          this.view = 'power';
         }
         break;
-      case 'money':
-        config.view = 'power';
-        break;
+      // case 'money':
+      //   this.view = 'power';
+      //   break;
       default:
-        config.view = 'power';
+        this.view = 'power';
     }
+  }
+
+  /* Config functions */
+
+  _getSensors(config) {
+    return [
+      "solar_power_entity",
+      "grid_power_consumption_entity",
+      "grid_power_production_entity",
+      "grid_power_entity",
+      "solar_energy_entity",
+      "grid_energy_consumption_entity",
+      "grid_energy_production_entity",
+      "grid_energy_entity",
+    ].reduce((sensors, cardParameter) => {
+      if (config.hasOwnProperty(cardParameter)) {
+        sensors.push(config[cardParameter]);
+      }
+      return sensors;
+    }, []);
   }
 
   setConfig(config) {
     if (!config.solar_power_entity) {
       throw new Error('You need to define a solar_power_entity');
     }
-    if (!config.grid_power_consumption_entity) {
+    if (!config.grid_power_consumption_entity && !config.grid_power_production_entity
+      && !config.grid_power_entity) {
+      throw new Error('You need to define a grid_power_consumption_entity' +
+        'and a grid_power_production_entity OR you can define a grid_power_entity');
+    }
+    if (config.grid_power_production_entity && !config.grid_power_consumption_entity) {
       throw new Error('You need to define a grid_power_consumption_entity');
     }
-    if (!config.grid_power_production_entity) {
+    if (config.grid_power_consumption_entity && !config.grid_power_production_entity) {
       throw new Error('You need to define a grid_power_production_entity');
     }
-    this.title = config.title ? config.title : 'Power wheel';
+    config.production_is_positive = config.production_is_positive !== false;
+    config.production_is_positive = config.production_is_positive ? 1 : -1;
+    config.title = config.title ? config.title : 'Power wheel';
+    config.title_power = config.title_power ? config.title_power : config.title;
+    config.title_energy = config.title_energy ? config.title_energy : config.title;
+    config.title_money = config.title_money ? config.title_money : config.title;
     if (config.power_decimals && !Number.isInteger(config.power_decimals)) {
       throw new Error('Power_decimals should be an integer');
     }
-    this.power_decimals = config.power_decimals ? config.power_decimals : 0;
+    config.power_decimals = config.power_decimals ? config.power_decimals : 0;
     if (config.energy_decimals && !Number.isInteger(config.energy_decimals)) {
       throw new Error('Energy_decimals should be an integer');
     }
-    this.energy_decimals = config.energy_decimals ? config.energy_decimals : 3;
+    config.energy_decimals = config.energy_decimals ? config.energy_decimals : 3;
     if (config.money_decimals && !Number.isInteger(config.money_decimals)) {
       throw new Error('Money_decimals should be an integer');
     }
-    this.money_decimals = config.money_decimals ? config.money_decimals : 2;
-    this.money_unit = config.money_unit ? config.money_unit : '€';
-    this.colorIcons = config.color_icons ? (config.color_icons == true) : false;
-    this.consumingColor = this.colorIcons
+    config.money_decimals = config.money_decimals ? config.money_decimals : 2;
+    config.money_unit = config.money_unit ? config.money_unit : '€';
+    config.color_icons = config.color_icons !== false;
+    config.consuming_color = config.color_icons
       ? (config.consuming_color ? config.consuming_color : 'var(--label-badge-yellow, #f4b400)')
       : 'var(--state-icon-unavailable-color, #bdbdbd)';
-    this.producingColor = this.colorIcons
+    config.producing_color = config.color_icons
       ? (config.producing_color ? config.producing_color : 'var(--label-badge-green, #0da035)')
       : 'var(--state-icon-unavailable-color, #bdbdbd)';
     if (config.initial_view && !['power', 'energy', 'money'].includes(config.initial_view)) {
       throw new Error("Initial_view should 'power', 'energy' or 'money'");
     }
-    if (!config.view) {
-      config.view = config.initial_view ? config.initial_view : 'power';
+    config.initial_view = config.initial_view ? config.initial_view : 'power';
+    config.initial_auto_toggle_view = config.initial_auto_toggle_view ? (config.initial_auto_toggle_view == true) : false;
+    if (config.auto_toggle_view_period && !Number.isInteger(config.auto_toggle_view_period)) {
+      throw new Error('Auto_toggle_view_period should be an integer');
     }
-    this.energy_capable = config.solar_energy_entity && config.grid_energy_consumption_entity
-      && config.grid_energy_production_entity;
-    this.money_capable = this.energy_capable && config.energy_price;
-    this.config = config;
+    config.auto_toggle_view_period = config.auto_toggle_view_period ? config.auto_toggle_view_period : 10;
+    config.debug = config.debug ? config.debug : false;
+
+    this.views.power = {
+      title: config.title_power,
+      oneGridSensor: !!config.grid_power_entity,
+      twoGridSensors: !!config.grid_power_consumption_entity && !!config.grid_power_production_entity,
+    };
+    this.views.power.capable = (this.views.power.oneGridSensor || this.views.power.twoGridSensors) && !!config.solar_power_entity;
+    this.views.energy = {
+      title: config.title_energy,
+      oneGridSensor: !!config.grid_energy_entity && !!config.home_energy_entity,
+      twoGridSensors: !!config.grid_energy_consumption_entity && !!config.grid_energy_production_entity,
+    };
+    this.views.energy.capable = (this.views.energy.oneGridSensor || this.views.energy.twoGridSensors) && !!config.solar_energy_entity;
+    this.views.money = {
+      title: config.title_money,
+      oneGridSensor: this.views.energy.oneGridSensor,
+      twoGridSensors: this.views.energy.twoGridSensors,
+      capable: this.views.energy.capable && !!config.energy_price,
+    };
+    this.autoToggleView = config.initial_auto_toggle_view;
+    this.sensors = this._getSensors(config);
+    this.view = config.initial_view;
+    this.config = { ...config };
   }
+
+  /* HA functions */
 
   getCardSize() {
     return 5;
