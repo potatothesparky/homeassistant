@@ -45,3 +45,6 @@ config_auto_restart:
 google_bedtime:
   name: Bedtime
   icon: mdi:hotel
+google_goodnight:
+  name: Goodnight
+  icon: mdi:hotel

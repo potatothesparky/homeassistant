@@ -52,3 +52,7 @@
       name: Bedtime
       expose: true
       room: Scenes
+    input_boolean.google_goodnight:
+      name: Goodnight
+      expose: true
+      room: Scenes
