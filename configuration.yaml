@@ -172,13 +172,7 @@ google:
   client_id: !secret google_calendar_ID
   client_secret: !secret google_calendar_secret
 
-google_assistant:
-  project_id: !secret google_assistant_project_id
-  api_key: !secret google_assistant_api_key
-  exposed_domains:
-    - switch
-    - light
-    - input_boolean
+google_assistant: !include google_assistant.yaml
 
 vera:
   vera_controller_url: http://192.168.1.2:3480/

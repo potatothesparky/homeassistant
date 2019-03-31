@@ -1,0 +1,54 @@
+  project_id: !secret google_assistant_project_id
+  api_key: !secret google_assistant_api_key
+  expose_by_default: false
+  entity_config:
+#Lights
+    switch.kitchen_4:
+      name: Kitchen
+      expose: true
+      room: Kitchen
+      aliases:
+        - Kitchen Lights
+    switch.garage_3:
+      name: Garage
+      expose: true
+      room: Garage
+      aliases:
+        - Garage Lights
+    switch.living_5:
+      name: Family
+      expose: true
+      room: Family
+      aliases:
+        - Family Lights
+    switch.Living_2_6:
+      name: Lounge
+      expose: true
+      room: Lounge
+      aliases:
+        - Lounge Lights
+    switch.master_bed_7:
+      name: Bedroom
+      expose: true
+      room: Bedroom
+      aliases:
+        - Bedroom Lights
+    light.dave_bedside:
+      name: Daves Lamp
+      expose: true
+      room: Bedroom
+      aliases:
+        - Daves Bedside Lamp
+        - Daves Bedside
+    light.rae_bedside:
+      name: Raes Lamp
+      expose: true
+      room: Bedroom
+      aliases:
+        - Raes Bedside Lamp
+        - Raes Bedside
+#Scenes
+    input_boolean.google_bedtime:
+      name: Bedtime
+      expose: true
+      room: Scenes
