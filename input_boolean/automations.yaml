@@ -40,3 +40,8 @@ config_auto_update:
 config_auto_restart:
   name: Restart After Config Update
   icon: mdi:restart
+
+#google assistant triggers
+google_bedtime:
+  name: Bedtime
+  icon: mdi:hotel
